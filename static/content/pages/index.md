@@ -64,7 +64,7 @@ secondaryImage: /assets/default-user.webp
 title: Do these memes make my butt look fat?
 sharethis: false
 liarliar: false
-bumpertext: "PIRATE Onboarding Video"
+bumpertext: "Onboarding Video"
 marate: x
 viewerwarning: x
 marating1: x
@@ -80,7 +80,7 @@ description: A rogue one, out there to change the world, one meme at a time.
 svgzindex: x
 profTitle: MG Reports
 coverletter:
-  coverText: About PIRATE
+  coverText: About MemeGenes
   coverLink: /about
 scrollable: false
 contentinvideo: false
