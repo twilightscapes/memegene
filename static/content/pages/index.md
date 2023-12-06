@@ -5,8 +5,8 @@ addressText: The Fleet Launches Soon!
 audiotitle: Shoop
 marating3: x
 marating4: x
-tagline: Welcome to PIRATE, Matey!
-featuredImage: /assets/pirate-propaganda.webp
+tagline: Do these memes amuse you?
+featuredImage: /assets/father-figure-promo.webp
 youtube:
   youtubersuggestion3: ""
   youtuber2: ""
@@ -62,23 +62,23 @@ marate: x
 pagePW: ""
 skillsTitle: ""
 template: index-page
-title: social media by the people for the people
+title: Do these memes make my butt look fatty?
 image: /assets/trump-friends-promo.webp
 svgImage: null
 postLimit: "4"
 maratingtx1: x
 liarliar: false
-description: PIRATE - social media owned by the people
+description: All the memes you can eat - $9.99!
 svgzindex: x
 maratingtx2: x
 coverletter:
-  coverText: About PIRATE
+  coverText: About MemeGenes
   coverLink: /about
 sharethis: false
 contentinvideo: false
 maratingtx3: x
 maratingtx4: x
-profTitle: Hoist Your Flag!
+profTitle: All the memes you can eat - $9.99!
 excludeFromRSS: true
 ---
 
