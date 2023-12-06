@@ -79,6 +79,7 @@ contentinvideo: false
 maratingtx3: x
 maratingtx4: x
 profTitle: Hoist Your Flag!
+excludeFromRSS: true
 ---
 
 <div style="">
