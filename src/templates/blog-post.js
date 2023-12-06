@@ -13,7 +13,7 @@ import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css'
 
 
 // import Controls from "../components/Controls";
-import { document } from "browser-monads"
+// import { document } from "browser-monads"
 import PropTypes from "prop-types";
 import { MdPlayArrow } from "react-icons/md"
 import { MdPause } from "react-icons/md"
@@ -27,11 +27,10 @@ import { MdVolumeUp } from "react-icons/md"
 import { IoArrowRedoSharp, IoArrowUndoSharp } from "react-icons/io5"
 import { jsx } from "theme-ui"
 import { Link, graphql } from "gatsby"
-import { Helmet } from "react-helmet"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getSrc } from "gatsby-plugin-image"
 // import { RiArrowRightDownFill } from "react-icons/ri"
-import CommentBox from "../components/commentbox"
+// import CommentBox from "../components/commentbox"
 
 import useSiteMetadata from "../hooks/SiteMetadata"
 // import Countdown from 'react-countdown'
@@ -45,7 +44,7 @@ import { RiMenuUnfoldFill, RiCloseCircleFill } from "react-icons/ri"
 import { AiOutlineAudioMuted } from "react-icons/ai"
 
 
-import Footer from "../components/footer"
+// import Footer from "../components/footer"
 // import { SRLWrapper } from "simple-react-lightbox"
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import ReactPlayer from 'react-player/lazy'
@@ -68,6 +67,12 @@ const CustomBox = styled.div`
 
 `
 
+
+export const Head = () => (
+  <>
+  <body className="blogpost" />
+  </>
+)
 
 
 const Pagination = props => (
@@ -178,7 +183,7 @@ const Post = ({ data, pageContext }) => {
   
     const UnderlayImage = frontmatter.underlayImage
     ? frontmatter.underlayImage.childImageSharp.gatsbyImageData
-    : ""
+    : null;
 
     
 
@@ -205,7 +210,7 @@ const Post = ({ data, pageContext }) => {
 
 
 
-  const Svg = frontmatter.svgImage
+
   // const svgZindex = frontmatter.svgzindex
 
 // function AddSvg(){
@@ -216,7 +221,7 @@ const Post = ({ data, pageContext }) => {
 // }
 
 
-// const IsNft = frontmatter.isnftforsale
+
 const ShowOriginal = frontmatter.youtube.youtubeshoworiginal
 const ShareThis = frontmatter.shareable
 const Comments = frontmatter.comments
@@ -242,13 +247,14 @@ const hasYoutubeFrontmatter = frontmatter.youtube.youtuber
 // const CustomControlBinary = frontmatter.customcontrols
 // const iframeUrl = frontmatter.youtube.youtuber
 
+// const urlTo = "https://www.youtube-nocookie.com/embed/" + frontmatter.youtube.youtuber + "?controls=" + frontmatter.youtube.youtubecontrols + "&amp;showinfo=0&amp;rel=0&amp;autoplay=" + frontmatter.youtube.youtubeautostart + "&amp;start=" + frontmatter.youtube.youtubestart + "&amp;end=" + frontmatter.youtube.youtubeend + "&amp;loop=" + frontmatter.youtube.youtubeloop + "&amp;mute=" + frontmatter.youtube.youtubemute + "&amp;playsinline=1&amp;playlist=" + frontmatter.youtube.youtuber + ""
 
-
+const urlTo = "https://www.youtube.com/embed/" + frontmatter.youtube.youtuber
 
 let iframeFiltered;
 if (Suggestion1) {
   iframeFiltered = [
-    frontmatter.youtube.youtuber,
+    urlTo,
     frontmatter.youtube.youtubersuggestion1,
     frontmatter.youtube.youtubersuggestion2,
     frontmatter.youtube.youtubersuggestion3,
@@ -438,14 +444,41 @@ const OriginalUrl = frontmatter.youtube.youtuber
     )
   }
 
+  const Svg = frontmatter.svgImage;
 
-
-  function AddSvg(){
-    const svgUrl = frontmatter.svgImage.publicURL
+  function AddSvg() {
+    if (!Svg) {
+      return null; // or you can return a default SVG or placeholder
+    }
+  
+    const svgUrl = Svg.publicURL;
+  
     return (
-      <object className="animator" id="" data={svgUrl} type="image/svg+xml" style={{position:'absolute', top:'0', left:'0', right:'0', bottom:'0', overflow:'', border:'0px solid red', zIndex:'', aspectRatio:'', width:'100vw', background:'transparent', objectFit:'cover'   }} alt="animated content" title="animated content" ></object>
-    )
+      <object
+        className="animator"
+        id=""
+        data={svgUrl}
+        type="image/svg+xml"
+        style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
+          overflow: '',
+          border: '0px solid red',
+          zIndex: '',
+          aspectRatio: '',
+          width: '100vw',
+          background: 'transparent',
+          objectFit: 'cover'
+        }}
+        alt="animated content"
+        title="animated content"
+      ></object>
+    );
   }
+  
 
 
       //  const svgUrl = frontmatter.svgImage.publicURL
@@ -470,7 +503,7 @@ const YouTube = frontmatter.youtube.youtuber
 
   const { siteUrl } = useSiteMetadata()
   // const { companyname } = useSiteMetadata()
-  // const { iconimage } = useSiteMetadata()
+  const { iconimage } = useSiteMetadata()
 
 
   const { showNav } = useSiteMetadata()
@@ -593,9 +626,14 @@ const YouTube = frontmatter.youtube.youtuber
           {/* <img className="homepage-bg" src={iconimage} width="250px" height="150px" alt="UrbanFetish" style={{ width:'', margin:'120px auto 0 auto', filter:'drop-shadow(2px 2px 2px #000)', background:'transparent !important', position:'relative', top:''}} /> */}
 
 
-          <div className="flex-items" style={{fontSize:'clamp(.6rem, 1.4vw, 2rem)', fontWeight:'bold', margin:'0 auto 0 auto', textTransform:'uppercase',}}>The following is rated: <strong>{frontmatter.marate}</strong></div>
 
-<div className="flex-container" style={{display:'flex', flexDirection:'row', gap:'1vh', justifyContent:'center', alignItems:'center',  textAlign:'left', margin:'0 auto', color:'#ddd', background:'rgba(0, 0, 0, .8)', width:'auto', maxWidth:'800px', height:'', border:'1px solid #222', borderRadius:'12px', padding:'2vh 5vw' }}>
+          <img className="homepage-bg2" src={iconimage} width="250px" height="150px" alt="Logo" style={{ border:'0px solid red', margin:'0 auto 0 auto', filter:'drop-shadow(2px 2px 2px #000)', background:'transparent !important', position:'relative', top:''}} />
+
+
+          
+          {/* <div className="flex-items" style={{fontSize:'clamp(.6rem, 1.4vw, 2rem)', fontWeight:'bold', margin:'0 auto 0 auto', textTransform:'uppercase',}}>The following is rated: <strong>{frontmatter.marate}</strong></div> */}
+
+{/* <div className="flex-container" style={{display:'flex', flexDirection:'row', gap:'1vh', justifyContent:'center', alignItems:'center',  textAlign:'left', margin:'0 auto', color:'#ddd', background:'rgba(0, 0, 0, .8)', width:'auto', maxWidth:'800px', height:'', border:'1px solid #222', borderRadius:'12px', padding:'2vh 5vw' }}>
 
 
 {frontmatter.marate ? (
@@ -647,7 +685,7 @@ const YouTube = frontmatter.youtube.youtuber
 </ul>
 
 </div>
-<div className="flex-items" style={{position:'relative', right:'', top:'', display:'', fontSize:'clamp(.6rem, 1.4vw, 2rem)', fontWeight:'bold', textTransform:'uppercase', textAlign:'center'}}>{frontmatter.viewerwarning}</div>
+<div className="flex-items" style={{position:'relative', right:'', top:'', display:'', fontSize:'clamp(.6rem, 1.4vw, 2rem)', fontWeight:'bold', textTransform:'uppercase', textAlign:'center'}}>{frontmatter.viewerwarning}</div> */}
 
 
          <div style={{display:'grid', placeContent:'center', position:'relative', zindex:'1', fontWeight:'bold', padding:'3% 0 0 0', fontSize:'clamp(.6rem, 1.4vw, 2rem)', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
@@ -826,15 +864,6 @@ Click to play
     <Layout className="page">
 <CustomBox>
 
-{frontmatter.scrollable ? (
-  <Helmet>
-  <body id="body" className="blogpost scroll" />
-</Helmet>
-) : (
-  <Helmet>
-  <body id="body" className="blogpost" />
-</Helmet>
-  )}
 
 
 
@@ -953,7 +982,7 @@ Click to play
 ""
   )} */}
 
-
+<div className="panel">
 <div className="wrap-element effects" style={hasYoutubeFrontmatter ? {aspectRatio:'16/9'} : {}}>
 
 
@@ -1053,6 +1082,7 @@ Click to play
                   attributes: {
                     sameSite: "none",
                     crossorigin: "anonymous",
+                    referrerpolicy: "no-referrer-when-downgrade",
                   },
                 },
                   youtube: {
@@ -1075,7 +1105,8 @@ Click to play
                 {/* <img className="homepage-bg" src={iconimage} width="250px" height="150px" alt="UrbanFetish" style={{ width:'', margin:'120px auto 0 auto', filter:'drop-shadow(2px 2px 2px #000)', background:'transparent !important', position:'relative', top:''}} /> */}
 
 
-                <div className="flex-items" style={{fontSize:'clamp(.6rem, 1.4vw, 2rem)', fontWeight:'bold', margin:'0 auto 0 auto', textTransform:'uppercase',}}>The following is rated: <strong>{frontmatter.marate}</strong></div>
+                <div className="flex-items" style={{fontSize:'clamp(.6rem, 1.4vw, 2rem)', fontWeight:'bold', margin:'0 auto 0 auto', textTransform:'uppercase',}}>The following is rated: <strong>{frontmatter.marate}</strong>
+                </div>
 
 <ul className="flex-container" style={{display:'flex', flexDirection:'row', gap:'1vh', justifyContent:'center', alignItems:'center',  textAlign:'left', margin:'0 auto', color:'#ddd', background:'rgba(0, 0, 0, .8)', width:'auto', maxWidth:'800px', height:'', border:'1px solid #222', borderRadius:'12px', padding:'2vh 5vw' }}>
 
@@ -1295,8 +1326,8 @@ zindex:'1'
   <div className="article-header" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:'', borderRadius:'12px'}}>
     
             <h1 className="headline panel" style={{color:'#ddd', borderRadius:''}}>{frontmatter.title}</h1>
-            <time sx={{color: "muted"}}>{frontmatter.date}</time>
-            Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
+            <time sx={{color: ""}}>{frontmatter.date}</time>
+            Posted: <TimeAgo date={frontmatter.date} style={{color:'inherit'}} />
            
            {/* <Link to={`/category/${frontmatter.category}`}>Category:{frontmatter.category}</Link>
 
@@ -1319,7 +1350,7 @@ zindex:'1'
               <header style={{ height:'', display:'grid', placeContent:'center'}}>
                 <div className="article-header panel" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:'', borderRadius:'', marginTop:'0'}}>
             <h1 className="headline" style={{color:'#ddd', borderRadius:'12px'}}>{frontmatter.title}</h1>
-            <time sx={{color: "muted"}}>{frontmatter.date}</time>
+            <time sx={{color: ""}}>{frontmatter.date}</time>
            Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
            
 
@@ -1376,7 +1407,7 @@ zindex:'1'
 {showDates ? (
   <div>
     Posted:{" "}
-    <time title={frontmatter.date} sx={{ color: "muted" }}>
+    <time title={frontmatter.date} sx={{ color: "" }}>
       <TimeAgo date={frontmatter.date} style={{ color: "" }} />
     </time>
   </div>
@@ -1485,7 +1516,7 @@ textShadow:'2px 2px 0 #222', filter:'drop-shadow(0px 0px 5px rgba(155,155,155,1)
 {Comments ? (
 
 <div id="comments" style={{height:'', paddingBottom:'0',   display:'grid', placeContent:'center', maxWidth:'100vw', padding:'0', margin:'10vh auto'}}>
-<CommentBox />
+{/* <CommentBox /> */}
 
 
 
@@ -1565,7 +1596,7 @@ Click to play original video
 
 
 
-
+</div>
        
 
 
@@ -1609,7 +1640,7 @@ Click to play original video
    </CustomBox>
 
   
-   <Footer />
+   {/* <Footer /> */}
   
     </Layout>
 
@@ -1628,7 +1659,7 @@ export default Post
 
 
 export const pageQuery = graphql`
-  query BlogPostQueryBlogPostQuery($id: String!) {
+  query BlogPostQuery($id: String!) {
     site {
       siteMetadata {
         title
@@ -1676,7 +1707,6 @@ export const pageQuery = graphql`
         contentinvideo
         comments
         shareable
-        isnftforsale
         bumpertext
         viewerwarning
         marate
@@ -1697,7 +1727,7 @@ export const pageQuery = graphql`
             gatsbyImageData(layout: FULL_WIDTH)
           }
         }
-        svgImage{
+        svgImage {
           publicURL
         }
         underlayImage {
@@ -1708,4 +1738,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

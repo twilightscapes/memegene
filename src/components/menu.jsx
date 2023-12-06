@@ -9,6 +9,7 @@ const newMenu = Menu.menuItems.map((menu) => (
     to={menu.url}
     title={menu.menutitle}
     className="navbar-item"
+    // state={{modal: true}}
   >
     {menu.menutitle}
   </Link>

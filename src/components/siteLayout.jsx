@@ -3,7 +3,7 @@ import Seo from "./seo"
 import { Link } from 'gatsby-plugin-modal-routing-4'
 // import { ModalRoutingContext } from '@decantyme/gatsby-plugin-modal-routing'
 // import { AiOutlineClose } from "react-icons/ai"
-import { window } from "browser-monads"
+// import { window } from "browser-monads"
 import "../assets/scss/reset.scss"
 import "../assets/scss/global.scss"
 // import "../assets/scss/styles.css"
@@ -26,18 +26,18 @@ import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-4'
 import { BiGridHorizontal } from "react-icons/bi"
 import { MdOutlineRectangle } from "react-icons/md"
 import Menu from "../components/menu"
-import MenuSocial from "../components/menu-social"
+// import MenuSocial from "../components/menu-social"
 import userStyles from "../../static/data/userStyles.json"
-import SignUp from "../components/newssign"
-import useNetlifyIdentity from '../components/useNetlifyIdentity';
+// import SignUp from "../components/newssign"
+// import useNetlifyIdentity from '../components/useNetlifyIdentity';
 import BlueCheck from './bluecheck';
 
 
 
 const Layout = ({ children }) => {
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  useNetlifyIdentity(setLoggedIn);
+  const [loggedIn] = useState(false);
+  // useNetlifyIdentity(setLoggedIn);
 
 
 const { companyname } = useSiteMetadata()
@@ -59,7 +59,7 @@ const { showSearch } = useSiteMetadata()
 // const { showSkills } = useSiteMetadata()
 // const { showCover } = useSiteMetadata()
 // const { showfooter } = useSiteMetadata()
-const { showPopup } = useSiteMetadata()
+// const { showPopup } = useSiteMetadata()
 // const { menu1 } = useSiteMetadata()
 // const { menu2 } = useSiteMetadata()
 // const { menu3 } = useSiteMetadata()
@@ -80,7 +80,7 @@ const applyArchiveView = useCallback(() => {
       el.classList.add("grid-container");
       // document.body.classList.add("scrollable");
       // document.querySelector('#showPosts').style.height = 'auto';
-      // window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
     } 
     
     // if ( document.querySelector('body').classList.contains("homepage")) {
@@ -174,9 +174,9 @@ const toggleArchiveView = () => {
 
 
 
-  const QUERY = '(prefers-reduced-motion: no-preference)';
-  const mediaQueryList = window.matchMedia(QUERY);
-  const prefersReducedMotion = !mediaQueryList.matches;
+  // const QUERY = '(prefers-reduced-motion: no-preference)';
+  // const mediaQueryList = window.matchMedia(QUERY);
+  // const prefersReducedMotion = !mediaQueryList.matches;
 
   
 
@@ -206,7 +206,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
     #menu,.font,.full-width-image:after,.h1,.h2,.h3,.h4,.header .menu-icon:before,.horizontal-scroll:before,.intro:after,.intro:before,.scrolldown,h1,h2,h3,h4,input.special{font-family:${font1}, sans-serif}
     ${userStyles.userStyles}
   `}</style>
-    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    {/* <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> */}
 </Helmet>
 
 
@@ -275,55 +275,48 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 
 
 
-<div id="gobacker" style={{position:'fixed', top:'60px', right:'3vw', zIndex:'5'}}><GoBack /></div>
+
 
 
 
 {showNav ? (
 
+
 <header>
+<div id="gobacker" style={{position:'fixed', top:'60px', right:'3vw', zIndex:'5'}}><GoBack /></div>
+<div id="menu" className="menu print panel1 header" style={{position:'fixed', width:'100vw', top:'0', zIndex:'10', maxHeight:'', overFlow:'', boxShadow:'0 0 2px rgba(0,0,0,.7)', padding:'0 3%', alignItems:'start', borderRadius:'0', display:'flex', justifyContent:'space-around', gap:'10px', color:'#fff',  borderBottom:'1px solid #222',}}>
 
-<div id="menu" className="menu print panel1 header" style={{position:'fixed', width:'100vw', top:'0', zIndex:'10', maxHeight:'', overFlow:'', boxShadow:'0 0 2px rgba(0,0,0,.7)', padding:'0 2%', alignItems:'start', borderRadius:'0', display:'flex', justifyContent:'space-around', gap:'10px', color:'#fff',  borderBottom:'1px solid #222',}}>
 
-{/* {loggedIn ? (
-<div style={{position:'absolute', left:'10px', top:'22px', cursor:'pointer'}}><BlueCheck /></div>
-) : (
-  ""
-  )} */}
 
-<div style={{position:'absolute', left:'10px', top:'22px', cursor:'pointer'}}><BlueCheck /></div>
 
-{prefersReducedMotion ? (
-    <Link to="/" className="cornerlogo" name="homereturn" style={{position:'', display:'block', maxWidth:'', height:'auto', border:'0px solid transparent'}}  aria-label="Link to Top" title="Back to Top">
-            <button className="cornerlogo" style={{position:'relative', top:'', left:'4%', border:'0px solid white', borderBottom:'0px solid transparent'}} aria-label="Return to Home">
-            {iconimage ? (
-      <img className="" src={iconimage} alt={companyname} style={{maxHeight:'', border:'none'}} width="117" height="60" />
-                ) : (
-                  <div style={{fontWeight:'bold',}}>{companyname}</div>
-                )}
-            </button>
-            </Link>
-          ) : (
+
+
           
-                        <Link to="/" className="cornerlogo" name="homereturn" style={{position:'', display:'flex', alignItems:'center', justifyContent:'center', maxWidth:'', height:'60px', border:'0px solid transparent'}}  aria-label="Link to Top" title="Back to Top">
-            {iconimage ? (
+<Link to="/" className="cornerlogo" name="homereturn" style={{position:'', display:'flex', alignItems:'center', justifyContent:'center', maxWidth:'', height:'60px', border:'0px solid transparent'}}  aria-label="Link to Top" title="Back to Top">
+  
+{iconimage ? (
 <>
 {loggedIn ? (
-  <SiteLogo className="cornerlogo" style={{position:'relative', top:'', left:'30px', border:'0px solid white', padding:'0', maxHeight:'60px'}} alt={companyname} width="117" height="60" />
+  <SiteLogo className="cornerlogo" style={{position:'relative', top:'', left:'30px', border:'0px solid white', padding:'0', maxHeight:'60px'}} alt={companyname} width="111" height="60" />
 ) : (
-  <img className="cornerlogo" style={{position:'relative', top:'', left:'4%', border:'0px solid white', padding:'0', maxHeight:'60px'}} src={iconimage} alt={companyname} width="117" height="60" />
+  <img className="cornerlogo" style={{position:'relative', top:'', left:'4%', border:'0px solid white', padding:'0', maxHeight:'60px'}} src={iconimage} alt={companyname} width="111" height="60" />
               
 )}
 </>    
-                ) : (
-                  <div style={{fontWeight:'bold', display:'grid', justifyContent:'center', alignItems:'center', height:'60px', fontSize:'150%' }}>{companyname}</div>
-                )}
-            </Link>
+) : (
+  <div style={{fontWeight:'bold', display:'grid', justifyContent:'center', alignItems:'center', height:'60px', fontSize:'150%' }}>{companyname}1</div>
+)}
+</Link>
                         
-          )}
 
 
-          
+<div id="bluecheck" style={{position:'absolute', left:'1%', top:'22px', cursor:'pointer'}}><BlueCheck /></div>
+
+{/* {loggedIn ? (
+  <div id="bluecheck" style={{position:'absolute', left:'1%', top:'22px', cursor:'pointer'}}><BlueCheck /></div>
+) : (
+  ""
+  )} */}
 
 
 
@@ -385,14 +378,14 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
       
     )} */}
 
-{loggedIn ? (
+{/* {loggedIn ? (
       <MenuSocial />
                 ) : (
                   <Menu />
                   
-                )}
+                )} */}
 
-
+<Menu />
 
 
 
@@ -403,7 +396,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 
 {showSearch ? (
 <div className="searchIcon">
-   <Link aria-label="Search UrbanFetish" to="/search/" style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', marginTop:'0px', textAlign:'center'}}>
+   <Link to="/search/" style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', marginTop:'0px', textAlign:'center'}}>
     <SearchIcon style={{height:'30px'}} />
     <span className="themetext">search</span>
    </Link>
@@ -471,7 +464,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 {showNav2 ? (
 
 <header>
-
+<div id="gobacker" style={{position:'fixed', top:'60px', right:'3vw', zIndex:'5'}}><GoBack /></div>
 <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu" />
 <>{ /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }</>
   <label htmlFor="openSidebarMenu" className="backdrop1" ></label>
@@ -479,7 +472,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 <label id="menuicon" htmlFor="openSidebarMenu" className="sidebarIconToggle bug">
 <div style={{textAlign:'center', opacity:'1', textShadow:'2px 2px 10px 2px #000', maxWidth:'500px', color:'#fff', fontWeight:'bold', border:'0px solid blue'}}>
 {iconimage ? (
-      <img className="" src={iconimage} alt={companyname} width="120" height="60" style={{maxHeight:'60px', maxWidth:'120px', border:'none'}} />
+      <img className="" src={iconimage} alt={companyname} width="111" height="60" style={{maxHeight:'60px', maxWidth:'120px', border:'none'}} />
                 ) : (
                   <div style={{fontWeight:'bold', color:'yellow'}}>companyname</div>
                 )}
@@ -495,7 +488,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
     <li className="grad logo" style={{position:'relative', maxHeight:'100px', width:'auto', display:'flex', justifyContent:'center'}}>
             <AnchorLink className="sidelogo" to="/" name="homereturn" style={{position:'', display:'block', maxWidth:'150px', height:'60px', border:'0px solid'}}  aria-label="Link to Top" title="Back to Top">
             {iconimage ? (
-      <img src={iconimage} alt={companyname} width="120" height="60" style={{maxHeight:'60px', border:'none'}} />
+      <img src={iconimage} alt={companyname} width="111" height="60" style={{maxHeight:'60px', border:'none'}} />
                 ) : (
                   <div style={{fontWeight:'bold'}}>companyname</div>
                 )}
@@ -545,9 +538,9 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 {loggedIn ? (
       <Menu />
     ) : (
-       <Menu />
-                  
+       <Menu />          
 )}
+
 
 <li>
 <ul className="missioncontrol sitecontrols" style={{display:'flex', justifyContent:'space-around', fontSize:'clamp(.8rem, 2.3vw, 2.5rem)', gap:'', textAlign:'center', maxHeight:'', alignItems:'center', paddingTop:'5px'}}>
@@ -557,7 +550,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 
 {showSearch ? (
 <li className="searchIcon">
-   <Link aria-label="Search UrbanFetish" to="/search/" style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', marginTop:'0px', textAlign:'center'}}>
+   <Link to="/search/" style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', marginTop:'0px', textAlign:'center'}}>
     <SearchIcon style={{height:'30px'}} />
     <span className="themetext">search</span>
    </Link>
@@ -627,7 +620,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 
 
 
-{showPopup ? (
+{/* {showPopup ? (
 <div className="signup popper"
   style={{
   position:'fixed',
@@ -647,7 +640,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 
       ) : (
         ""
-      )}
+      )} */}
 
 
 
@@ -661,10 +654,33 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
  
 
 {image ? (
-<img className="backimage" src={image} alt="Default Background" style={{height:'100vh', width:'100vw', position:'fixed', zIndex:'-2', top:'0', objectFit:'cover',}} width="10" height="10" />
+  <object
+      className="backimage"
+      id=""
+      data={image}
+      type="image/svg+xml"
+      style={{
+        position:'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        overflow: '',
+        border: '0px solid red',
+        zIndex: '-2',
+        aspectRatio: '',
+        height:'100vh', width:'100vw',
+        background: 'transparent',
+        objectFit: 'cover'
+      }}
+      alt="Default Background"
+      title="Default Background"
+    ></object>
 ) : (
   ""
 )}
+
+
 
       
 

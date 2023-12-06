@@ -6,11 +6,21 @@ import Layout from "../components/siteLayout"
 import { ImPlay } from "react-icons/im"
 import { FaImage } from "react-icons/fa"
 import { AiOutlinePicLeft, AiFillDownSquare } from "react-icons/ai"
-import { Helmet } from "react-helmet"
+
 import TimeAgo from 'react-timeago'
 import useSiteMetadata from "../hooks/SiteMetadata"
+
+
+export const Head = () => (
+  <>
+  <body className="category utilitypage" />
+  </>
+)
+
+
+
 const TagIndex = ({ data }) => {
-  const { showModals } = useSiteMetadata();
+  const { showNav } = useSiteMetadata();
   const { showDates } = useSiteMetadata()
   const { postcount } = useSiteMetadata()
   const [selectedTag, setSelectedTag] = useState(''); // State to keep track of selected tag
@@ -36,10 +46,12 @@ const TagIndex = ({ data }) => {
 
   return (
     <Layout>
-        <Helmet>
-        <body className="tagpage " />
-      </Helmet>
-      <div className="spacer" style={{ height: '70px', border: '0px solid yellow', }}></div>
+
+      {showNav ? (
+        <div className='spacer' style={{ height: '70px', border: '0px solid yellow' }}></div>
+      ) : (
+        <div className="spacer2" style={{ height: "70px", border: "0px solid yellow" }}></div>
+      )}
 
 
         
@@ -72,22 +84,22 @@ const TagIndex = ({ data }) => {
                 return (
                   <div key={node.fields.slug} className="post-card1" style={{  alignItems: "center" }}>
       
-                    <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.fields.slug} to={node.fields.slug}>
+                    <Link className="postlink" to={node.fields.slug}>
 
 {node.frontmatter.featuredImage ? (
-          <GatsbyImage
-          image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
-          alt={node.frontmatter.title + " - Featured image"}
-          className="featured-image1"
-          placeholder="blurred"
-          loading="eager"
-          style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto' }}
-        />
+    <GatsbyImage
+    image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
+    alt={node.frontmatter.title + " - Featured image"}
+    className="featured-image1"
+    placeholder="blurred"
+    loading="eager"
+    style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto' }}
+  />
+
 ) : (
 
   <StaticImage
             className="featured-image1"
-            // src="../../../static/assets/default-og-image.webp"
             src="../../static/assets/default-og-image.webp"
             alt="Default Image"
             style={{ position: 'relative', zIndex: '' }}
@@ -98,10 +110,9 @@ const TagIndex = ({ data }) => {
 
 <div className="post-content" style={{display:'flex', flexDirection:'column', justifyContent:'center', width:'100%', height:'', position:'relative', background:'', padding:'0', margin:'0 auto 0 auto', textAlign:'center', overFlow:'hidden'}}>
 
-{node.frontmatter.youtube.youtuber ? (
+  {node.frontmatter.youtube.youtuber ? (
 
-
-  <div className="spotlight" style={{marginLeft:'10%', marginTop:'-28%', margin:'-24% 10% 0 10%'}}>
+<div className="spotlight" style={{marginLeft:'10%', marginTop:'-28%', margin:'-24% 10% 0 10%'}}>
 
 <div className="posticons" style={{flexDirection:'column', margin:'0 auto'}}>
 
@@ -120,8 +131,8 @@ Play Multimedia
 ""
 )}
 
-<div className="panel" style={{display:'flex', justifyContent:'space-between', alignItems:'center', margin:'10px auto', width:'auto', maxWidth:'80vw', gap:'.4vw', height:'', textAlign:'center', padding:'1vh 2vw', fontSize:'clamp(1rem, 1vw, 1rem)',  background:'rgba(0, 0, 0, 0.7)', borderRadius:'', border:'0px solid red', color:'#aaa' }}>
-      <h2 className="title" style={{ }}>
+<div className="panel" style={{display:'flex', justifyContent:'space-between', alignItems:'center', margin:'10px auto', maxWidth:'80vw', gap:'.4vw', height:'', textAlign:'center', padding:'1vh 2vw', fontSize:'clamp(1rem, 1vw, 1rem)',  background:'rgba(0, 0, 0, 0.7)', borderRadius:'', color:'#aaa' }}>
+<h2 className="title1" style={{ }}>
         {node.frontmatter.title}
       </h2>
   </div>
@@ -189,7 +200,11 @@ export const query = graphql`
             }
             featuredImage {
               childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+                gatsbyImageData(
+                  quality: 80
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }

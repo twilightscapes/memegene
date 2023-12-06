@@ -13,9 +13,14 @@ const netlifyCmsPaths = {
 
 const settings = require("./static/data/site.json")
 
+
+
 module.exports = {
   flags: {},
-  siteMetadata: settings.meta,
+  siteMetadata: {
+    ...settings.meta, // Assuming settings.meta contains other metadata fields
+    homecount: 9, // Add homecount to the siteMetadata
+  },
   plugins: [
     // {
     //   resolve: "gatsby-source-shopify",
@@ -27,6 +32,8 @@ module.exports = {
     //     salesChannel:"Secure3",
     //   },
     // },
+
+    
 
 {
     resolve: `gatsby-transformer-remark`,
@@ -175,14 +182,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `team`,
-        path: `${__dirname}/src/content/team/`,
+        path: `${__dirname}/static/content/team/`,
       },
     },
 
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/content/`,
+        path: `${__dirname}/static/content/`,
         name: `content`,
       },
     },
@@ -280,8 +287,8 @@ module.exports = {
                   query: `
                   {
                     allMarkdownRemark(
-                      sort: { fields: [frontmatter___date], order: DESC }
-                      filter: { frontmatter: { excludeFromRSS: { ne: true } } }
+                      sort: {frontmatter: {date: DESC}}
+                      filter: {frontmatter: {excludeFromRSS: {ne: true}}}
                     ) {
                       nodes {
                         excerpt
@@ -345,13 +352,26 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
         enableIdentityWidget: true,
         publicPath: `admin`,
-        htmlTitle: `Pirate Social CMS`,
+        htmlTitle: `CMS`,
         htmlFavicon: `static/assets/logo.svg`,
         includeRobots: false,
-        logo_url: 'https://memegenes.com/assets/logo.svg'
+        logo_url: 'https://piratesocial.org/assets/logo.svg'
       },
     },
 
+    // {
+    //   resolve: "gatsby-plugin-netlify",
+    //   options: {
+    //   mergeSecurityHeaders: false,
+    //   headers: {
+    //       "/*": [
+    //         "X-XSS-Protection: 1; mode=block",
+    //         "X-Content-Type-Options: nosniff",
+    //         "Referrer-Policy: same-origin",
+    //       ],
+    //     },
+    //   },
+    // },
     
 
     // {
@@ -363,17 +383,17 @@ module.exports = {
     // },
 
 
-    { 
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true, // Print removed selectors and processed file names
-        develop: true, // Enable while using `gatsby develop`
-        // tailwind: true, // Enable tailwindcss support
-        // whitelist: ['headroom', 'headroom--unfixed'], // Don't remove this selector
-         ignore: ['/user.scss', '/global.scss', '/styles.css'], // Ignore files/folders
-         purgeOnly : ['/animate.css'] // Purge only these files/folders
-      }
-    },
+    // { 
+    //   resolve: `gatsby-plugin-purgecss`,
+    //   options: {
+    //     printRejected: true, // Print removed selectors and processed file names
+    //     develop: true, // Enable while using `gatsby develop`
+    //     // tailwind: true, // Enable tailwindcss support
+    //     // whitelist: ['headroom', 'headroom--unfixed'], // Don't remove this selector
+    //      ignore: ['/user.scss', '/global.scss', '/styles.css'], // Ignore files/folders
+    //      purgeOnly : ['/animate.css'] // Purge only these files/folders
+    //   }
+    // },
 
  
     // {
@@ -417,7 +437,7 @@ module.exports = {
       options: {
         name: settings.meta.companyname,
         short_name: settings.meta.companyname,
-        start_url: `/pirate?user_mode=app`,
+        start_url: `/?user_mode=app`,
         description: settings.meta.companyname,
         background_color: `#111`,
         lang: `en`,
@@ -427,18 +447,18 @@ module.exports = {
  icon_options: {
   purpose: `any maskable`,
 },
-      icons: [
-        {
-          src: `/static/siteimages/manifest-icon-192.png`,
-          sizes: `192x192`,
-          type: `image/png`,
-        },
-        {
-          src: `/static/siteimages/manifest-icon-512.png`,
-          sizes: `512x512`,
-          type: `image/png`,
-        },
-      ], // Add or remove icon sizes as desired
+      // icons: [
+      //   {
+      //     src: `/static/siteimages/manifest-icon-192.maskable.png`,
+      //     sizes: `192x192`,
+      //     type: `image/png`,
+      //   },
+      //   {
+      //     src: `/static/siteimages/manifest-icon-512.maskable.png`,
+      //     sizes: `512x512`,
+      //     type: `image/png`,
+      //   },
+      // ], // Add or remove icon sizes as desired
       },
     },
     "gatsby-plugin-offline",
