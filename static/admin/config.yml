@@ -10,8 +10,8 @@ backend:
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
 # Uncomment local_backend when you need to develop in your local
-#local_backend: true # run npx netlify-cms-proxy-server for local testing
-logo_url: https://piratesocial.org/assets/pirate-logo.svg
+local_backend: true # run npx netlify-cms-proxy-server for local testing
+logo_url: ../assets/pirate-logo-bw.svg
 media_folder: "static/assets"
 public_folder: "/assets"
 # publish_mode: editorial_workflow
@@ -21,26 +21,6 @@ show_preview_links: false
 
 collections:
   
-  - name: "team"
-    editor:
-      preview: false
-    label: "Pirate Posts"
-    label_singular: "Pirate Post"
-    description: >
-      Pirate Posts - your content on Pirate
-    folder: "static/content/team"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Team Member Name", name: "name", widget: "string"}
-      - {label: "Job Title", name: "jobTitle", widget: "string"}
-      - {label: "Credentials", name: "credentials", widget: "string"}
-      - {label: "Page Order", name: "order", widget: "number"}
-      - {label: "Team Image", name: "profilePicture", widget: "image", required: false,}
-      - {label: "Body", name: "body", widget: "markdown"}
-
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
     editor:
       preview: false
@@ -179,7 +159,25 @@ collections:
         
 
         
-
+  - name: "team"
+    editor:
+      preview: false
+    label: "Pirate Posts"
+    label_singular: "Pirate Post"
+    description: >
+      Pirate Posts - your content on Pirate
+    folder: "static/content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Team Member Name", name: "name", widget: "string"}
+      - {label: "Job Title", name: "jobTitle", widget: "string"}
+      - {label: "Credentials", name: "credentials", widget: "string"}
+      - {label: "Page Order", name: "order", widget: "number"}
+      - {label: "Team Image", name: "profilePicture", widget: "image", required: false,}
+      - {label: "Body", name: "body", widget: "markdown"}
 
 
 
@@ -253,7 +251,11 @@ collections:
                 label: Company Name or Site Name
                 required: true
 
-
+              # - widget: string
+              #   name: postcount 
+              #   label: Number of posts to show on page
+              #   required: false
+              #   default: "12"
 
               - widget: boolean
                 name: showNav 
