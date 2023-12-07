@@ -147,6 +147,6 @@ Social Media Intern
 
 Experience in search engine marketing, Experience with bid monitoring and adjustment of search media campaigns across multiple sites.
 
-\- Stud
+\- A True Stud™
 
 </div>
