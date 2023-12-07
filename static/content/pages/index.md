@@ -5,8 +5,6 @@ addressText: The Fleet Launches Soon!
 audiotitle: Shoop
 marating3: x
 marating4: x
-tagline: Do these memes amuse you?
-featuredImage: /assets/father-figure-promo.webp
 youtube:
   youtubersuggestion3: ""
   youtuber2: ""
@@ -30,6 +28,8 @@ profText: >-
   <p>PIRATE leverages the power of free services to host your own web app that you can control from any device, all for FREE! </p>
 
   <p>Easily edit your homepage, update your profile, and publish engaging content on your OWN website/app. You're the Captain of your content!</p>
+tagline: Do these memes amuse you?
+featuredImage: /assets/father-figure-promo.webp
 secondaryImage: /assets/default-user.webp
 scrollable: false
 portfolio:
@@ -39,6 +39,7 @@ viewerwarning: x
 nftdrop: x
 slug: /
 audiostart: "0"
+excludeFromRSS: true
 skillsText: >-
   <dl> <dt> <h2>Overall Skills</h2><div>100%</div> </dt> <dd class="percentage
   percentage-90"><span class="text">Organization</span> <span
@@ -61,10 +62,10 @@ addressText2: ""
 marate: x
 pagePW: ""
 skillsTitle: ""
+svgImage: null
 template: index-page
 title: Do these memes make my butt look fatty?
 image: /assets/trump-friends-promo.webp
-svgImage: null
 postLimit: "4"
 maratingtx1: x
 liarliar: false
@@ -79,11 +80,8 @@ contentinvideo: false
 maratingtx3: x
 maratingtx4: x
 profTitle: All the memes you can eat - $9.99!
-excludeFromRSS: true
 ---
-
 <div style="">
-
 
 ## Highlights
 
@@ -110,7 +108,6 @@ Experience with common Adobe Analytics (Site Catalyst), Tableau, Adobe Experienc
 Looking for a thrilling entrepreneurial experience and willing to learn in a fast-moving environment
 
 Closing collaboration with other marketing channel managers for smooth 360 experiences
-      
 
 ## Education
 
@@ -120,12 +117,8 @@ Closing collaboration with other marketing channel managers for smooth 360 exper
     <li><strong>High School</strong>High School General Courses - Diploma</li>
     </ul>
 
-
-
-
 </div>
 <div>
-
 
 ## Experience
 
@@ -154,5 +147,6 @@ Social Media Intern
 
 Experience in search engine marketing, Experience with bid monitoring and adjustment of search media campaigns across multiple sites.
 
+\- Stud
 
 </div>
