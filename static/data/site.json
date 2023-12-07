@@ -7,7 +7,7 @@
     "showNav": true,
     "companyname": "Meme Genes",
     "siteUrl": "https://memegenes.com",
-    "showDates": false,
+    "showDates": true,
     "twitterUsername": "toddlambert",
     "titleDefault": "MG Reports",
     "showNav2": false,
