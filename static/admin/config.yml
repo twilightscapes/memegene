@@ -10,7 +10,7 @@ backend:
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
 # Uncomment local_backend when you need to develop in your local
-local_backend: true # run npx netlify-cms-proxy-server for local testing
+#local_backend: true # run npx netlify-cms-proxy-server for local testing
 logo_url: ../assets/pirate-logo-bw.svg
 media_folder: "static/assets"
 public_folder: "/assets"
@@ -20,7 +20,7 @@ public_folder: "/assets"
 show_preview_links: false
 
 collections:
-  
+
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
     editor:
       preview: false
@@ -79,7 +79,7 @@ collections:
       - { label: "Make Post Shareable?", name: "shareable", widget: "boolean", default: false, required: false }
       - { label: "Make Feature Image Zoom", name: "showZoom", widget: "boolean", default: false, required: false }
       - { label: "Turn on Page Level Nav", name: "showPageNav", widget: "boolean", default: true, required: false }
-      - { label: "Appear on Homepage", name: "spotlight", widget: "boolean", default: false, required: false }
+      - { label: "Spotlight on Homepage", name: "spotlight", widget: "boolean", default: false, required: false }
 
 
 
@@ -181,6 +181,9 @@ collections:
 
 
 
+
+
+
   - label: "HomePage"
     name: "pages"
     editor:
@@ -200,6 +203,8 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Tagline", name: "tagline", widget: "string" }
           - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+          
+
           - { label: "Secondary Image", name: "secondaryImage", widget: "image", hint: "this image is used for the profile photo in the info section", required: false }
           - { label: "Underlay Image", name: "underlayImage", widget: "image", required: false }
 
@@ -251,11 +256,28 @@ collections:
                 label: Company Name or Site Name
                 required: true
 
-              # - widget: string
-              #   name: postcount 
-              #   label: Number of posts to show on page
-              #   required: false
-              #   default: "12"
+
+              - widget: "number"
+                label: "Number of posts on HOME PAGE"
+                name: "homecount"
+                default: 5
+                value_type: "int"
+                min: 1
+                max: 51
+                step: 2
+                hint: "Max #50"
+
+
+              - widget: "number"
+                label: "Number of posts on other pages"
+                name: "postcount"
+                default: 18
+                value_type: "int"
+                min: 1
+                max: 51
+                step: 2
+                hint: "Max #50"
+
 
               - widget: boolean
                 name: showNav 
