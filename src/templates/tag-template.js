@@ -3,22 +3,13 @@ import { graphql, navigate } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '../components/siteLayout';
 import useSiteMetadata from '../hooks/SiteMetadata';
+import { Helmet } from 'react-helmet';
 import { ImPlay } from "react-icons/im"
 import { FaImage } from "react-icons/fa"
 import { AiOutlinePicLeft } from "react-icons/ai"
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from "gatsby"
 import TimeAgo from 'react-timeago'
-
-
-
-export const Head = () => (
-  <>
-  <body className="tagpage utilitypage" />
-  </>
-)
-
-
 const Tag = ({ data, pageContext }) => {
   const { tag } = pageContext;
   const posts = data.allMarkdownRemark.edges;
@@ -47,7 +38,9 @@ const Tag = ({ data, pageContext }) => {
 
   return (
     <Layout>
-
+      <Helmet>
+        <body id='body' className='tagpage' style={{}} />
+      </Helmet>
 
       {showNav ? (
         <div className='spacer' style={{ height: '70px', border: '0px solid yellow' }}></div>

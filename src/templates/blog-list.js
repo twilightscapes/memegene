@@ -4,17 +4,11 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '../components/siteLayout';
 import useSiteMetadata from '../hooks/SiteMetadata';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Helmet } from 'react-helmet';
 import TimeAgo from 'react-timeago';
 import { ImPlay } from "react-icons/im"
 import { FaImage } from "react-icons/fa"
 import { AiOutlinePicLeft } from "react-icons/ai"
-
-export const Head = () => (
-  <>
-  <body className="category utilitypage" />
-  </>
-)
-
 
 const BlogList = ({ data, pageContext }) => {
   const { showNav } = useSiteMetadata();
@@ -31,7 +25,9 @@ const BlogList = ({ data, pageContext }) => {
 
   return (
     <Layout>
-
+      <Helmet>
+        <body className="archivepage utilitypage" />
+      </Helmet>
 
       {showNav ? (
         <div className='spacer' style={{ height: '70px', border: '0px solid yellow' }}></div>

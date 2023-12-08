@@ -6,26 +6,13 @@ import { ImPlay } from "react-icons/im"
 import { FaImage } from "react-icons/fa"
 import { AiOutlinePicLeft } from "react-icons/ai"
 import Layout from "../../components/siteLayout"
-
+import { Helmet } from "react-helmet"
 // import TwilightLogo from "../../../static/assets/logo.svg"
 import { StaticImage } from "gatsby-plugin-image"
 
 import useSiteMetadata from "../../hooks/SiteMetadata"
 
 import TimeAgo from 'react-timeago'
-
-
-
-
-
-export const Head = () => (
-  <>
-  <body id="body" className="search"  />
-  </>
-)
-
-
-
 
 function clearfield() {  
   document.querySelector('#clearme').value = ''
@@ -74,7 +61,9 @@ const showMoreItems = () => {
   return (
 <Layout>
 
-
+<Helmet>
+  <body id="body" className="search"  />
+</Helmet>
 
 
 

@@ -6,19 +6,9 @@ import Layout from "../components/siteLayout"
 import { ImPlay } from "react-icons/im"
 import { FaImage } from "react-icons/fa"
 import { AiOutlinePicLeft, AiFillDownSquare } from "react-icons/ai"
-
+import { Helmet } from "react-helmet"
 import TimeAgo from 'react-timeago'
 import useSiteMetadata from "../hooks/SiteMetadata"
-
-
-export const Head = () => (
-  <>
-  <body className="category utilitypage" />
-  </>
-)
-
-
-
 const TagIndex = ({ data }) => {
   const { showNav } = useSiteMetadata();
   const { showDates } = useSiteMetadata()
@@ -46,7 +36,9 @@ const TagIndex = ({ data }) => {
 
   return (
     <Layout>
-
+        <Helmet>
+        <body className="tagpage utilitypage" />
+      </Helmet>
       {showNav ? (
         <div className='spacer' style={{ height: '70px', border: '0px solid yellow' }}></div>
       ) : (

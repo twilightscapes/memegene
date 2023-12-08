@@ -9,7 +9,7 @@ const netlifyCmsPaths = {
   options: {
     cmsConfig: `/static/admin/config.yml`,
   },
-}
+};
 
 const settings = require("./static/data/site.json")
 
@@ -32,7 +32,7 @@ module.exports = {
     //   },
     // },
 
-    
+    netlifyCmsPaths,
 
 {
     resolve: `gatsby-transformer-remark`,
@@ -177,13 +177,13 @@ module.exports = {
       },
     },
 
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `team`,
-    //     path: `${__dirname}/static/content/team/`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `team`,
+        path: `${__dirname}/static/content/team/`,
+      },
+    },
 
     {
       resolve: `gatsby-source-filesystem`,

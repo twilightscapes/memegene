@@ -30,19 +30,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  // const team = result.data.allMarkdownRemark.edges.filter(
-  //   (edge) => edge.node.frontmatter.template === "team"
-  // );
+  const team = result.data.allMarkdownRemark.edges.filter(
+    (edge) => edge.node.frontmatter.template === "team"
+  );
 
-  // team.forEach((team) => {
-  //   createPage({
-  //     path: `/team/${team.node.frontmatter.slug}`,
-  //     component: path.resolve(`src/templates/team.js`),
-  //     context: {
-  //       id: team.node.id,
-  //     },
-  //   });
-  // });
+  team.forEach((team) => {
+    createPage({
+      path: `/team/${team.node.frontmatter.slug}`,
+      component: path.resolve(`src/templates/team.js`),
+      context: {
+        id: team.node.id,
+      },
+    });
+  });
 
   const posts = result.data.allMarkdownRemark.edges;
   let blogPostsCount = 0;
@@ -101,6 +101,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+
+  // // Create home page with context including homecount
+  // createPage({
+  //   path: "/",
+  //   component: path.resolve("./src/templates/index-page.js"),
+  //   context: {
+  //     homecount: 2, // Set the appropriate value for homecount
+  //   },
+  // });
 
   const categoryTemplate = path.resolve(`./src/templates/category.js`);
   categories.forEach((category) => {
