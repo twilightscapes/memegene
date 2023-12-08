@@ -1,5 +1,8 @@
 {
   "menuItems": [
-
+    {
+      "menutitle": "Like this site? Get your own here!",
+      "url": "https://piratesocial.org"
+    }
   ]
 }
