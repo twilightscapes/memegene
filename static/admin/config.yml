@@ -10,7 +10,7 @@ backend:
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
 # Uncomment local_backend when you need to develop in your local
-#local_backend: true # run npx netlify-cms-proxy-server for local testing
+local_backend: true # run npx netlify-cms-proxy-server for local testing
 logo_url: ../assets/pirate-logo-bw.svg
 media_folder: "static/assets"
 public_folder: "/assets"
@@ -27,7 +27,7 @@ collections:
     label: "Site Posts" # Used in the UI
     label_singular: "Site Post" # Used in the UI, ie: "New Post"
     description: >
-      Create stuff for you website here.
+      Create stuff for your website here.
     folder: "static/content/posts"
     slug: "{{slug}}"
     summary: "{{title}} — {{year}}/{{month}}/{{day}}"
@@ -322,12 +322,12 @@ collections:
               - widget: image
                 name: iconimage
                 label: Site Logo (should be SVG if at all possible)
-
+                required: false
               - widget: image
                 name: icon512
                 label: Site Icon 512x512
                 hint: "This is for icon usage in various locations"
-          
+                required: false
                 
               
 
