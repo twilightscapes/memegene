@@ -10,25 +10,23 @@ import TimeAgo from 'react-timeago'
 import useSiteMetadata from "../hooks/SiteMetadata"
 const HomePosts = ({ data }) => {
   const { showDates } = useSiteMetadata()
-  const { postcount } = useSiteMetadata()
+  const { homecount } = useSiteMetadata()
 
-  const [visibleItems, setVisibleItems] = useState(postcount); 
+  const [visibleItems, setVisibleItems] = useState(homecount); 
 
 
 
   const showMoreItems = () => {
-    setVisibleItems(visibleItems + postcount);
+    setVisibleItems(visibleItems + homecount);
   };
   
 
   
-  const tags = data.allMarkdownRemark.group.filter(
-    group => group.fieldValue !== null && group.fieldValue !== ""
-  ).map(group => group.fieldValue);
-
-  if (!tags || tags.length === 0) {
-    return <div>Nothing found.</div>;
-  }
+  // const tags = data.allMarkdownRemark.group
+  // ? data.allMarkdownRemark.group
+  //     .filter(group => group.fieldValue !== null && group.fieldValue !== "")
+  //     .map(group => group.fieldValue)
+  // : [];
 
   return (
 
