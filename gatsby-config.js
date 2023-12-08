@@ -18,8 +18,7 @@ const settings = require("./static/data/site.json")
 module.exports = {
   flags: {},
   siteMetadata: {
-    ...settings.meta, // Assuming settings.meta contains other metadata fields
-    homecount: 9, // Add homecount to the siteMetadata
+    ...settings.meta,
   },
   plugins: [
     // {
