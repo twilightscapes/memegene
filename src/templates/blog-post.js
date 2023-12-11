@@ -1,7 +1,5 @@
 /** @jsx jsx */
-import React from "react"
-
-import { useState, useRef, useEffect, forwardRef } from "react";
+import React, { useState, useRef, useEffect, forwardRef } from "react";
 
 // import Zoom from 'react-medium-image-zoom'
 // import 'react-medium-image-zoom/dist/styles.css'
@@ -13,7 +11,7 @@ import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css'
 
 
 // import Controls from "../components/Controls";
-// import { document } from "browser-monads"
+import { document } from "browser-monads"
 import PropTypes from "prop-types";
 import { MdPlayArrow } from "react-icons/md"
 import { MdPause } from "react-icons/md"
@@ -168,9 +166,9 @@ const Post = ({ data, pageContext }) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html, excerpt } = markdownRemark
 
-  const post = data.markdownRemark
+  // const post = data.markdownRemark
   // const tags = post.frontmatter.tags
-  const categories = post.frontmatter.categories
+  // const categories = post.frontmatter.categories
 
   const FrontImage = frontmatter.featuredImage
     ? frontmatter.featuredImage.childImageSharp.gatsbyImageData
@@ -182,18 +180,18 @@ const Post = ({ data, pageContext }) => {
 
     
 
-    const categoryList = categories && categories.length > 1 && (
-      <div style={{ maxWidth: '300px', margin: '3vh auto', paddingBottom: '2vh', borderBottom: '1px solid' }}>
-        <h4>Category:</h4>
-        {categories.map((category, index) => (
+    // const categoryList = categories && categories.length > 1 && (
+    //   <div style={{ maxWidth: '300px', margin: '3vh auto', paddingBottom: '2vh', borderBottom: '1px solid' }}>
+    //     <h4>Category:</h4>
+    //     {categories.map((category, index) => (
           
-          <React.Fragment key={category}>
-            {index > 0 && ', '}
-            <Link to={`/category/${category}`}>{category}</Link>
-          </React.Fragment>
-        ))}
-      </div>
-    )
+    //       <React.Fragment key={category}>
+    //         {index > 0 && ', '}
+    //         <Link to={`/category/${category}`}>{category}</Link>
+    //       </React.Fragment>
+    //     ))}
+    //   </div>
+    // )
 
 
 
@@ -473,7 +471,7 @@ const YouTube = frontmatter.youtube.youtuber
   // const { iconimage } = useSiteMetadata()
 
 
-  const { showNav } = useSiteMetadata()
+  // const { showNav } = useSiteMetadata()
   const { showDates } = useSiteMetadata()
 
 
@@ -857,11 +855,11 @@ Click to play
 
 
 
-{showNav ? (
+{/* {showNav ? (
   <div className="spacer" style={{height:'70px', border:'0px solid yellow'}}></div>
       ) : (
         ""
-      )}
+      )} */}
 
 
   {/* { showModals ? (
@@ -1301,7 +1299,7 @@ zindex:'1'
            {/* <Link to={`/category/${frontmatter.category}`}>Category:{frontmatter.category}</Link>
 
            <p>Tags: {frontmatter.tags.join(", ")}</p> */}
-           {categoryList}
+           {/* {categoryList} */}
       {frontmatter.tags && frontmatter.tags.length > 0 && (
         <>
   
@@ -1323,7 +1321,7 @@ zindex:'1'
            Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
            
 
-           {categoryList}
+           {/* {categoryList} */}
       {frontmatter.tags && frontmatter.tags.length > 0 && (
         <>
   
@@ -1387,7 +1385,7 @@ zindex:'1'
 
 
 
-{categoryList}
+{/* {categoryList} */}
       {frontmatter.tags && frontmatter.tags.length > 0 && (
         <>
   
@@ -1420,7 +1418,7 @@ zindex:'1'
                 {/* <time sx={{color: "muted"}}>{frontmatter.date}</time> */}
                {/* Posted: <TimeAgo date={frontmatter.date} style={{color:''}} /> */}
               </div>
-              {categoryList}
+              {/* {categoryList} */}
       {frontmatter.tags && frontmatter.tags.length > 0 && (
         <>
   
@@ -1649,7 +1647,6 @@ export const pageQuery = graphql`
         slug
         title
         tags
-        category
         description
         showZoom
         showPageNav
