@@ -14,6 +14,12 @@
     "postcount": 24,
     "showPopup": false,
     "homecount": 8,
+    "magicOptions": {
+      "showMagic": true,
+      "showMagicCat": true,
+      "showMagicTag": true,
+      "showMagicSearch": true
+    },
     "titleTemplate": "%s",
     "title": "MG Reports",
     "image": "/assets/newspaper.webp",
