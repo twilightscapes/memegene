@@ -3,7 +3,7 @@
     "iconimage": "/assets/logo.svg",
     "font1": "Titan One",
     "showModals": false,
-    "showSearch": true,
+    "showSearch": false,
     "showNav": true,
     "companyname": "Meme Genes",
     "siteUrl": "https://memegenes.com",
