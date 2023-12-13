@@ -10,8 +10,8 @@
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
-    x-frame-options = "ALLOW-FROM *"
-    Content-Security-Policy = "frame-ancestors 'self' https://www.youtube.com https://youtu.be"
+    X-Frame-Options = "ALLOWALL"
+    Content-Security-Policy = "frame-ancestors *"
     Secure-Referrer-Policy = "origin-when-cross-origin"
 
 [[edge_functions]]
