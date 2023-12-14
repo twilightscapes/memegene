@@ -64,7 +64,7 @@ pagePW: ""
 skillsTitle: ""
 svgImage: null
 template: index-page
-title: Do these memes make my butt look fatty?
+title: Do these memes make my butt look fat?
 image: /assets/trump-friends-promo.webp
 postLimit: "4"
 maratingtx1: x
