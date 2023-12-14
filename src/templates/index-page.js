@@ -102,14 +102,10 @@ const HomePage = ({ data }) => {
       /> */}
 
 <Seo
-        title={frontmatter.title}
-        description={
-          frontmatter.description ? frontmatter.description : excerpt
-        }
-  //  image={ siteUrl + getSrc(frontmatter.featuredImage) }
-  // image={data.site.siteMetadata.image}
-  image={getSrc(frontmatter.featuredImage)}
-      />
+title={frontmatter.title}
+description={frontmatter.description ? frontmatter.description : excerpt}
+image={getSrc(frontmatter.featuredImage)}
+/>
 
       {/* {Image ? (
         <GatsbyImage
