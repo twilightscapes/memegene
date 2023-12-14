@@ -25,16 +25,16 @@
 //   }
 // };
 
-// export const onServiceWorkerUpdateReady = () => {
-//   const answer = window.confirm(
-//     `This website has been updated since your last visit. ` +
-//       `Reload to display the latest version?`
-//   )
+export const onServiceWorkerUpdateReady = () => {
+  const answer = window.confirm(
+    `This website has been updated since your last visit. ` +
+      `Reload to display the latest version?`
+  )
 
-//   if (answer === true) {
-//     window.location.reload()
-//   }
-// }
+  if (answer === true) {
+    window.location.reload()
+  }
+}
 
 
 // export const onServiceWorkerUpdateFound = () => {
@@ -71,49 +71,49 @@
 
 
 
-export const onServiceWorkerUpdateFound = () => {
-    // Check if Notification API is supported
-    if ('Notification' in window) {
-      Notification.requestPermission().then(result => {
-        if (result === 'granted') {
-          // If permission is granted, show notification with actions
-          showNotificationWithActions();
-        } else {
-          // If permission is not granted, fall back to the simpler version
-          onServiceWorkerUpdateReady();
-        }
-      });
-    } else {
-      // If Notification API is not supported, fall back to the simpler version
-      onServiceWorkerUpdateReady();
-    }
-  };
+// export const onServiceWorkerUpdateFound = () => {
+//     // Check if Notification API is supported
+//     if ('Notification' in window) {
+//       Notification.requestPermission().then(result => {
+//         if (result === 'granted') {
+//           // If permission is granted, show notification with actions
+//           showNotificationWithActions();
+//         } else {
+//           // If permission is not granted, fall back to the simpler version
+//           onServiceWorkerUpdateReady();
+//         }
+//       });
+//     } else {
+//       // If Notification API is not supported, fall back to the simpler version
+//       onServiceWorkerUpdateReady();
+//     }
+//   };
   
-  const showNotificationWithActions = () => {
-    navigator.serviceWorker.ready.then(registration => {
-      registration.showNotification('Update', {
-        body: 'New content is available!',
-        icon: '/static/assets/logo.svg',
-        vibrate: [200, 100, 200, 100, 200, 100, 400],
-        tag: 'request',
-        actions: [
-          { action: 'update', title: 'Update' },
-          { action: 'ignore', title: 'Ignore' }
-        ]
-      });
-    });
-  };
+//   const showNotificationWithActions = () => {
+//     navigator.serviceWorker.ready.then(registration => {
+//       registration.showNotification('Update', {
+//         body: 'New content is available!',
+//         icon: '/static/assets/logo.svg',
+//         vibrate: [200, 100, 200, 100, 200, 100, 400],
+//         tag: 'request',
+//         actions: [
+//           { action: 'update', title: 'Update' },
+//           { action: 'ignore', title: 'Ignore' }
+//         ]
+//       });
+//     });
+//   };
   
-  export const onServiceWorkerUpdateReady = () => {
-    const answer = window.confirm(
-      `This website has been updated since your last visit. ` +
-      `Reload to display the latest version?`
-    );
+//   export const onServiceWorkerUpdateReady = () => {
+//     const answer = window.confirm(
+//       `This website has been updated since your last visit. ` +
+//       `Reload to display the latest version?`
+//     );
   
-    if (answer === true) {
-      window.location.reload();
-    }
-  };
+//     if (answer === true) {
+//       window.location.reload();
+//     }
+//   };
   
   // Add a listener for notification click
   self.addEventListener('notificationclick', event => {
