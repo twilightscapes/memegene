@@ -1,0 +1,21 @@
+---
+template: blog-post
+title: When the gummies kick in
+slug: /bruce-gummy
+date: 2023-12-13 20:43
+description: When the gummies kick in
+category:
+  - celebrity
+shareable: true
+showZoom: true
+showPageNav: true
+spotlight: false
+youtube:
+  youtubemute: false
+  youtubeautostart: false
+  youtubeloop: true
+  youtubecontrols: false
+  customcontrols: false
+  clicktoplay: false
+featuredImage: /assets/img_0697.jpeg
+---
