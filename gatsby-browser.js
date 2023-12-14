@@ -25,46 +25,39 @@
 //   }
 // };
 
-// export const onServiceWorkerUpdateReady = () => {
-//   const answer = window.confirm(
-//     `This website has been updated since your last visit. ` +
-//       `Reload to display the latest version?`
-//   )
-
-//   if (answer === true) {
-//     window.location.reload()
-//   }
-// }
-
-
 export const onServiceWorkerUpdateFound = () => {
-  const showNotification = () => {
-    Notification.requestPermission(result => {
-        if (result === 'granted') {
+    const showNotification = () => {
+      if ('Notification' in window) {
+        Notification.requestPermission().then(result => {
+          if (result === 'granted') {
             navigator.serviceWorker.ready.then(registration => {
-                registration.showNotification('Update', {
-                    body: 'New content is available!',
-                    icon: '/static/assets/logo.svg',
-                    vibrate: [200, 100, 200, 100, 200, 100, 400],
-                    tag: 'request',
-                    actions: [
-                        {
-                            action: window.location.reload(),
-                            title: 'update'
-                        },
-                        {
-                            action: window.confirm(
-                              `This website has been updated since your last visit. ` +
-                                `Reload to display the latest version?`
-                            ),
-                            title: 'ignore'
-                        }
-                    ]
-                })
-            })
-        }
-    })
-  }
-
-  showNotification()
-}
+              registration.showNotification('Update', {
+                body: 'New content is available!',
+                icon: '/static/assets/logo.svg',
+                vibrate: [200, 100, 200, 100, 200, 100, 400],
+                tag: 'request',
+                actions: [
+                  { action: 'update', title: 'Update' },
+                  { action: 'ignore', title: 'Ignore' }
+                ]
+              });
+            });
+          }
+        });
+      }
+    };
+  
+    showNotification();
+  };
+  
+  // Add a listener for notification click
+  self.addEventListener('notificationclick', event => {
+    const action = event.action;
+    if (action === 'update') {
+      // Handle update action (reload or navigate to the latest version)
+      window.location.reload();
+    } else {
+      // Handle other actions or do nothing for 'ignore'
+    }
+  });
+  
