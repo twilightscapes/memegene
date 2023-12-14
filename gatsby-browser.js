@@ -36,35 +36,35 @@
 //   }
 // }
 
-// Uncomment and modify if needed
-// export const onServiceWorkerUpdateFound = () => {
-//   const showNotification = () => {
-//     Notification.requestPermission(result => {
-//         if (result === 'granted') {
-//             navigator.serviceWorker.ready.then(registration => {
-//                 registration.showNotification('Update', {
-//                     body: 'New content is available!',
-//                     icon: 'static/icons/manifest-icon-512.png',
-//                     vibrate: [200, 100, 200, 100, 200, 100, 400],
-//                     tag: 'request',
-//                     actions: [
-//                         {
-//                             action: window.location.reload(),
-//                             title: 'update'
-//                         },
-//                         {
-//                             action: window.confirm(
-//                               `This website has been updated since your last visit. ` +
-//                                 `Reload to display the latest version?`
-//                             ),
-//                             title: 'ignore'
-//                         }
-//                     ]
-//                 })
-//             })
-//         }
-//     })
-//   }
 
-//   showNotification()
-// }
+export const onServiceWorkerUpdateFound = () => {
+  const showNotification = () => {
+    Notification.requestPermission(result => {
+        if (result === 'granted') {
+            navigator.serviceWorker.ready.then(registration => {
+                registration.showNotification('Update', {
+                    body: 'New content is available!',
+                    icon: 'static/assets/logo.svg',
+                    vibrate: [200, 100, 200, 100, 200, 100, 400],
+                    tag: 'request',
+                    actions: [
+                        {
+                            action: window.location.reload(),
+                            title: 'update'
+                        },
+                        {
+                            action: window.confirm(
+                              `This website has been updated since your last visit. ` +
+                                `Reload to display the latest version?`
+                            ),
+                            title: 'ignore'
+                        }
+                    ]
+                })
+            })
+        }
+    })
+  }
+
+  showNotification()
+}
