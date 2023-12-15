@@ -13,10 +13,10 @@ import Seo from "../components/seo";
 import { getSrc } from "gatsby-plugin-image";
 
 const HomePage = ({ data }) => {
-  const { showModals, showDates, homecount, postcount, magicOptions } = useSiteMetadata();
+  const { showModals, showDates, homecount, postcount, magicOptions, showNav, showArchive  } = useSiteMetadata();
   const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
 
-  const { markdownRemark, posts } = data;
+  const { markdownRemark } = data;
   const { frontmatter, excerpt } = markdownRemark;
 
   const allPosts = data.allMarkdownRemark.edges;
@@ -67,11 +67,9 @@ const HomePage = ({ data }) => {
   const [numVisibleItems, setNumVisibleItems] = useState(homecount);
 
   const showMoreItems = () => {
-    setNumVisibleItems((prevNumVisibleItems) => {
-      const newVisibleItems = prevNumVisibleItems + postcount;
-      return newVisibleItems <= filteredPosts.length ? newVisibleItems : prevNumVisibleItems;
-    });
+    setNumVisibleItems((prevNumVisibleItems) => prevNumVisibleItems + postcount);
   };
+  
   
 
   function clearfield() {
@@ -221,7 +219,11 @@ const HomePage = ({ data }) => {
         ""
       )}
 
-      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', marginTop: '' }}>
+
+<div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', marginTop: showNav ? '' : '7vh' }}>
+
+
+
         <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
 
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
@@ -272,14 +274,25 @@ const HomePage = ({ data }) => {
           </div>
         ))}
 
-        {visibleItems < filteredPosts.length && (
-          <div className="" style={{ display: 'grid', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeContent: 'center', gap: '', height: '', textAlign: 'center' }}>
-            <button className="button load-more" onClick={showMoreItems}>
-              Load more
-            </button>
-            <Link to="/archive" style={{ background: 'rgba(0, 0, 0, 0.8)', borderRadius: '5px', color: '#fff', display: 'flex', padding: '0 1vh', margin: '0 auto' }}>View Archive &nbsp;<MdArrowForwardIos style={{ marginTop: '4px' }} /></Link>
-          </div>
-        )}
+{numVisibleItems < filteredPosts.length && (
+  <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeSelf: 'center', gap: '',  textAlign: 'center' }}>
+
+    <button className="button load-more" onClick={showMoreItems} style={{maxWidth:''}}>
+      Load more
+    </button>
+
+    {showArchive ? (
+  <Link to="/archive" style={{ background: 'rgba(0, 0, 0, 0.8)', borderRadius: '5px', color: '#fff', display: 'flex', padding: '0 1vh', margin: '0 auto' }}>View Archive &nbsp;<MdArrowForwardIos style={{ marginTop: '4px' }} /></Link>
+) : (
+""
+)}
+  </div>
+)}
+
+
+
+
+
 
       </div>
     </Layout>
