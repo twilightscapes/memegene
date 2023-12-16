@@ -21,6 +21,7 @@
       "showMagicSearch": true
     },
     "showArchive": true,
+    "showTitles": false,
     "titleTemplate": "%s",
     "title": "MG Reports",
     "image": "/assets/newspaper.webp",
