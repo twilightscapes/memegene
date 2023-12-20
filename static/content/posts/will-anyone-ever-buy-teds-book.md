@@ -16,4 +16,10 @@ youtube:
   customcontrols: false
   clicktoplay: false
 featuredImage: /assets/ted-book.webp
+tags: 
+ - tedcruz
+ - dumbass
+ - fake
+ - fraud
+ - worst
 ---

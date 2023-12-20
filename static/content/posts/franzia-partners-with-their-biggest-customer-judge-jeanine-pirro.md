@@ -10,7 +10,7 @@ shareable: true
 showZoom: true
 showPageNav: true
 tags:
-  - tedcruz
+  - celebrity
 youtube:
   youtubemute: false
   youtubeautostart: false
