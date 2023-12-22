@@ -73,39 +73,7 @@ const applyArchiveView = useCallback(() => {
 
 
 
-useEffect(() => {
-  sessionStorage.setItem("currentScrollPos", window.pageYOffset)
-  let prevScrollpos = window.pageYOffset;
 
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos && prevScrollpos - currentScrollPos > 75) {
-      // document.querySelector('.header').style.transform = 'translateY(0)';
-      if (showNav2) {
-        document.querySelector('#menuicon').style.transform = 'translateX(0)';
-      }
-      document.querySelector('.upbar').style.transform = 'translateY(140px)';
-      // document.body.classList.remove('scroll');
-      // document.body.classList.add('scroll');
-    } else if (prevScrollpos < currentScrollPos && currentScrollPos - prevScrollpos > 75) {
-      // document.querySelector('.header').style.transform = 'translateY(-100px)';
-      if (showNav2) {
-        document.querySelector('#menuicon').style.transform = 'translateX(200px)';
-      }
-      document.querySelector('.upbar').style.transform = 'translateY(-100px)';
-      // document.body.classList.add('scroll');
-    }
-    prevScrollpos = currentScrollPos;
-  };
-
-  handleScroll();
-
-  window.addEventListener("scroll", handleScroll);
-
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  }
-}, [showNav2]);
 
 
 
@@ -196,28 +164,17 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
   )}
 </ModalRoutingContext.Consumer>
 
-{/* <div className="upbar button" style={{position:'fixed', top:'', right:'5vw', zIndex:'5', justifyContent:'center', width:'auto', maxWidth:'80vw', margin:'0 auto', gap:'5vw', padding:'0 4px', borderRadius:'', textShadow:'0 1px 1px rgba(0, 0, 0, .7)', fontSize:'', verticalAlign:'center', transform: '' }}>
-
-<div className="uparrow" style={{display:'flex', flexDirection:'column', gap:'0', padding:'', alignItems:'center', textAlign:'center'}}>
-  <a href="#top" onClick={(e) => {
-  e.preventDefault();
-  document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
-}} aria-label="Link to Top" style={{cursor:'pointer', height:'', fontSize:''}}>
-  <RiArrowUpFill className="" style={{cursor:'pointer', color:'#ddd', fontSize:'1rem'}} />
-</a>
-</div>
-</div> */}
 
 
 
-<div id="gobacker" style={{position:'fixed', bottom:'0', right:'0', zIndex:'5', display:'flex', flexDirection:'column', alignItems:'center', gap:'', border:'0px solid yellow', justifyContent:'flex-end', paddingBottom:'1vh',  }}>
+<div id="gobacker" style={{position:'fixed', bottom:'0', right:'0', zIndex:'4', display:'flex', flexDirection:'column', alignItems:'center', gap:'', border:'0px solid yellow', justifyContent:'flex-end', paddingBottom:'12vh',  }}>
   
   <GoBack />
 
 <div style={{display:'flex', alignItems:'center', gap:'10px', paddingLeft:'1rem'}}>
 <div className="homebutt button" style={{display:'flex', flexDirection:'column', gap:'0', padding:'0', alignItems:'', textAlign:'center', borderRadius:'3px', textShadow:'0 1px 1px rgba(0, 0, 0, .7)', margin:'0' }}>
   <Link to="/" aria-label="Link to Top" style={{cursor:'pointer', display:'block', height:'', fontSize:''}}>
-  <BiHome className="" style={{cursor:'pointer', backgroundColor:'rgba(0,0,0,.9)', color:'#ddd', fontSize:'28px', padding:'3px',}} />
+  <BiHome className="" style={{cursor:'pointer', backgroundColor:'rgba(0,0,0,.9)', color:'#ddd', fontSize:'32px', padding:'2',}} />
   </Link>
 </div>
 
@@ -226,7 +183,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
   document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
 }} aria-label="Link to Top" style={{cursor:'pointer', display:'block', height:'', fontSize:''}}>
 <div className="uparrow1 button" style={{display:'flex', flexDirection:'column', gap:'0', padding:'0', alignItems:'center', textAlign:'center', borderRadius:'3px', textShadow:'0 1px 1px rgba(0, 0, 0, .7)', margin:'0 1rem' }}>
-  <RiArrowUpFill className="" style={{cursor:'pointer', backgroundColor:'rgba(0,0,0,.9)', color:'#ddd', padding:'3px', fontSize:'28px'}} />
+  <RiArrowUpFill className="" style={{cursor:'pointer', backgroundColor:'rgba(0,0,0,.9)', color:'#ddd', padding:'2px', fontSize:'32px'}} />
 </div>
 </a>
 </div>
@@ -239,7 +196,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 
 <div id="menu" className="menu print panel1 header" style={{position:'fixed', width:'100vw', top:'0', zIndex:'10', maxHeight:'', overFlow:'', boxShadow:'0 0 2px rgba(0,0,0,.7)', padding:'0 2%', alignItems:'start', borderRadius:'0', display:'flex', justifyContent:'space-around', gap:'10px', color:'#fff',  borderBottom:'1px solid #222',}}>
 
-<Link to="/" className="cornerlogo" name="homereturn" style={{position:'', display:'flex', marginLeft:'20px', alignItems:'center', justifyContent:'center', maxWidth:'', height:'60px', border:'0px solid transparent'}}  aria-label="Link to Top" title="Back to Top">
+<Link to="/" className="cornerlogo" name="homereturn" style={{position:'', display:'flex', marginLeft:'5px', alignItems:'center', justifyContent:'center', maxWidth:'', height:'60px', border:'0px solid transparent'}}  aria-label="Link to Top" title="Back to Top">
 {iconimage ? (
 <img className="cornerlogo" style={{position:'relative', top:'', left:'4%', border:'0px solid white', padding:'0', maxHeight:'60px'}} src={iconimage} alt={companyname} width="111" height="60" />
 ) : (
@@ -456,7 +413,7 @@ const fontUrl = "https://fonts.googleapis.com/css?family=" + font1.replace(/\s+/
 
 
 
-<div style={{maxWidth:'', overflowX:'hidden', position:'relative'}}>
+<div style={{maxWidth:'', position:'relative'}}>
 {children}
 </div>
       

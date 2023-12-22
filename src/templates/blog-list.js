@@ -12,7 +12,7 @@ import { AiOutlinePicLeft } from 'react-icons/ai';
 import { MdArrowForwardIos, MdArrowBackIos } from 'react-icons/md';
 
 const BlogList = ({ data, pageContext }) => {
-  const { showDates, postcount } = useSiteMetadata();
+  const { showDates, postcount, showTitles, showNav } = useSiteMetadata();
   const posts = data.allMarkdownRemark.edges;
   const { numPages, currentPage } = pageContext;
 
@@ -30,7 +30,7 @@ const BlogList = ({ data, pageContext }) => {
         <body className="archivepage utilitypage" />
       </Helmet>
 
-      <div className="contentpanel grid-container" style={{ marginTop: '5vh' }}>
+      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '3vw' : '3vw', }}>
         <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
 
         {posts.slice(0, currentPage * postcount).map(({ node }, index) => (
@@ -42,7 +42,7 @@ const BlogList = ({ data, pageContext }) => {
                   alt={node.frontmatter.title + ' - Featured image'}
                   className="featured-image1"
                   placeholder="blurred"
-                  loading="eager"
+                  // loading="eager"
                   style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto' }}
                 />
               ) : (
@@ -85,6 +85,7 @@ const BlogList = ({ data, pageContext }) => {
                   ''
                 )}
 
+{/* {showTitles ? (  */}
                 <div
                   className="panel"
                   style={{
@@ -97,18 +98,21 @@ const BlogList = ({ data, pageContext }) => {
                     gap: '.4vw',
                     height: '',
                     textAlign: 'center',
-                    padding: '1vh 2vw',
+                    padding: '',
                     fontSize: 'clamp(1rem, 1vw, 1rem)',
-                    background: 'rgba(0, 0, 0, 0.7)',
+                    // background: 'rgba(0, 0, 0, 0.7)',
                     borderRadius: '',
                     border: '0px solid red',
-                    color: '#aaa',
+            
                   }}
                 >
-                  <h2 className="title" style={{}}>
+                  <h2 className="title1" style={{}}>
                     {node.frontmatter.title}
                   </h2>
                 </div>
+        {/* ) : (
+          ""
+      )} */}
               </div>
             </Link>
             {showDates ? (

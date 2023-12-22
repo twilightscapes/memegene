@@ -12,8 +12,8 @@ import useSiteMetadata from "../hooks/SiteMetadata"
 import { MdArrowForwardIos } from 'react-icons/md';
 const TagIndex = ({ data }) => {
 
-  const { showDates } = useSiteMetadata()
-  const { postcount } = useSiteMetadata()
+  const { showDates, postcount, showTitles, showNav } = useSiteMetadata()
+
   const [selectedTag, setSelectedTag] = useState(''); // State to keep track of selected tag
   const [visibleItems, setVisibleItems] = useState(postcount); 
   console.log("Post count:", postcount);
@@ -59,7 +59,7 @@ const TagIndex = ({ data }) => {
 </div>
        
 
-<div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', marginTop: '' }}>
+<div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '6vw' : '10vw', }}>
           <div className="sliderSpacer" style={{ height: "", paddingTop: "", display: "" }}></div>
    
           {data.allMarkdownRemark.edges &&
@@ -121,12 +121,15 @@ Play Multimedia
 ""
 )}
 
-<div className="panel" style={{display:'flex', justifyContent:'space-between', alignItems:'center', margin:'10px auto', maxWidth:'80vw', gap:'.4vw', height:'', textAlign:'center', padding:'1vh 2vw', fontSize:'clamp(1rem, 1vw, 1rem)',  background:'rgba(0, 0, 0, 0.7)', borderRadius:'', color:'#aaa' }}>
-<h2 className="title1" style={{ }}>
+{showTitles ? (    
+<div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '10px auto', maxWidth: '80vw', gap: '.4vw', height: '', textAlign: 'center', padding: '1vh 2vw', fontSize: 'clamp(1rem, 1vw, 1rem)', color: '#aaa' }}>
+<h2 className="title1" style={{ color:'#aaa'}}>
         {node.frontmatter.title}
       </h2>
   </div>
-
+) : (
+  ""
+)}
 
 
 

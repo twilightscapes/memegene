@@ -472,7 +472,7 @@ const YouTube = frontmatter.youtube.youtuber
 
 
   // const { showNav } = useSiteMetadata()
-  const { showDates } = useSiteMetadata()
+  const { showDates, showTitles } = useSiteMetadata()
 
 
 
@@ -879,13 +879,13 @@ Click to play
           style={{
             position: "fixed",
             bottom: "20px",
-            zIndex: "4",
+            zIndex: "5",
             left: "1vw",
             right: "",
             display: "flex",
             justifyContent: "center",
             width: "auto",
-            maxWidth: "80vw",
+            maxWidth: "75vw",
             margin: "0 auto",
             gap: "5vw",
             background: "rgba(0, 0, 0, .5)",
@@ -901,7 +901,7 @@ Click to play
             className="menusnapp"
             style={{
               gap: "10px",
-              padding: "1vh 1vw",
+              padding: "0 0 0 1vw",
               alignItems: "center",
               display: isMenuOpen ? "block" : "none",
             }}
@@ -1292,10 +1292,17 @@ zindex:'1'
 
   <div className="article-header" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:'', borderRadius:'12px'}}>
     
-            <h1 className="headline panel" style={{color:'#ddd', borderRadius:''}}>{frontmatter.title}</h1>
-            <time sx={{color: "muted"}}>{frontmatter.date}</time>
+  {showTitles ? (   
+    <>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
+            <time sx={{color: ""}}>{frontmatter.date}</time>
             Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
-           
+    </> 
+      ) : (
+      ""
+)}
+
+
            {/* <Link to={`/category/${frontmatter.category}`}>Category:{frontmatter.category}</Link>
 
            <p>Tags: {frontmatter.tags.join(", ")}</p> */}
@@ -1315,10 +1322,17 @@ zindex:'1'
 </header>
             ) : (
               <header style={{ height:'', display:'grid', placeContent:'center'}}>
-                <div className="article-header panel" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:'', borderRadius:'', marginTop:'0'}}>
-            <h1 className="headline" style={{color:'#ddd', borderRadius:'12px'}}>{frontmatter.title}</h1>
-            <time sx={{color: "muted"}}>{frontmatter.date}</time>
-           Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
+                <div className="article-header" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:'', borderRadius:'', marginTop:'0'}}>
+
+                {showTitles ? (   
+    <>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
+            <time sx={{color: ""}}>{frontmatter.date}</time>
+            Posted: <TimeAgo date={frontmatter.date} style={{color:''}} />
+    </> 
+      ) : (
+      ""
+)}
            
 
            {/* {categoryList} */}
@@ -1367,14 +1381,23 @@ zindex:'1'
 <div style={{width:'auto', height:'', padding:'0', display:'grid', placeContent:'center', border:'0px solid'}}>
     <ShareSocial style={{}} />
     </div>
-<div className="article-header panel" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:'', borderRadius:'', marginTop:'0'}}>
-<h1 className="headline" style={{color:'#ddd', borderRadius:'12px'}}>{frontmatter.title}</h1>
+<div className="article-header" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:'', borderRadius:'', marginTop:'0'}}>
+
+
+{showTitles ? (   
+    <>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
+    </> 
+      ) : (
+      ""
+)}
+
 {/* <time sx={{color: "muted"}}>{frontmatter.date}</time> */}
 
 {showDates ? (
   <div>
     Posted:{" "}
-    <time title={frontmatter.date} sx={{ color: "muted" }}>
+    <time title={frontmatter.date} sx={{ color: "" }}>
       <TimeAgo date={frontmatter.date} style={{ color: "" }} />
     </time>
   </div>
@@ -1414,7 +1437,17 @@ zindex:'1'
               ) : (
                 <header style={{ height:'', display:'grid', placeContent:'center'}}>
                 <div className="article-header" style={{textAlign:'center', paddingTop:'1rem', height:'auto', color:''}}>
-                <h1 className="headline" style={{fontSize:''}}>{frontmatter.title}</h1>
+
+
+                {showTitles ? (   
+    <>
+            <h1 className="headline" style={{color:'', borderRadius:''}}>{frontmatter.title}</h1>
+    </> 
+      ) : (
+      ""
+)}
+
+              
                 {/* <time sx={{color: "muted"}}>{frontmatter.date}</time> */}
                {/* Posted: <TimeAgo date={frontmatter.date} style={{color:''}} /> */}
               </div>

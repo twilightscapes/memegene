@@ -98,6 +98,7 @@ collections:
               collapsed: true, # Set to true to collapse panel by default
             fields: [
               { label: "YouTube Url", name: "youtuber", widget: "string",required: false },
+              { label: "Show Video Only", name: "showVidOnly", widget: "boolean", default: false, required: false },
               { label: "YouTube Start", name: "youtubestart", widget: "string", required: false },
               { label: "YouTube End", name: "youtubeend", widget: "string", required: false },
               { label: "YouTube Audio", name: "youtuber2", widget: "string", required: false },
@@ -325,6 +326,12 @@ collections:
                 label: Show Side Nav
                 required: false
                 
+
+              - widget: boolean
+                name: showTitles
+                label: Show Post Titles
+                required: false
+
               - widget: boolean
                 name: showDates
                 label: Show Dates
@@ -346,6 +353,7 @@ collections:
                 name: showArchive 
                 label: Show Archive link under "Load More" button
                 required: false
+
 
 
 
