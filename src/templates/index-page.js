@@ -12,7 +12,7 @@ import { MdArrowForwardIos } from 'react-icons/md';
 import Seo from "../components/seo";
 import { getSrc } from "gatsby-plugin-image";
 import ReactPlayer from 'react-player/lazy'
-import BlogPosts from "../components/BlogPosts"; 
+// import BlogPosts from "../components/BlogPosts"; 
 
 const HomePage = ({ data }) => {
   const { showModals, showDates, homecount, postcount, magicOptions, showNav, showArchive, showTitles  } = useSiteMetadata();
@@ -271,6 +271,7 @@ const HomePage = ({ data }) => {
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
 
           <div key={index} className="post-card1" style={{ alignItems: '', overFlow:'visible' }}>
+
             <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
 
 
@@ -282,7 +283,7 @@ const HomePage = ({ data }) => {
             
             url={node.frontmatter.youtube.youtuber}
             allow="web-share"
-            style={{position:'relative', margin: '0 auto 0 auto', zIndex:''}}
+            style={{position:'relative', margin: '0 auto 15px auto', zIndex:''}}
             width="350px"
             height="200px"
             className='inline'
@@ -323,7 +324,7 @@ const HomePage = ({ data }) => {
               
 
 
-              <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
+  <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
 
 
               {node.frontmatter.youtube.showVidOnly ? (
@@ -355,27 +356,26 @@ const HomePage = ({ data }) => {
 ) : (       
 <> */}
 
-<div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '80vw', gap: '.4vw', height: '', textAlign: 'center', padding: '1vh 2vw', fontSize: 'clamp(1rem, 1vw, 1rem)', color: '' }}>
+<div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 30px', fontSize: 'clamp(.7rem,.7vw,.7rem)', outline:'0px solid #444', opacity:'.9', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px',
+background: showTitles ? 'rgba(0, 0, 0, 0.3)' : 'transparent',
+}}>
   {showTitles ? (    
-    <h2 className="title1" style={{width:'100%'}}>{node.frontmatter.title}</h2>
+    <h2 className="title1" style={{width:'100%', height:'',}}>{node.frontmatter.title}</h2>
     ) : (
   ""
 )}
 
 {showDates ? (
-    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '70%', maxWidth: '' }}>
+    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '90%', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
       <TimeAgo date={node.frontmatter.date} />
     </p>
     ) : ("")}
 
 </div>
-{/* </>
-)} */}
-
-                
               </div>
             </Link>
           </div>
+
         ))}
 
 {numVisibleItems < filteredPosts.length && (
