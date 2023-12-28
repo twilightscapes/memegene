@@ -8,7 +8,7 @@ description: Eric tweets photoshopped photo of himself as he was left out of the
 shareable: true
 showZoom: true
 showPageNav: true
-spotlight: false
+spotlight:
 tags:
   - trump
 youtube:

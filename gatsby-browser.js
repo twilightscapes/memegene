@@ -116,13 +116,13 @@ export const onServiceWorkerUpdateReady = () => {
 //   };
   
   // Add a listener for notification click
-  self.addEventListener('notificationclick', event => {
-    const action = event.action;
-    if (action === 'update') {
-      // Handle update action (reload or navigate to the latest version)
-      window.location.reload();
-    } else {
-      // Handle other actions or do nothing for 'ignore'
-    }
-  });
+  // self.addEventListener('notificationclick', event => {
+  //   const action = event.action;
+  //   if (action === 'update') {
+  //     // Handle update action (reload or navigate to the latest version)
+  //     window.location.reload();
+  //   } else {
+  //     // Handle other actions or do nothing for 'ignore'
+  //   }
+  // });
   
