@@ -19,13 +19,16 @@ const HomePage = ({ data }) => {
   const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
 
   const { markdownRemark } = data;
-  const { frontmatter, html, excerpt } = markdownRemark
+  const { frontmatter, excerpt } = markdownRemark
 
 
 
   // const showVidOnly = frontmatter.youtube.showVidOnly
   
-
+  // const extractVideoId = (url) => {
+  //   const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  //   return match ? match[1] : null;
+  // };
 
   const allPosts = data.allMarkdownRemark.edges;
 
@@ -34,16 +37,17 @@ const HomePage = ({ data }) => {
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
+  // eslint-disable-next-line
   const [visibleItems, setVisibleItems] = useState(homecount);
 
   const allCategoriesSet = new Set(allPosts.flatMap(({ node }) => node.frontmatter.category));
   const allCategories = Array.from(allCategoriesSet);
 
-  const AutoStart = new Set(allPosts.flatMap(({ node }) => node.frontmatter.youtube.youtubeautostart));
+  // const AutoStart = new Set(allPosts.flatMap(({ node }) => node.frontmatter.youtube.youtubeautostart));
 
-  // const AutoStart = node.frontmatter.youtube.youtuber}
+  // // const AutoStart = node.frontmatter.youtube.youtuber}
 
-  const ShowControls = new Set(allPosts.flatMap(({ node }) => node.frontmatter.youtube.youtubecontrols));
+  // const ShowControls = new Set(allPosts.flatMap(({ node }) => node.frontmatter.youtube.youtubecontrols));
 
   const allTagsSet = new Set(allPosts.flatMap(({ node }) => node.frontmatter.tags));
   const allTags = Array.from(allTagsSet);
@@ -275,30 +279,35 @@ const HomePage = ({ data }) => {
             <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
 
 
+
+
+
+
+
             
   
               {node.frontmatter.youtube.showVidOnly ? (
 
 <ReactPlayer
-            
-            url={node.frontmatter.youtube.youtuber}
-            allow="web-share"
-            style={{position:'relative', margin: '0 auto 15px auto', zIndex:''}}
-            width="350px"
-            height="200px"
-            className='inline'
-            playsinline
-            config={{
-              file: {
-                attributes: {
-                  crossOrigin: "anonymous",
-                },
-              },
-              youtube: {
-                playerVars: { showinfo:1, autoplay:0, controls:1, mute:1, loop:1 }
-              },
-            }}
-          />
+url={node.frontmatter.youtube.youtuber}
+allow="web-share"
+style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '' }}
+width="350px"
+height="200px"
+className='inline'
+// light={`https://i.ytimg.com/vi/${extractVideoId(node.frontmatter.youtube.youtuber)}/hqdefault.jpg`}
+playsinline
+config={{
+  file: {
+    attributes: {
+      crossOrigin: "anonymous",
+    },
+  },
+  youtube: {
+    playerVars: { showinfo: 1, autoplay: 0, controls: 1, mute: 1, loop: 1 },
+  },
+}}
+/>
           
 ) : (
   <div>
@@ -356,17 +365,17 @@ const HomePage = ({ data }) => {
 ) : (       
 <> */}
 
-<div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 30px', fontSize: 'clamp(.7rem,.7vw,.7rem)', outline:'0px solid #444', opacity:'.9', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px',
-background: showTitles ? 'rgba(0, 0, 0, 0.3)' : 'transparent',
+<div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 30px', fontSize: 'clamp(.7rem,.8vw,.7rem)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', 
+background: showTitles ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
 }}>
   {showTitles ? (    
-    <h2 className="title1" style={{width:'100%', height:'',}}>{node.frontmatter.title}</h2>
+    <h2 className="title1" style={{width:'100%', textShadow:'0 1px 1px #222',}}>{node.frontmatter.title}</h2>
     ) : (
   ""
 )}
 
 {showDates ? (
-    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '90%', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
+    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
       <TimeAgo date={node.frontmatter.date} />
     </p>
     ) : ("")}
