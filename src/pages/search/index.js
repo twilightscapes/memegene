@@ -54,7 +54,14 @@ const SearchPage = ({ data }) => {
   });
 
 
-
+/* eslint-disable no-useless-escape */
+const extractVideoId = (url) => {
+  const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/[^\/\n\s]+\/(?:\S+\/)?|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+};
+/* eslint-enable no-useless-escape */
+  
+  
 
 
   useEffect(() => {
@@ -236,12 +243,12 @@ const SearchPage = ({ data }) => {
         ""
       )}
 
-      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '6vw' : '6vw', }}>
+      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: '', paddingTop: showNav ? '6vw' : '6vw', }}>
         <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
 
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
-          <div key={index} className="post-card1" style={{ alignItems: '', overFlow:'visible' }}>
-            <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
+          <div key={index} className="post-card1" style={{ alignItems: 'start', overFlow:'visible' }}>
+
               {node.frontmatter.youtube.showVidOnly ? (
                 <ReactPlayer
                   url={node.frontmatter.youtube.youtuber}
@@ -251,6 +258,7 @@ const SearchPage = ({ data }) => {
                   height="200px"
                   className='inline'
                   playsinline
+                  light={`https://i.ytimg.com/vi/${extractVideoId(node.frontmatter.youtube.youtuber)}/hqdefault.jpg`}
                   config={{
                     file: {
                       attributes: {
@@ -258,12 +266,23 @@ const SearchPage = ({ data }) => {
                       },
                     },
                     youtube: {
-                      playerVars: { showinfo: 1, autoplay: 0, controls: 1, mute: 1, loop: 1 },
+                      playerVars: { showinfo: 0, autoplay: 1, controls: 1, mute: 0, loop: 1 },
                     },
                   }}
+                  playIcon={
+                    <div style={{display:'flex', flexDirection:'column', placeContent:'', justifyContent:'', position:'absolute', zindex:'1', bottom:'-2vh', fontWeight:'bold', padding:'3% 0 0 0', fontSize:'clamp(.6rem, 1.4vw, 1rem)', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
+                      <div className="spotlight1 font" style={{}}>
+                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
+                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+                          </div>
+                          Play Video
+                        </div>
+                      </div>
+                    </div>}
                 />
               ) : (
-                <div>
+                <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
                   {node.frontmatter.featuredImage ? (
                     <GatsbyImage
                       image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
@@ -280,21 +299,24 @@ const SearchPage = ({ data }) => {
                       style={{ position: 'relative', zIndex: '' }}
                     />
                   )}
-                </div>
+                </Link>
               )}
 
-              <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
+              <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: '', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
+                
                 {node.frontmatter.youtube.showVidOnly ? (
                   ""
                 ) : (
                   <>
                     {node.frontmatter.youtube.youtuber ? (
-                      <div className="spotlight" style={{ marginLeft: '10%', marginTop: '-28%', margin: '-24% 10% 0 10%' }}>
-                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
+
+                      
+                      <div className="spotlight" style={{  }}>
+                        <div className="posticons font" style={{ flexDirection: 'column', margin: '0 auto' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
                             <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
                             <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px, fontSize: ""' }} />
+                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px' }} />
                           </div>
                           Play Multimedia
                         </div>
@@ -303,7 +325,7 @@ const SearchPage = ({ data }) => {
                   </>
                 )}
 
-                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 30px', fontSize: 'clamp(.7rem,.8vw,.7rem)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', background: showTitles ? 'rgba(0, 0, 0, 0.8)' : 'transparent', }}>
+<div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', background: showTitles ? 'rgba(0, 0, 0, 0.8)' : 'transparent', }}>
                   {showTitles ? (
                     <h2 className="title1" style={{width:'100%', textShadow:'0 1px 1px #222',}}>{node.frontmatter.title}</h2>
                   ) : (
@@ -317,7 +339,7 @@ const SearchPage = ({ data }) => {
                   ) : ("")}
                 </div>
               </div>
-            </Link>
+
           </div>
         ))}
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { ImPlay } from "react-icons/im";
@@ -12,6 +12,7 @@ import { MdArrowForwardIos } from 'react-icons/md';
 import Seo from "../components/seo";
 import { getSrc } from "gatsby-plugin-image";
 import ReactPlayer from 'react-player/lazy';
+
 
 const HomePage = ({ data }) => {
   const { showModals, showDates, homecount, postcount, magicOptions, showNav, showArchive, showTitles } = useSiteMetadata();
@@ -53,6 +54,25 @@ const HomePage = ({ data }) => {
     return countB - countA;
   });
 
+/* eslint-disable no-useless-escape */
+const extractVideoId = (url) => {
+  const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/[^\/\n\s]+\/(?:\S+\/)?|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+};
+/* eslint-enable no-useless-escape */
+  
+const playerRef = useRef(null);
+
+
+const [playingIndex, setPlayingIndex] = useState(null);
+
+  const handleVideoPlay = (index) => {
+    setPlayingIndex(index);
+  };
+
+  const handleVideoPause = () => {
+    setPlayingIndex(null);
+  };
 
 
 
@@ -240,17 +260,43 @@ const HomePage = ({ data }) => {
         <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
 
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
-          <div key={index} className="post-card1" style={{ alignItems: '', overFlow:'visible' }}>
-            <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
-              {node.frontmatter.youtube.showVidOnly ? (
+  
+
+<div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible' }}>
+
+{node.frontmatter.youtube.showVidOnly ? (
+<div style={{minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent',}}>
                 <ReactPlayer
-                  url={node.frontmatter.youtube.youtuber}
+                playing={index === playingIndex}
+                ref={playerRef}
+                url={node.frontmatter.youtube.youtuber}
                   allow="web-share"
-                  style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '' }}
+                  // style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '',aspectRatio:'16/9', }}
                   width="350px"
                   height="200px"
                   className='inline'
                   playsinline
+                  // className={`relative ${index === playingIndex ? 'fixed' : 'relative'}`}
+                  style={{
+                    position: index === playingIndex ? 'fixed' : 'relative',
+                    // top: index === playingIndex ? '50%' : 'auto',
+                    // left: index === playingIndex ? '50%' : 'auto',
+                    // transform: index === playingIndex ? 'translate(-50%, -50%)' : 'none',
+                    bottom: index === playingIndex ? '10vh' : '',
+                    left: index === playingIndex ? '5%' : '',
+                    margin:'0 auto',
+                    transition: 'all 1.3s ease-in-out',
+                    // width: index === playingIndex ? '100%' : '350px',
+                    // height: index === playingIndex ? '100%' : '200px',
+                    border: index === playingIndex ? '1px solid var(--theme-ui-colors-siteColor)' : 'inherit',
+                    boxShadow: index === playingIndex ? '2px 1px 10px 10px rgba(0, 0, 0, 0.5)' : 'inherit',
+                    // width: '80vw',
+                    // height:'60vh',
+                    // margin: index === playingIndex ? '0' : '0 auto 15px auto',
+                    zIndex: index === playingIndex ? '9999' : '',
+                    aspectRatio: '16/9',
+                  }}
+                  light={`https://i.ytimg.com/vi/${extractVideoId(node.frontmatter.youtube.youtuber)}/hqdefault.jpg`}
                   config={{
                     file: {
                       attributes: {
@@ -258,12 +304,26 @@ const HomePage = ({ data }) => {
                       },
                     },
                     youtube: {
-                      playerVars: { showinfo: 1, autoplay: 0, controls: 1, mute: 1, loop: 1 },
+                      playerVars: { showinfo: 0, autoplay: 1, controls: 1, mute: 0, loop: 1 },
                     },
                   }}
+                  playIcon={
+                    <div style={{display:'flex', flexDirection:'column', placeContent:'', justifyContent:'', position:'absolute', zindex:'1', bottom:'-2vh', fontWeight:'bold', padding:'3% 0 0 0', fontSize:'clamp(.6rem, 1.4vw, 1rem)', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
+                      <div className="spotlight1 font" style={{}}>
+                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
+                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+                          </div>
+                          Play Video
+                        </div>
+                      </div>
+                    </div>}
+                    onPlay={() => handleVideoPlay(index)}
+                    onPause={handleVideoPause}
                 />
+                </div>
               ) : (
-                <div>
+                <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
                   {node.frontmatter.featuredImage ? (
                     <GatsbyImage
                       image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
@@ -280,7 +340,7 @@ const HomePage = ({ data }) => {
                       style={{ position: 'relative', zIndex: '' }}
                     />
                   )}
-                </div>
+                </Link>
               )}
 
               <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
@@ -289,12 +349,12 @@ const HomePage = ({ data }) => {
                 ) : (
                   <>
                     {node.frontmatter.youtube.youtuber ? (
-                      <div className="spotlight" style={{ marginLeft: '10%', marginTop: '-28%', margin: '-24% 10% 0 10%' }}>
+                      <div className="spotlight font" style={{ marginLeft: '10%', marginTop: '-28%', margin: '-24% 10% 0 10%' }}>
                         <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
                             <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
                             <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px, fontSize: ""' }} />
+                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', }} />
                           </div>
                           Play Multimedia
                         </div>
@@ -303,7 +363,7 @@ const HomePage = ({ data }) => {
                   </>
                 )}
 
-                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 30px', fontSize: 'clamp(.7rem,.8vw,.7rem)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', background: showTitles ? 'rgba(0, 0, 0, 0.8)' : 'transparent', }}>
+                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', background: showTitles ? 'rgba(0, 0, 0, 0.8)' : 'transparent', }}>
                   {showTitles ? (
                     <h2 className="title1" style={{width:'100%', textShadow:'0 1px 1px #222',}}>{node.frontmatter.title}</h2>
                   ) : (
@@ -317,7 +377,7 @@ const HomePage = ({ data }) => {
                   ) : ("")}
                 </div>
               </div>
-            </Link>
+
           </div>
         ))}
 
@@ -334,6 +394,10 @@ const HomePage = ({ data }) => {
           </div>
         )}
       </div>
+
+
+
+
     </Layout>
   );
 };

@@ -2,12 +2,11 @@ import * as React from "react"
 import useSiteMetadata from "../hooks/SiteMetadata"
 // import GoBack from "../components/goBack"
 // import Theme from "../components/theme"
-// import Consent from "./Consent"
+import Consent from "./Consent"
 // import Install from "./install-footer"
 import Icons from "../../static/data/socialmedia.json"
 import {
   RiFacebookBoxFill,
-  RiTwitterFill,
   RiLinkedinBoxFill,
   RiYoutubeFill,
   RiInstagramFill,
@@ -22,7 +21,7 @@ import {
   RiBehanceFill,
 } from "react-icons/ri"
 import { FaWordpress, FaVk } from "react-icons/fa"
-
+import Xlogo from "../img/xcorp-logo.svg"
 
 import { Link } from "gatsby"
 // import {
@@ -51,10 +50,10 @@ const sIcons = Icons.socialIcons.map((icons, index) => {
       ) : (
         ""
       )}
-      {icons.icon === "twitter" ? (
-        <a aria-label="Link to Twitter" title="Twitter" className="social" href={icons.url} rel="noreferrer" target="_blank">
-          <RiTwitterFill />
-        </a>
+      {icons.icon === "x-twitter" ? (
+        <a aria-label="The App Formerly known as Twitter" title="The App Formerly known as Twitter" className="social" href={icons.url} rel="noreferrer" target="_blank">
+        <Xlogo style={{maxWidth:'30px'}} />
+      </a>
       ) : (
         ""
       )}
@@ -81,7 +80,7 @@ const sIcons = Icons.socialIcons.map((icons, index) => {
       )}
       {icons.icon === "rss" ? (
         <a aria-label="Link to RSS" className="social" href={icons.url} rel="noreferrer" target="_blank">
-          <RiRssFill />
+          <RiRssFill style={{maxWidth:'35px'}} />
         </a>
       ) : (
         ""
@@ -181,10 +180,10 @@ export default function Footer() {
 
   const { companyname } = useSiteMetadata()
   const { showfooter } = useSiteMetadata()
-
-
-
-
+  const { showConsent } = useSiteMetadata()
+  const { showSocial } = useSiteMetadata();
+  const { showBranding } = useSiteMetadata();
+  const { showLegal } = useSiteMetadata();
 
 
 
@@ -196,30 +195,38 @@ export default function Footer() {
 
 
 
-      <footer className="" style={{display:'flex', flexDirection:'column', padding:'1rem 0', marginTop:'0', position:'relative', width:'100vw',textAlign:'center'}}>
+      <footer className="" style={{display:'flex', flexDirection:'column', padding:'0', marginTop:'0', width:'100vw',textAlign:'center'}}>
 
-    {/* <Consent /> */}
-<br />
+{showConsent ? (
+    <Consent />
+  ) : (
+""
+    )}
+
+
+    
+
 
     {/* <Install /> */}
-<br />
+    
+
     
 
 
 
       {/* <Link to="/contact/" className="button fire specialfont" style={{margin:'2rem 2rem', textDecoration:'none', fontSize:'clamp(1rem, 2vw, 2.8rem)', padding:'1rem 2rem', borderRadius:'8px'}}>Contact Us - We &#9825; Feedback!</Link> */}
 
-
-     
-
-        { !sIcons ? (
-    ""
-
-  ) : (
-    <div className="social-icons" style={{textAlign:'center', justifyContent:'center', display:'flex', alignItems:'center', margin:'3rem 0'}}>
+{ showSocial ? (
+  <div className="social-icons" style={{textAlign:'center', justifyContent:'center', display:'flex', alignItems:'center', margin:'3rem 0'}}>
        <div className="socialtext" style={{fontSize:'14px',}}>Social<br />Links</div> {sIcons}
         </div>
+      ) : (
+""
   )}
+
+
+    
+
   
         
 
@@ -229,29 +236,43 @@ export default function Footer() {
 
 
       <nav className="footerlinks" aria-label="footer">
-      <div style={{width:'100%', textAlign: 'center', margin: '2rem 10px 1rem 10px', justifyContent: 'center', fontSize: '.95rem', textDecoration:'none'}}>
 
-<Link state={{modal: true}} to="/disclaimer/">Disclaimer</Link>  |  <Link state={{modal: true}} to="/privacy/">Privacy Policy</Link>  |  <Link state={{modal: true}} to="/terms/">Terms of Service</Link></div>
-  
 
-<div style={{textAlign: 'center', margin: '0 0 2rem 0', justifyContent: 'center', fontSize: '.75rem'}}>Copyright &copy;
-{/* {(new Date().getFullYear())}  */}
+      { showLegal ? (
+        <div style={{width:'100%', textAlign: 'center', margin: '2rem 10px 1rem 10px', justifyContent: 'center', fontSize: '.95rem', textDecoration:'none'}}>
+
+<Link state={{modal: true}} to="/disclaimer/">Disclaimer</Link>  |  <Link state={{modal: true}} to="/privacy/">Privacy Policy</Link>  |  <Link state={{modal: true}} to="/terms/">Terms of Service</Link>
+  <br />
+  <br />
+Copyright &copy;
+{(new Date().getFullYear())} 
 &nbsp;
  {companyname}
 </div>
+      ) : (
+""
+  )}
 
-<div style={{textAlign: 'center', margin: '0 0 2rem 0', justifyContent: 'center', fontSize: '.75rem', position:'relative', right:'', top:'10px'}}>
-{/* <Theme  style={{display:'flex', alignSelf:'center',}} />
 
-<br />
-<br /> */}
 
-<a href="https://piratepro.app" rel="noreferrer">Running PiratePro</a> &nbsp; | &nbsp; <a href={speedIt} rel="noreferrer">Site Report Card</a>
+
+
+{ showBranding ? (
+  <div style={{textAlign: 'center', margin: '0 0 2rem 0', justifyContent: 'center', fontSize: '.75rem', position:'relative', right:'', top:'10px'}}>
+<a href="https://pirateweb.org" rel="noreferrer">Powered by PIRATE</a> &nbsp; | &nbsp; <a href={speedIt} rel="noreferrer">Site Report</a>
 </div>
+      ) : (
+""
+  )}
+
+
+
+
+
 <br />
 <br />
 <br />
-<br />
+
 
 
 

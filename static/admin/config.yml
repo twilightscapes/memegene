@@ -19,8 +19,30 @@ public_folder: "/assets"
 # display_url: ""
 show_preview_links: false
 
+
 collections:
 
+  - name: "team"
+    editor:
+      preview: false
+    label: "Pirate Posts"
+    label_singular: "Pirate Post"
+    description: >
+      Pirate Posts - your content on Pirate
+    folder: "static/content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Team Member Name", name: "name", widget: "string"}
+      - {label: "Job Title", name: "jobTitle", widget: "string"}
+      - {label: "Credentials", name: "credentials", widget: "string"}
+      - {label: "Page Order", name: "order", widget: "number"}
+      - {label: "Team Image", name: "profilePicture", widget: "image", required: false,}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+      
   - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
     editor:
       preview: false
@@ -160,37 +182,19 @@ collections:
         
 
         
-  - name: "team"
-    editor:
-      preview: false
-    label: "Pirate Posts"
-    label_singular: "Pirate Post"
-    description: >
-      Pirate Posts - your content on Pirate
-    folder: "static/content/team"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Team Member Name", name: "name", widget: "string"}
-      - {label: "Job Title", name: "jobTitle", widget: "string"}
-      - {label: "Credentials", name: "credentials", widget: "string"}
-      - {label: "Page Order", name: "order", widget: "number"}
-      - {label: "Team Image", name: "profilePicture", widget: "image", required: false,}
-      - {label: "Body", name: "body", widget: "markdown"}
 
 
 
 
 
 
-  - label: "HomePage"
+
+  - label: "Site Pages"
     name: "pages"
     editor:
       preview: false
     files:
-      - label: "Home"
+      - label: "Default Home Page - Important to set defaults for Search Engines"
         name: "home"
         file: "static/content/pages/index.md"
         fields:
@@ -211,8 +215,98 @@ collections:
 
           - { label: "Body", name: "body", widget: "markdown" }
 
+      - label: "Privacy Policy Page"
+        name: "privacy"
+        file: "static/content/pages/privacy.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "privacy-page",
+            }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "/privacy" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "Disclaimer Page"
+        name: "disclaimer"
+        file: "static/content/pages/disclaimer.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "discaimer-page",
+            }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "/disclaimer" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - label: "Terms of Use/Conditions Page"
+        name: "terms"
+        file: "static/content/pages/terms.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "terms-page",
+            }
+          - { label: "Slug", name: "slug", widget: "hidden", default: "/terms" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
                 
-      
+      - label: "Contact Page/Form"
+        name: "contact"
+        file: "static/content/pages/contact.md"
+        fields:
+          - {
+              label: "Template",
+              name: "template",
+              widget: "hidden",
+              default: "contact-page",
+            }
+          - {
+              label: "Slug",
+              name: "slug",
+              widget: "hidden",
+              default: "/contact/",
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Redirect to Thanks Page",
+              name: "redirect",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+
+          - { label: "Show Name Field",
+              name: "contactname",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+          - { label: "Show Phone Field",
+              name: "contactphone",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+          - { label: "Show File Upload Field",
+              name: "contactupload",
+              widget: "boolean",
+              default: false,
+              required: false
+            }
+          - { label: "Upload Text",
+              name: "uploadtext",
+              widget: "string",
+              default: false,
+              required: false
+            }
+
+          - { label: "Body", name: "body", widget: "markdown", required: false }
       
 
   
@@ -220,7 +314,7 @@ collections:
   - name: settings
     editor:
       preview: false
-    label: Settings
+    label: Site Settings
     files:
       - name: general
         label: General
@@ -256,8 +350,14 @@ collections:
                 name: companyname
                 label: Company Name or Site Name
                 required: true
-
-
+              - widget: boolean
+                name: showfooter
+                label: Show the Footer
+                required: false
+              - widget: boolean
+                name: showConsent
+                label: Show Cookie Consent Banner
+                required: false
 
 
               - name: "magicOptions"
@@ -337,7 +437,10 @@ collections:
                 label: Show Dates
                 required: false
 
-
+              - widget: boolean
+                name: showSocial 
+                label: Show Social Links
+                required: false
 
               - widget: boolean
                 name: showSearch
@@ -378,7 +481,46 @@ collections:
                 required: false
                 
               
-
+      - label: Social Icons
+        name: socialIcons
+        editor:
+          preview: false
+        file: "static/data/socialmedia.json"
+        fields:
+          - label: Social Icons
+            name: socialIcons
+            widget: list
+            collapsed: true
+            hint: "Here you can add social icons, Click on 'Add social icons'"
+            fields:
+              - label: "Icons"
+                name: "icon"
+                widget: "select"
+                options:
+                  [
+                    "facebook",
+                    "x-twitter",
+                    "linkedin",
+                    "youtube",
+                    "instagram",
+                    "rss",
+                    "github",
+                    "telegram",
+                    "pinterest",
+                    "snapchat",
+                    "skype",
+                    "wordpress",
+                    "dribbble",
+                    "medium",
+                    "behance",
+                    "vk",
+                  ]
+                hint: "Select the Icon"
+              - widget: string
+                name: url
+                label: url
+                required: true
+                hint: "Paste the 'URL' of your Social media"
 
 
 
@@ -407,7 +549,7 @@ collections:
                 required: true
                 hint: "add the url of the menu item"
 
-  - label: "Appearance"
+  - label: "Site Appearance"
     name: "appearance"
     editor:
       preview: false

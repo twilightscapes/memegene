@@ -14,6 +14,7 @@ const useSiteMetadata = () => {
           twitterUsername
           iconimage
           companyname
+          showfooter
           showNav
           showNav2
           showDates
@@ -24,6 +25,10 @@ const useSiteMetadata = () => {
           font1
           showArchive
           showTitles
+          showConsent
+          showSocial
+          showBranding
+          showLegal
           magicOptions {
             showMagic
             showMagicCat

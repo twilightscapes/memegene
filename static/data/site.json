@@ -21,6 +21,11 @@
       "showMagicTag": true,
       "showMagicSearch": true
     },
+    "showfooter": false,
+    "showConsent": true,
+    "showSocial": true,
+    "showBranding": false,
+    "showLegal": false,
     "titleTemplate": "%s",
     "title": "MG Reports",
     "showTitles": true,
