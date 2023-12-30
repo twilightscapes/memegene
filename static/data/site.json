@@ -11,6 +11,7 @@
     "showDates": false,
     "twitterUsername": "toddlambert",
     "titleDefault": "MG Reports",
+    "showSocial": true,
     "showNav2": false,
     "postcount": 12,
     "showPopup": false,
@@ -21,17 +22,16 @@
       "showMagicTag": true,
       "showMagicSearch": true
     },
-    "showfooter": false,
-    "showConsent": true,
-    "showSocial": true,
-    "showBranding": false,
-    "showLegal": false,
     "titleTemplate": "%s",
+    "showBranding": false,
     "title": "MG Reports",
-    "showTitles": true,
+    "showTitles": false,
+    "showfooter": true,
     "image": "/assets/newspaper.webp",
+    "showLegal": false,
     "description": "Do these memes make my butt look fat?",
     "icon512": "/assets/logo.svg",
-    "showSwipe": true
+    "showSwipe": true,
+    "showConsent": true
   }
 }
