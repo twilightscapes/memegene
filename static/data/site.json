@@ -28,7 +28,7 @@
     "showTitles": false,
     "showfooter": true,
     "image": "/assets/newspaper.webp",
-    "showLegal": true,
+    "showLegal": false,
     "description": "Do these memes make my butt look fat?",
     "icon512": "/assets/logo.svg",
     "showSwipe": true,
