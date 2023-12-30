@@ -3,7 +3,7 @@
     "iconimage": "/assets/logo.svg",
     "font1": "Titan One",
     "showModals": false,
-    "showArchive": true,
+    "showArchive": false,
     "showSearch": false,
     "showNav": true,
     "companyname": "Meme Genes",
@@ -23,15 +23,15 @@
       "showMagicSearch": true
     },
     "titleTemplate": "%s",
-    "showBranding": false,
+    "showBranding": true,
     "title": "MG Reports",
     "showTitles": false,
     "showfooter": true,
     "image": "/assets/newspaper.webp",
-    "showLegal": false,
+    "showLegal": true,
     "description": "Do these memes make my butt look fat?",
     "icon512": "/assets/logo.svg",
     "showSwipe": true,
-    "showConsent": true
+    "showConsent": false
   }
 }
