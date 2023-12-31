@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import { StaticImage } from "gatsby-plugin-image"
 // import {Link} from "gatsby"
 import { RiQuestionLine, RiCloseCircleFill } from "react-icons/ri"
-import Layout from "../components/siteLayout"
+import Layout from "../components/socialLayout"
 import { Helmet } from "react-helmet"
 
 // import useNetlifyIdentity from '../components/useNetlifyIdentity';
@@ -66,7 +66,7 @@ function Pirate() {
 <Helmet>
 
   
-        <body id="body" className="social scroll" />
+        <body id="body" className="piratepage scroll" />
       </Helmet>
 
 

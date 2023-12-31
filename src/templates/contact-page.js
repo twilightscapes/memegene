@@ -4,10 +4,10 @@ import { useState } from "react";
 import { graphql } from "gatsby";
 import Seo from "../components/seo";
 import Layout from "../components/siteLayout";
-import useSiteMetadata from "../hooks/SiteMetadata";
+// import useSiteMetadata from "../hooks/SiteMetadata";
 import { Helmet } from "react-helmet";
-import Footer from "../components/footer";
-import Map from "../components/contact-map"
+
+// import Map from "../components/contact-map"
 export const pageQuery = graphql`
   query ContactQuery($id: String!) {
     markdownRemark(id: { eq: $id }) {
@@ -20,6 +20,7 @@ export const pageQuery = graphql`
         contactname
         contactphone
         contactupload
+        uploadtext
       }
     }
     site {
@@ -31,7 +32,7 @@ export const pageQuery = graphql`
 `;
 
 const Contact = ({ data }) => {
-  const { showNav } = useSiteMetadata();
+  // const { showNav } = useSiteMetadata();
   const { markdownRemark, site } = data;
   const { frontmatter, html } = markdownRemark;
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,7 +67,7 @@ const handleSubmit = e => {
   console.log(frontmatter.redirect);
   if (frontmatter.redirect === true) {
     setTimeout(() => {
-      window.location.href = "/thanks/";
+      window.location.href = "/install2";
     }, 1600);
   } else {
     fetch("/", {
@@ -81,16 +82,6 @@ const handleSubmit = e => {
       .catch(error => alert(error));
   }
 };
-
-
-
-  // const FileUploadMessage = () => (
-  //   <p style={{ textAlign: "right", margin: "auto", color: "#fff" }}>
-  //     {frontmatter.uploadtext}
-  //   </p>
-  // );
-  
-  
   
 
   return (
@@ -103,11 +94,15 @@ const handleSubmit = e => {
         description={frontmatter.title + " " + site.siteMetadata.title}
       />
 
-      {showNav ? <div className="spacer" style={{ height: "60px", border: "0px solid yellow" }}></div> : ""}
+      {/* {showNav ? <div className="spacer" style={{ height: "60px", border: "0px solid yellow" }}></div> : ""} */}
 
-      <div className="container panel" style={{ maxWidth: "1024px", margin: "0 auto", paddingTop: "20px" }}>
-        <h1 className="headline">{frontmatter.title}</h1>
-        <div className="description" style={{ padding: "2vh 6%" }} dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="container panel" style={{ maxWidth: "1024px", margin: "0 auto", paddingTop: "5vh" }}>
+        {/* <h1 className="headline">{frontmatter.title}</h1> */}
+
+  <div style={{ padding: "3vh 6% 0 6%", textAlign:'center' }} dangerouslySetInnerHTML={{ __html: html }} />
+
+        
+
 
         <div
           className="wrapper flexbutt"
@@ -115,19 +110,19 @@ const handleSubmit = e => {
         >
 
 
-<div className="flexcheek" style={{display:'flex', justifyContent:'center', maxWidth:'300px', maxHeight:'40vh', width:'300px', margin:'40px auto 0 auto'}}>
+{/* <div className="flexcheek" style={{display:'flex', justifyContent:'center', maxWidth:'300px', maxHeight:'40vh', width:'300px', margin:'40px auto 0 auto'}}>
 
 <Map id="contactMap" options={{
                   center: { lat: 39.92483, lng: -86.10551 },
                   zoom: 15,
                 }}
 />
-</div>
+</div> */}
 
 
 <form
-  className={`contact-form flexcheek ${submitted ? "submitted" : ""}`}
-  // action="/thanks"
+  className={`contact-form flexcheek1 ${submitted ? "submitted" : ""}`}
+  action="/install2"
   name="contact"
   method="POST"
   data-netlify="true"
@@ -155,40 +150,39 @@ const handleSubmit = e => {
 
       {frontmatter.contactname && (
     <p>
-      <label>
-        <input type="text" name="name" placeholder="Your name" required />
+      <label htmlFor="name" aria-label="Your Name">
+        <input type="text" id="name" name="name" placeholder="Your name" required />
       </label>
     </p>
   )}
 
       <p>
-        <label>
-          <input type="email" name="email" placeholder="your@email.com" required />
+        <label htmlFor="email" aria-label="Your Email">
+          <input id="email" type="email" name="email" placeholder="your@email.com" required />
         </label>
       </p>
 
       {frontmatter.contactphone && (
     <p>
-      <label>
-        <input type="tel" name="phone" placeholder="Your phone number" />
+      <label htmlFor="phone" aria-label="Your Phone">
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number" />
       </label>
     </p>
   )}
 
 
       <p>
-        <label>
-          <textarea name="message" placeholder="Your Message" required></textarea>
+        <label htmlFor="message" aria-label="Your Message">
+          <textarea id="message" name="message" placeholder="Your Bio" required></textarea>
         </label>
       </p>
 
 
 
       {frontmatter.contactupload && (
-   <label htmlFor="attachment1" style={{padding: '0', color: 'inherit', textShadow:'1px 1px 0 #555', display:'flex', width:'100%', fontSize:'90%', gap:'15px', justifyContent:'center', alignItems:'center'}}>
-        <input className="file-input hidden" type="file" name="file" 
-        // accept=".pdf,.doc,.docx" 
-        />{frontmatter.uploadtext}
+   <label htmlFor="file"  aria-label="Upload your file" style={{padding: '0', color: 'inherit', textShadow:'1px 1px 0 #555', display:'flex', flexDirection:'column', width:'100%', fontSize:'90%', gap:'15px', justifyContent:'center', alignItems:'center'}}>
+    {frontmatter.uploadtext}
+        <input className="file-input hidden" type="file" id="file" name="file" />
       </label>
   )}
 
@@ -196,9 +190,18 @@ const handleSubmit = e => {
         className="text-align-right1"
         style={{ margin: "0 auto", color: "#fff" }}
       >
-        <button className="button" type="submit" disabled={isSubmitting} style={{padding:'1vh 10vw'}}>
-          {isSubmitting ? "Submitting..." : "Send Now"}
-        </button>
+       
+
+        <button
+            className="button specialfont1"
+            type="submit"
+            disabled={isSubmitting}
+            style={{width:'90%',}}
+          >
+            {isSubmitting ? "Submitting..." : "Continue › › ›"}
+          </button>
+
+
       </p>
     </>
   )}
@@ -208,7 +211,7 @@ const handleSubmit = e => {
       </div>
       <br />
       <br />
-      <Footer />
+
     </Layout>
   );
 };
