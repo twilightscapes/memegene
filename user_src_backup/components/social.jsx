@@ -1,12 +1,15 @@
 import * as React from "react"
-import useSiteMetadata from "../hooks/SiteMetadata"
-// import GoBack from "../components/goBack"
-// import Theme from "../components/theme"
-import Consent from "./Consent"
-// import Install from "./install-footer"
-import Icons from "../../static/data/socialmedia.json"
+// import useSiteMetadata from "../hooks/SiteMetadata"
+// import ScrollAnimation from 'react-animate-on-scroll'
+import Xlogo from "../img/xcorp-logo.svg"
+
+// import Install from "../components/Install-footer"
+import Icons from "../../src/util/socialmedia.json"
+// import { FaHandPointDown } from "react-icons/fa"
+
 import {
   RiFacebookBoxFill,
+  RiTwitterFill,
   RiLinkedinBoxFill,
   RiYoutubeFill,
   RiInstagramFill,
@@ -21,15 +24,9 @@ import {
   RiBehanceFill,
 } from "react-icons/ri"
 import { FaWordpress, FaVk } from "react-icons/fa"
-import Xlogo from "../img/xcorp-logo.svg"
 
-import { Link } from "gatsby"
-// import {
-//   footerStyle,
-//   // links,
-//   blurb,
-//   // logos,
-// } from "./footer.module.css"
+
+
 
 
 
@@ -50,10 +47,10 @@ const sIcons = Icons.socialIcons.map((icons, index) => {
       ) : (
         ""
       )}
-      {icons.icon === "x-twitter" ? (
+      {icons.icon === "twitter" ? (
         <a aria-label="The App Formerly known as Twitter" title="The App Formerly known as Twitter" className="social" href={icons.url} rel="noreferrer" target="_blank">
-        <Xlogo style={{maxWidth:'30px'}} />
-      </a>
+          <Xlogo style={{maxWidth:'30px'}} />
+        </a>
       ) : (
         ""
       )}
@@ -79,8 +76,8 @@ const sIcons = Icons.socialIcons.map((icons, index) => {
         ""
       )}
       {icons.icon === "rss" ? (
-        <a aria-label="Link to RSS" className="social" href={icons.url} rel="noreferrer" target="_blank">
-          <RiRssFill style={{maxWidth:'35px'}} />
+        <a className="social" href={icons.url} rel="noreferrer" target="_blank">
+          <RiRssFill />
         </a>
       ) : (
         ""
@@ -168,130 +165,36 @@ const sIcons = Icons.socialIcons.map((icons, index) => {
 
 
 
-export default function Footer() {
-  const { siteUrl } = useSiteMetadata();
+ function Social() {
 
-  const speedIt = "https://googlechrome.github.io/lighthouse/viewer/?psiurl=" + siteUrl + "%2F&amp;strategy=mobile&amp;category=performance&amp;category=accessibility&amp;category=best-practices&amp;category=seo&amp;category=pwa&amp;utm_source=lh-chrome-ext"
-
-
-
-
-
-
-  const { companyname } = useSiteMetadata()
-  const { showfooter } = useSiteMetadata()
-  const { showConsent } = useSiteMetadata()
-  const { showSocial } = useSiteMetadata();
-  const { showBranding } = useSiteMetadata();
-  const { showLegal } = useSiteMetadata();
-  const { showContact } = useSiteMetadata();
-  
 
 
   return (
 
 
-    showfooter ? (
-  
 
 
 
-      <footer className="" style={{display:'flex', flexDirection:'column', padding:'0', marginTop:'0', width:'100vw',textAlign:'center'}}>
-
-{showConsent ? (
-    <Consent />
-  ) : (
-""
-    )}
-
+<div className="social-icons" style={{textAlign:'center', justifyContent:'center', display:'flex', alignItems:'center'}}>
 
     
-
-
-    {/* <Install /> */}
-    
-
-    
-
-    { showContact ? (
-      <Link state={{modal: true}} to="/contact/" className="button fire font" style={{margin:'2rem 2rem', textDecoration:'none', padding:'1vh 2rem', borderRadius:'3px'}}>Contact</Link>
-      ) : (
-        ""
-      )}
-
-
-
-{ showSocial ? (
-  <div className="social-icons" style={{textAlign:'center', justifyContent:'center', display:'flex', alignItems:'center', margin:'3rem 0'}}>
-       <div className="socialtext" style={{fontSize:'14px',}}>Social<br />Links</div> {sIcons}
-        </div>
-      ) : (
-""
-  )}
-
-
-    
-
-  
+       {/* <div className="socialtext" style={{fontSize:'14px',}}>I'm<br />Social</div> */}
+        {sIcons}
         
 
-
+  </div>
         
 
 
 
-      <nav className="footerlinks" aria-label="footer">
-
-
-      { showLegal ? (
-        <div style={{width:'100%', textAlign: 'center', justifyContent: 'center', fontSize: '.95rem', textDecoration:'none', display:'grid', margin:'2rem auto'}}>
-
-<div style={{display:'flex', justifyContent:'space-between', }}><Link state={{modal: true}} to="/disclaimer/">Disclaimer</Link>  |  <Link state={{modal: true}} to="/privacy/">Privacy Policy</Link>  |  <Link state={{modal: true}} to="/terms/">Terms of Service</Link></div>
-  <br />
-  <br />
-Copyright &copy;
-{(new Date().getFullYear())} 
-&nbsp;
- {companyname}
-</div>
-      ) : (
-""
-  )}
 
 
 
-
-
-{ showBranding ? (
-  <div style={{textAlign: 'center', margin: '0 0 2rem 0', justifyContent: 'center', fontSize: '.75rem', position:'relative', right:'', top:'10px'}}>
-<a href="https://pirateweb.org" rel="noreferrer">Powered by PIRATE</a> &nbsp; | &nbsp; <a href={speedIt} rel="noreferrer">Site Report</a>
-</div>
-      ) : (
-""
-  )}
-
-
-
-
-
-<br />
-<br />
-<br />
-
-
-
-
-      </nav>
-   
-    </footer>
-
-    ) : (
-      ""
-    )
 
 
 
     
   )
 }
+export default Social
 
