@@ -5,10 +5,6 @@
       "url": "/timeline"
     },
     {
-      "menutitle": "Favorites",
-      "url": "/favorites"
-    },
-    {
       "menutitle": "Create",
       "url": "/pirate"
     }
