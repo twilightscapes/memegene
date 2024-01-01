@@ -1,17 +1,21 @@
-import CMS from 'netlify-cms-app';
-import CategoriesControl from './categories';
 
-CMS.registerWidget('categories', CategoriesControl);
+import CMS from "decap-cms-app"
+// import "module-that-imports-styles.js"
+// import "styles.scss"
 
-// ...other registration code for collections and editor components
+CMS.registerPreviewStyle("../styles/global.css");
+/**
+ * Let's say you've created widget and preview components for a custom image
+ * gallery widget in separate files:
+ */
+// import ImageGalleryWidget from "./image-gallery-widget.js"
+// import ImageGalleryPreview from "./image-gallery-preview.js"
+
+/**
+ * Register the imported widget:
+ */
+// CMS.registerWidget(`image-gallery`, ImageGalleryWidget, ImageGalleryPreview)
 
 
-// import CMS from 'netlify-cms-app'
-
-
-
-
-// import "../styles/global.css"
-
-
-
+    CMS.init({
+      })
