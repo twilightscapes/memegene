@@ -28,6 +28,7 @@
     "title": "MG Reports",
     "showTitles": false,
     "showfooter": false,
+    "ShowDisclaimer": true,
     "image": "/assets/newspaper.webp",
     "showLegal": false,
     "description": "Do these memes make my butt look fat?",
