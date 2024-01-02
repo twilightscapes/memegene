@@ -138,8 +138,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       value={selectedCategory}
                       onChange={handleCategoryChange}
                       style={{
-                        background: '#222',
-                        outline: '1px solid #111',
+                        background: 'var(--theme-ui-colors-siteColor)',
+                        color: 'var(--theme-ui-colors-siteColorText)',
                         borderRadius: '3px',
                         padding: '2px',
                         minWidth: '80px',
@@ -168,8 +168,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
         value={selectedTag}
         onChange={handleTagChange}
         style={{
-          background: '#222',
-          outline: '1px solid #111',
+          background: 'var(--theme-ui-colors-siteColor)',
+          color: 'var(--theme-ui-colors-siteColorText)',
           borderRadius: '3px',
           padding: '2px',
           minWidth: '80px',
@@ -203,10 +203,10 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       onChange={handleSearch}
                       style={{
                         width: '',
-                        background: '#222',
+                        background: 'var(--theme-ui-colors-siteColor)',
+                        color: 'var(--theme-ui-colors-siteColorText)',
                         marginRight: '',
-                        outline: '1px solid #111',
-                        borderRadius: '3px',
+                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
                         height: '',
                         padding: '6px 6px',
                         minWidth: '80px',
@@ -224,28 +224,29 @@ const [playingIndex, setPlayingIndex] = useState(null);
               <button
                 type="reset"
                 value="reset"
+                className="muted"
                 onClick={clearfield}
                 style={{
                   position: '',
                   right: '',
                   top: '',
-                  background: '#222',
-                  color: '#fff',
+                  background: 'var(--theme-ui-colors-siteColor)',
+                  color: 'var(--theme-ui-colors-siteColorText)',
                   textAlign: 'center',
                   fontSize: '10px',
                   height: '',
                   maxWidth: '',
-                  outline: '1px solid #111',
                   padding: '5px',
                   borderRadius: '3px',
                   lineHeight: '100%',
+                  opacity: '.8'
                 }}
                 aria-label="Clear"
               >
                 clear
               </button>
 
-              <div style={{ position: '', right: '', top: '', textAlign: 'center', fontSize: '9px', color: '#fff', maxWidth: '' }}>
+              <div style={{ position: '', right: '', top: '', textAlign: 'center', fontSize: '9px', color: 'var(--theme-ui-colors-headerColorText)', maxWidth: '' }}>
                 {filteredPosts.length} <br />
                 result{filteredPosts.length !== 1 && 's'}
               </div>
@@ -262,10 +263,10 @@ const [playingIndex, setPlayingIndex] = useState(null);
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
   
 
-<div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible' }}>
+<div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible', position:'relative' }}>
 
 {node.frontmatter.youtube.showVidOnly ? (
-<div style={{minWidth:'300px', minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent',}}>
+<div style={{minWidth:'300px', minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent', zindex:'1'}}>
                 <ReactPlayer
                 playing={index === playingIndex}
                 ref={playerRef}
@@ -293,7 +294,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                     // width: '80vw',
                     // height:'60vh',
                     // margin: index === playingIndex ? '0' : '0 auto 15px auto',
-                    zIndex: index === playingIndex ? '9999' : '',
+                    zIndex: index === playingIndex ? '9999' : '1',
                     aspectRatio: '16/9',
                   }}
                   light={`https://i.ytimg.com/vi/${extractVideoId(node.frontmatter.youtube.youtuber)}/hqdefault.jpg`}
@@ -308,8 +309,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
                     },
                   }}
                   playIcon={
-                    <div style={{display:'flex', flexDirection:'column', placeContent:'', justifyContent:'', position:'absolute', zindex:'1', bottom:'-2vh', fontWeight:'bold', padding:'3% 0 0 0', fontSize:'clamp(.6rem, 1.4vw, 1rem)', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
-                      <div className="spotlight1 font" style={{}}>
+                    <div style={{display:'flex', flexDirection:'column', placeContent:'', justifyContent:'', position:'absolute', zindex:'1', top:'', fontWeight:'bold', padding:'3% 0 0 0', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
+                      <div className="spotlight font" style={{}}>
                         <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
                             <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
@@ -340,16 +341,30 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       style={{ position: 'relative', zIndex: '' }}
                     />
                   )}
+
+{node.frontmatter.youtube.youtuber ? (
+                      <div className="spotlight font" style={{border:'0px solid'}}>
+                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
+                            <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', }} />
+                          </div>
+                          Play Multimedia
+                        </div>
+                      </div>
+                    ) : ("")}
                 </Link>
               )}
 
               <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
-                {node.frontmatter.youtube.showVidOnly ? (
+
+            {/* {node.frontmatter.youtube.showVidOnly ? (
                   ""
                 ) : (
                   <>
                     {node.frontmatter.youtube.youtuber ? (
-                      <div className="spotlight font" style={{ marginLeft: '10%', marginTop: '-28%', margin: '-24% 10% 0 10%' }}>
+                      <div className="spotlight font" style={{border:'1px solid'}}>
                         <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
                             <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
@@ -361,11 +376,11 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       </div>
                     ) : ("")}
                   </>
-                )}
+                )} */}
 
-                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', background: showTitles ? 'rgba(0, 0, 0, 0.8)' : 'transparent', }}>
+                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
                   {showTitles ? (
-                    <h2 className="title1" style={{width:'100%', textShadow:'0 1px 1px #222',}}>{node.frontmatter.title}</h2>
+                    <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
                   ) : (
                     ""
                   )}
@@ -382,12 +397,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
         ))}
 
 {numVisibleItems < filteredPosts.length && (
-          <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeSelf: 'center', gap: '',  textAlign: 'center' }}>
-            <button className="button load-more font" onClick={showMoreItems} style={{maxWidth:''}}>
+          <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeSelf: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
+            <button className="button font" onClick={showMoreItems} style={{maxWidth:''}}>
               Load more
             </button>
             {showArchive ? (
-              <Link to="/archive" className="font" style={{ background: 'rgba(0, 0, 0, 0.8)', borderRadius: '5px', color: '#fff', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center' }}>View Archive &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
+              <Link to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: '', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center' }}>View Archive &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
             ) : (
               ""
             )}

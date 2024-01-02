@@ -1,7 +1,10 @@
 {
   "siteColor": "#13A9F4",
+  "siteColorText": "white",
   "headerColor": "rgba(0, 0, 0, .8)",
-  "background": "#999",
-  "text": "#222222",
-  "textShadow": "rgba(0, 0, 0, .1)"
+  "headerColorText": "#fff",
+  "siteBackground": "#aaa",
+  "textShadow": "#222",
+  "borderColor": "#888",
+  "borderRadius": "3px"
 }

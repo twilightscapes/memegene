@@ -196,7 +196,7 @@ export default function Footer() {
 
 
 
-      <footer className="" style={{display:'flex', flexDirection:'column', padding:'0', marginTop:'0', width:'100vw',textAlign:'center'}}>
+      <footer className="" style={{display:'flex', flexDirection:'column', padding:'0', marginTop:'0', width:'100vw',textAlign:'center', background:'var(--theme-ui-colors-headerColor)'}}>
 
 {showConsent ? (
     <Consent />
@@ -214,7 +214,7 @@ export default function Footer() {
     
 
     { showContact ? (
-      <Link state={{modal: true}} to="/contact/" className="button fire font" style={{margin:'2rem 2rem', textDecoration:'none', padding:'1vh 2rem', borderRadius:'3px'}}>Contact</Link>
+      <Link state={{modal: true}} to="/contact/" className="button fire font" style={{margin:'2rem 2rem', textDecoration:'none', padding:'1vh 2rem',}}>Contact</Link>
       ) : (
         ""
       )}
