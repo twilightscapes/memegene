@@ -6,9 +6,9 @@ date: 2023-12-13 21:15
 description: An FBI Surveillance Unit became debilitated by the sights of while
   following Trump's illicit lifestyle
 shareable: true
-showZoom: true
+showZoom: false
 showPageNav: true
-spotlight: 
+spotlight: null
 tags:
   - fbi
   - trump
