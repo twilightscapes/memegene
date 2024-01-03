@@ -34,6 +34,25 @@
     "description": "Do these memes make my butt look fat?",
     "icon512": "/assets/logo.svg",
     "showSwipe": true,
-    "showConsent": false
+    "showConsent": false,
+    "language": {
+      "dicLoadMore": "Load More",
+      "dicViewArchive": "View Archive",
+      "dicCategory": "Category",
+      "dicKeyword": "Keyword",
+      "dicSearch": "Search",
+      "dicClear": "Clear",
+      "dicResults": "Result",
+      "dicContact": "Contact",
+      "dicSocial": "Social Links",
+      "dicDisclaimer": "Disclaimer",
+      "dicPrivacy": "Privacy",
+      "dicTerms": "Terms of Use",
+      "dicCopyright": "Copyright",
+      "dicSwipe": "Swipe",
+      "dicScroll": "Scroll",
+      "dicPirate": "Powered by PIRATE",
+      "dicSiteReport": "Site Report"
+    }
   }
 }
