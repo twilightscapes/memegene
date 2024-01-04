@@ -388,8 +388,8 @@ const OriginalUrl = frontmatter.youtube.youtuber
           className='audioframe'
           url={iframeUrl3}
           width="100%"
-          height="250px"
-          style={{margin:'0 auto', position:'relative', left:'', right:'', zIndex:'3', maxWidth:'80vw', display:'flex', justifyContent:'center', border:'0px solid blue'}}
+          height=""
+          style={{margin:'0 auto', position:'relatuve', top:'', left:'', right:'', zIndex:'3', maxWidth:'80vw', display:'flex', justifyContent:'center', border:'0px solid blue'}}
           config={{
             
             youtube: {
@@ -401,9 +401,9 @@ const OriginalUrl = frontmatter.youtube.youtuber
           playing
           playsinline
           playIcon={
-            <button aria-label="Click To Play" className="clickplays" style={{position:'relative', zIndex:'', top:'', border:'0px  solid red', width:'100vw', height:'0', background:'transparent', color:'', fontSize:'18px', textAlign:'center', display:'flex', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', paddingTop:'0', borderRadius:'12px'}}>
+            <button aria-label="Click To Play" className="clickplays" style={{position:'relative', zIndex:'3', top:'', border:'0px  solid red', width:'100vw', height:'0', background:'transparent', color:'', fontSize:'18px', textAlign:'center', display:'flex', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', paddingTop:'0', borderRadius:'12px'}}>
           
-        <div className="audiopopper" style={{position:'absolute', top:'-400px', right:'', zIndex:'3', textAlign:'center', animation:'fadeIn 3s', display:'flex', justifyContent:'center', width:'auto', marginBottom:''}}>
+        <div className="audiopopper" style={{position:'absolute', top:'-100px', right:'', zIndex:'5', textAlign:'center', animation:'fadeIn 3s', display:'flex', justifyContent:'center', width:'auto', marginBottom:''}}>
           
       
           {/* <div className="" style={{fontSize:'14px', fontWeight:'', padding:'0 0 0 .3rem',}}>Click For Audio</div> */}
@@ -412,12 +412,12 @@ const OriginalUrl = frontmatter.youtube.youtuber
             
  
 
-            <AiOutlineAudioMuted style={{margin:'0 1vw', fontSize:'20px', filter:'drop-shadow(2px 2px 2px #000)'}} />
+            
             
             {LiarLiar ? (
   <ImCross style={{margin:'0 1vw', fontSize:'20px', color:'#ff0000', filter:'drop-shadow(2px 2px 2px #000)'}} />
           ) : (
-            ""
+            <AiOutlineAudioMuted style={{margin:'0 1vw', fontSize:'20px', filter:'drop-shadow(2px 2px 2px #000)'}} />
           )}
             
             <div style={{fontSize:'14px', fontWeight:'', padding:'0 0 0 .3rem', filter:'drop-shadow(2px 2px 2px #000)', color:'#ccc', }}>{frontmatter.audiotitle}</div>
