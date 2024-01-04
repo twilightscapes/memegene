@@ -14,7 +14,7 @@
     "showSocial": true,
     "showNav2": false,
     "postcount": 12,
-    "showPopup": false,
+    "showPopup": true,
     "homecount": 8,
     "magicOptions": {
       "showMagic": true,
@@ -57,7 +57,9 @@
       "dicGoBack": "Go Back",
       "dicPlayVideo": "Play Video",
       "dicPlayMultimedia": "Play Multimedia",
-      "dicClickToView": "Click To View"
+      "dicClickToView": "Click To View",
+      "dicSignUpButton": "Sign Up",
+      "dicSignUpText": "Sign Up - Enter your email"
     }
   }
 }

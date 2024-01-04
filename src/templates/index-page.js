@@ -12,10 +12,10 @@ import { MdArrowForwardIos } from 'react-icons/md';
 import Seo from "../components/seo";
 import { getSrc } from "gatsby-plugin-image";
 import ReactPlayer from 'react-player/lazy';
-
+import SignUp from '../components/newssign'
 
 const HomePage = ({ data }) => {
-  const { showModals, showDates, homecount, postcount, language, magicOptions, showNav, showArchive, showTitles } = useSiteMetadata();
+  const { showModals, showDates, homecount, postcount, language, magicOptions, showNav, showArchive, showTitles, showPopup } = useSiteMetadata();
   const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
 
 
@@ -145,7 +145,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       style={{
                         background: 'var(--theme-ui-colors-siteColor)',
                         color: 'var(--theme-ui-colors-siteColorText)',
-                        borderRadius: '3px',
+                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
                         padding: '2px',
                         minWidth: '80px',
                         maxWidth: '30%',
@@ -175,7 +175,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
         style={{
           background: 'var(--theme-ui-colors-siteColor)',
           color: 'var(--theme-ui-colors-siteColorText)',
-          borderRadius: '3px',
+          borderRadius: 'var(--theme-ui-colors-borderRadius)',
           padding: '2px',
           minWidth: '80px',
           maxWidth: '30%',
@@ -242,7 +242,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   height: '',
                   maxWidth: '',
                   padding: '5px',
-                  borderRadius: '3px',
+                  borderRadius: 'var(--theme-ui-colors-borderRadius)',
                   lineHeight: '100%',
                   opacity: '.8'
                 }}
@@ -365,29 +365,6 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
               <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
 
-            {/* {node.frontmatter.youtube.showVidOnly ? (
-                  ""
-                ) : (
-                  <>
-                    {node.frontmatter.youtube.youtuber ? (
-                      <div className="spotlight font" style={{border:'1px solid'}}>
-                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
-                            <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', }} />
-                          </div>
-                          Play Multimedia
-                        </div>
-                      </div>
-                    ) : ("")}
-                  </>
-                )} */}
-
-
-
-
-
                 <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
                   {showTitles ? (
                     <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
@@ -404,7 +381,37 @@ const [playingIndex, setPlayingIndex] = useState(null);
               </div>
 
           </div>
+
+
+      
         ))}
+
+
+
+{showPopup ? (
+  <div className="post-card1"
+    style={{
+    // position:'relative',
+    // top:'0',
+    // left:'20vw',
+    // right:'20vw',
+    // zIndex:'2',
+    // display:'grid',
+    // placeContent:'center',
+    // height:'100%',
+    // width:'100%',
+    // margin:'0 auto 0 auto',
+    // padding:' 0',
+    // maxWidth:'500px',
+    // borderRadius:'12px',
+    // border:'1px solid red'
+    }}>
+  <SignUp />
+    </div>
+        ) : (
+          ""
+        )}
+
 
 {numVisibleItems < filteredPosts.length && (
           <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeSelf: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
@@ -418,6 +425,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
             )}
           </div>
         )}
+
+        
       </div>
 
 
@@ -449,7 +458,12 @@ export const pageQuery = graphql`
             }
             featuredImage {
               childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  quality: 80
+                  layout: CONSTRAINED
+                  formats: [AUTO, WEBP, AVIF]
+                  )
               }
             }
             category
