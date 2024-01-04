@@ -18,4 +18,15 @@ youtube:
   customcontrols: false
   clicktoplay: false
 featuredImage: /assets/img_0697.jpeg
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: 
+ marating1: YB
+ maratingtx1: Use your brain please
+ marating2: SS
+ maratingtx2: Spontaneous & Sporadic
+ marating3: LH
+ maratingtx3: It's Humor - laugh
+ marating4: AL
+ maratingtx4: Adult Language
 ---

@@ -35,20 +35,21 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
 contentinvideo: false
-bumpertext: "Sometimes, I doubt your commitment to SparkleMotion!"
-marating1: YB
-marating2: SS
-marating3: LH
-marating4: AL
-maratingtx1: Use your brain please
-maratingtx2: Spontaneous & Sporadic
-maratingtx3: It's Humor - laugh
-maratingtx4: Adult Language
-
 tags: 
   - trump
   - propaganda
 spotlight: true
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: 
+ marating1: YB
+ maratingtx1: Use your brain please
+ marating2: SS
+ maratingtx2: Spontaneous & Sporadic
+ marating3: LH
+ maratingtx3: It's Humor - laugh
+ marating4: AL
+ maratingtx4: Adult Language
 ---
 
 

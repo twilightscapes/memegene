@@ -36,16 +36,11 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
 contentinvideo: false
-viewerwarning: Real Footage of new President Biden feature
-marate: DA
-marating1: DA
-marating2: 
-marating3: 
-marating4: 
-maratingtx1: Dumb Ass
-maratingtx2: 
-maratingtx3: 
-maratingtx4: 
+mediawarnings:
+ viewerwarning: Real Footage of new President Biden feature
+ marate: DA
+ marating1: DA
+ maratingtx1: Dumb Ass
 category:
   - test
 tags:

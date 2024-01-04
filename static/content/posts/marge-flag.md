@@ -33,16 +33,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-09T10:00:00"
 contentinvideo: true
-viewerwarning: For the Uneducated Viewers Only
-marate: UE
-marating1: 
-marating2: SR
-marating3: DV
-marating4: DC
-maratingtx1: 
-maratingtx2: Systemic Racism
-maratingtx3: Deranged Views
-maratingtx4: Definitely a Cult
+mediawarnings:
+ viewerwarning: For the Uneducated Viewers Only
+ marate: UE
+ marating1: 
+ marating2: SR
+ marating3: DV
+ marating4: DC
+ maratingtx1: 
+ maratingtx2: Systemic Racism
+ maratingtx3: Deranged Views
+ maratingtx4: Definitely a Cult
 
 tags:
   - traitor

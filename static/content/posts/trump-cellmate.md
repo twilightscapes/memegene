@@ -32,16 +32,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: true
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: DA
-marating2: SP
-marating3: CM
-marating4: 
-maratingtx1: Dumb Ass
-maratingtx2: Sleazy Princess
-maratingtx3: Congressional Misconduct
-maratingtx4: 
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: 
+ marating1: YB
+ maratingtx1: Use your brain please
+ marating2: SS
+ maratingtx2: Spontaneous & Sporadic
+ marating3: LH
+ maratingtx3: It's Humor - laugh
+ marating4: AL
+ maratingtx4: Adult Language
 
 tags: 
  - trump

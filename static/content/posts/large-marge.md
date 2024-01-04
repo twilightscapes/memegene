@@ -35,14 +35,17 @@ showPageNav: true
 nftdrop: "2023-02-09T10:00:00"
 contentinvideo: true
 bumpertext: ""
-marating1: QA
-marating2: SG
-marating3: DR
-marating4: TT
-maratingtx1: Q Anon's girlfriend
-maratingtx2: Sexually Grotesque
-maratingtx3: Dumb as Rocks
-maratingtx4: Trash to the T
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: QA
+ marating2: SG
+ marating3: DR
+ marating4: TT
+ maratingtx1: Q Anon's girlfriend
+ maratingtx2: Sexually Grotesque
+ maratingtx3: Dumb as Rocks
+ maratingtx4: Trash to the T
 
 tags:
   - dumpster

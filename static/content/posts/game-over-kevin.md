@@ -33,16 +33,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: true
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MG
-marating1: DA
-marating2: GL
-marating3: SL
-marating4: 
-maratingtx1: Dumbass
-maratingtx2: Gutless
-maratingtx3: Spineless
-maratingtx4: 
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MG
+ marating1: DA
+ marating2: GL
+ marating3: SL
+ marating4: 
+ maratingtx1: Dumbass
+ maratingtx2: Gutless
+ maratingtx3: Spineless
+ maratingtx4: 
 
 tags: 
  - worst

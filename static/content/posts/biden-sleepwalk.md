@@ -33,18 +33,15 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: false
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: DA
-marating2: BS
-marating3: 
-marating4: 
-maratingtx1: Dumb Ass
-maratingtx2: Total BS
-maratingtx3: 
-maratingtx4: 
-
-tags: 
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: DA
+ marating2: BS
+ maratingtx1: Dumb Ass
+ maratingtx2: Total BS
+ 
+ tags: 
  - biden
  - dumbass
 

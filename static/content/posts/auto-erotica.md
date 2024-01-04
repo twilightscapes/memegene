@@ -4,13 +4,11 @@ title: Photos of Trump found in White House bathroom
 slug: /auto-erotica
 date: 2023-09-15 07:03
 description: Apparently the reason Trump wears so much make up is to hide his dirty little secret
-
 tags:
   - celebrity
   - trump
   - deviants
 youtube:
-
   youtubersuggestion3: null
   youtuber2: null
   youtubeloop: true
@@ -26,14 +24,6 @@ youtube:
   youtubersuggestion2: null
   youtubestart: "240"
 bumpertext: ""
-marating1: YB
-maratingtx1: Use your brain please
-marating2: SS
-maratingtx2: Spontaneous & Sporadic
-marating3: LH
-maratingtx3: It's Humor - laugh
-marating4: AL
-maratingtx4: Adult Language
 comments: false
 shareable: true
 scrollable: false
@@ -50,6 +40,17 @@ underlayImage: null
 svgImage: null
 svgzindex: "0"
 isnftforsale: false
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: X
+ marating1: X
+ marating2: X
+ marating3: X
+ marating4: X
+ maratingtx1: X
+ maratingtx2: X
+ maratingtx3: X
+ maratingtx4: X
 ---
 
 

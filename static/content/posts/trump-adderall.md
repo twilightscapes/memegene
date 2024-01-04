@@ -33,16 +33,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: true
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: DA
-marating2: CH
-marating3: MP
-marating4: 
-maratingtx1: Drug Addict
-maratingtx2: Crack Head
-maratingtx3: Many People Are Saying
-maratingtx4: 
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: DA
+ marating2: CH
+ marating3: MP
+ marating4: 
+ maratingtx1: Drug Addict
+ maratingtx2: Crack Head
+ maratingtx3: Many People Are Saying
+ maratingtx4: 
 
 tags: 
  - trump

@@ -33,16 +33,17 @@ showZoom: false
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: true
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: EC
-marating2: SS
-marating3: HL
-marating4: 
-maratingtx1: Extreme Closeups
-maratingtx2: Strong Sexual Situations
-maratingtx3: It's Humor, Laugh
-maratingtx4: 
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: 
+ marating1: YB
+ maratingtx1: Use your brain please
+ marating2: SS
+ maratingtx2: Spontaneous & Sporadic
+ marating3: LH
+ maratingtx3: It's Humor - laugh
+ marating4: AL
+ maratingtx4: Adult Language
 
 tags: 
  - celebrity

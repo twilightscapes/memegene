@@ -34,16 +34,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: false
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: DA
-marating2: SP
-marating3: CM
-marating4: 
-maratingtx1: Dumb Ass
-maratingtx2: Sleazy Princess
-maratingtx3: Congressional Misconduct
-maratingtx4: 
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: DA
+ marating2: SP
+ marating3: CM
+ marating4: 
+ maratingtx1: Dumb Ass
+ maratingtx2: Sleazy Princess
+ maratingtx3: Congressional Misconduct
+ maratingtx4: 
 
 tags: 
  - santos

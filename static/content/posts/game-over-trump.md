@@ -33,16 +33,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: true
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: ST
-marating2: SS
-marating3: IV
-marating4: 
-maratingtx1: Spineless Traitor
-maratingtx2: Strong Sexual Situations
-maratingtx3: Intense Violence
-maratingtx4: 
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: ST
+ marating2: SS
+ marating3: IV
+ marating4: 
+ maratingtx1: Spineless Traitor
+ maratingtx2: Strong Sexual Situations
+ maratingtx3: Intense Violence
+ maratingtx4: 
 
 tags: 
  - trump

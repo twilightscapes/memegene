@@ -1,9 +1,5 @@
 ---
-marating1: DA
-marating2: MW
 audiotitle: Fuckin' Liar!
-marating3: NF
-marating4: null
 date: 2023-10-11 18:00
 showZoom: true
 spotlight: true
@@ -37,16 +33,14 @@ tags:
   - prison
   - tv
 featuredImage: /assets/trump-friends-promo.webp
-underlayImage: null
-marate: MA
-comments: false
-svgImage: null
-maratingtx1: Dumb Ass
-liarliar: true
-svgzindex: "0"
-maratingtx2: Must Watch TV
-contentinvideo: false
-maratingtx3: No Friends
-isnftforsale: false
-maratingtx4: null
+mediawarnings:
+ marating3: NF
+ marating1: DA
+ marating2: MW
+ marate: MA
+ maratingtx1: Dumb Ass
+ maratingtx2: Must Watch TV
+ maratingtx3: No Friends
+
+
 ---

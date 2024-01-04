@@ -23,14 +23,17 @@ youtube:
   youtubersuggestion2: null
   youtubestart: "240"
 bumpertext: ""
-marating1: YB
-maratingtx1: Use your brain please
-marating2: SS
-maratingtx2: Spontaneous & Sporadic
-marating3: LH
-maratingtx3: It's Humor - laugh
-marating4: AL
-maratingtx4: Adult Language
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: YB
+ maratingtx1: Use your brain please
+ marating2: SS
+ maratingtx2: Spontaneous & Sporadic
+ marating3: LH
+ maratingtx3: It's Humor - laugh
+ marating4: AL
+ maratingtx4: Adult Language
 comments: false
 shareable: true
 scrollable: false

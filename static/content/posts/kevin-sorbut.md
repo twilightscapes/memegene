@@ -36,17 +36,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
 contentinvideo: true
-viewerwarning: Warning! The following content contains lots of bullshit
-marate: BS
-marating1: WU
-marating2: NT
-marating3: BS
-marating4: 
-maratingtx1: Washed Up
-maratingtx2: No Talent
-maratingtx3: Bullshit
-maratingtx4: 
-
+mediawarnings:
+ viewerwarning: Warning! The following content contains lots of bullshit
+ marate: BS
+ marating1: WU
+ marating2: NT
+ marating3: BS
+ marating4: 
+ maratingtx1: Washed Up
+ maratingtx2: No Talent
+ maratingtx3: Bullshit
+ maratingtx4: 
 
 tags:
   - newshax

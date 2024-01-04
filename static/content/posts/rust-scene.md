@@ -36,17 +36,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
 contentinvideo: false
-viewerwarning: Warning - Graphic Scenes
-marate: MA
-marating1: GS
-marating2: OA
-marating3: 
-marating4: 
-maratingtx1: Gun Safety
-maratingtx2: OSHA Approved
-maratingtx3: 
-maratingtx4: 
-
+mediawarnings:
+ viewerwarning: Warning - Graphic Scenes
+ marate: MA
+ marating1: GS
+ marating2: OA
+ marating3: 
+ marating4: 
+ maratingtx1: Gun Safety
+ maratingtx2: OSHA Approved
+ maratingtx3: 
+ maratingtx4: 
 
 tags:
   - guns

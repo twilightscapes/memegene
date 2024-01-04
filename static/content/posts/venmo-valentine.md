@@ -38,16 +38,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
 contentinvideo: true
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: EW
-marating2: QA
-marating3: DQ
-marating4: TS
-maratingtx1: Eww!
-maratingtx2: Qrazy
-maratingtx3: Drama Queen
-maratingtx4: Trump Slurper
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: EW
+ marating2: QA
+ marating3: DQ
+ marating4: TS
+ maratingtx1: Eww!
+ maratingtx2: Qrazy
+ maratingtx3: Drama Queen
+ maratingtx4: Trump Slurper
 
 tags: 
  - mattgaetz

@@ -36,16 +36,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-22T10:00:00"
 contentinvideo: true
-viewerwarning: Viewer Discretion Strongly Advised
-marate: MA
-marating1: EW
-marating2: QA
-marating3: DQ
-marating4: TT
-maratingtx1: Eww!
-maratingtx2: Qrazy
-maratingtx3: Drama Queen
-maratingtx4: Tramp to Trump
+mediawarnings:
+ viewerwarning: Viewer Discretion Strongly Advised
+ marate: MA
+ marating1: EW
+ marating2: QA
+ marating3: DQ
+ marating4: TT
+ maratingtx1: Eww!
+ maratingtx2: Qrazy
+ maratingtx3: Drama Queen
+ maratingtx4: Tramp to Trump
 tags:
   - kimberly
   - fake

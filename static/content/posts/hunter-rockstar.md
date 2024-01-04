@@ -36,16 +36,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
 contentinvideo: false
-viewerwarning: Warning
-marate: MA
-marating1: VL
-marating2: SS
-marating3: DV
-marating4: HB
-maratingtx1: Vile Language
-maratingtx2: Sexual Situations
-maratingtx3: Deranged Violence
-maratingtx4: Hunter Biden levels
+mediawarnings:
+ viewerwarning: Warning
+ marate: MA
+ marating1: VL
+ marating2: SS
+ marating3: DV
+ marating4: HB
+ maratingtx1: Vile Language
+ maratingtx2: Sexual Situations
+ maratingtx3: Deranged Violence
+ maratingtx4: Hunter Biden levels
 
 tags:
   - hunter

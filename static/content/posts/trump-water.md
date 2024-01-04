@@ -36,16 +36,17 @@ showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
 contentinvideo: false
-viewerwarning: Warning this content is rated total bullshit
-marate: BS
-marating1: VG
-marating2: 
-marating3: DQ
-marating4: ME
-maratingtx1: Vile Grifter
-maratingtx2: 
-maratingtx3: Drama Queen
-maratingtx4: It's all about me
+mediawarnings:
+ viewerwarning: Warning this content is rated total bullshit
+ marate: BS
+ marating1: VG
+ marating2: 
+ marating3: DQ
+ marating4: ME
+ maratingtx1: Vile Grifter
+ maratingtx2: 
+ maratingtx3: Drama Queen
+ maratingtx4: It's all about me
 
 tags:
   - trump

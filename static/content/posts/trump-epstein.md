@@ -36,16 +36,17 @@ showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
 contentinvideo: true
 bumpertext: "These guys were bros"
-marate: SICK
-viewerwarning: You may lose brain cells after viewing this
-marating1: SP
-marating2: LS
-marating3: PH
-marating4: AL
-maratingtx1: Souless Perverts
-maratingtx2: Love Story
-maratingtx3: Political Humor
-maratingtx4: Adult Language
+mediawarnings:
+ marate: SICK
+ viewerwarning: You may lose brain cells after viewing this
+ marating1: SP
+ marating2: LS
+ marating3: PH
+ marating4: AL
+ maratingtx1: Souless Perverts
+ maratingtx2: Love Story
+ maratingtx3: Political Humor
+ maratingtx4: Adult Language
 
 tags:
   - trump
