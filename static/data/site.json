@@ -53,7 +53,8 @@
       "dicPlayMultimedia": "Play Multimedia",
       "dicClickToView": "Click To View",
       "dicSignUpButton": "Sign Up",
-      "dicSignUpText": "Sign Up - Enter your email"
+      "dicSignUpText": "Sign Up - Enter your email",
+      "dicClose": "X Close"
     },
     "image": "/assets/newspaper.webp",
     "showLegal": false,
