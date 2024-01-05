@@ -1,54 +1,55 @@
 ---
+draft: true
+audiotitle: null
+youtube:
+  youtubersuggestion3: null
+  youtuber2: null
+  youtubeloop: true
+  customcontrols: true
+  youtuber: https://youtu.be/accEKtBebaU
+  youtubeautostart: false
+  youtubeshoworiginal: true
+  clicktoplay: false
+  youtubeend: "5"
+  youtubecontrols: false
+  youtubemute: false
+  youtubersuggestion1: null
+  youtubersuggestion2: null
+  youtubestart: "1"
+audioend: "5000"
+scrollable: false
+nftdrop: 2023-02-11T10:00:00
 template: blog-post
 title: Sometimes, I doubt your commitment to SparkleMotion!
 slug: /sparklemotion
-date: 2023-02-18 04:43
-description: Tears, hysterics, manipulation and insanity! I often wonder how she makes it through each day
-youtube:
- youtuber: "https://youtu.be/accEKtBebaU"
- youtuber2: 
- youtubeshoworiginal: true
- youtubersuggestion1: 
- youtubersuggestion2: 
- youtubersuggestion3: 
- youtubestart: "1"
- youtubeend: "5"
- youtubemute: false
- youtubecontrols: false
- clicktoplay: false
- customcontrols: true
- youtubeautostart: false
- youtubeloop: true
 audiostart: "20"
-audioend: "5000"
-audiotitle: 
-liarliar: true
-isnftforsale: false
-svgzindex: "0"
-comments: false
+date: 2023-02-18 04:43
+description: Tears, hysterics, manipulation and insanity! I often wonder how she
+  makes it through each day
 shareable: true
-underlayImage: /assets/sparklemotion.webp
-featuredImage: /assets/sparklemotion-promo.webp
-svgImage: 
-scrollable: false
 showZoom: true
 showPageNav: true
-nftdrop: "2023-02-11T10:00:00"
-contentinvideo: true
-bumpertext: "Sometimes, I doubt your commitment to SparkleMotion!"
+tags: null
 mediawarnings:
- viewerwarning: Viewer Discretion Strongly Advised
- marate: 
- marating1: YB
- maratingtx1: Use your brain please
- marating2: SS
- maratingtx2: Spontaneous & Sporadic
- marating3: LH
- maratingtx3: It's Humor - laugh
- marating4: AL
- maratingtx4: Adult Language
-
-tags: 
+  marating1: YB
+  marating2: SS
+  marating3: LH
+  marating4: AL
+  viewerwarning: Viewer Discretion Strongly Advised
+  marate: null
+  maratingtx1: Use your brain please
+  maratingtx2: Spontaneous & Sporadic
+  maratingtx3: It's Humor - laugh
+  maratingtx4: Adult Language
+featuredImage: /assets/sparklemotion-promo.webp
+underlayImage: /assets/sparklemotion.webp
+bumpertext: Sometimes, I doubt your commitment to SparkleMotion!
+comments: false
+svgImage: null
+liarliar: true
+svgzindex: "0"
+contentinvideo: true
+isnftforsale: false
 ---
 
 
