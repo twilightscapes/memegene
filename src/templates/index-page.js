@@ -146,10 +146,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
                         background: 'var(--theme-ui-colors-siteColor)',
                         color: 'var(--theme-ui-colors-siteColorText)',
                         borderRadius: 'var(--theme-ui-colors-borderRadius)',
-                        padding: '2px',
                         minWidth: '80px',
                         maxWidth: '30%',
                         overflow: 'hidden',
+                        height: '',
+                        lineHeight: '100%',
+                        padding: '5px 2px',
                       }}
                       aria-label="Select Category"
                     >
@@ -176,10 +178,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
           background: 'var(--theme-ui-colors-siteColor)',
           color: 'var(--theme-ui-colors-siteColorText)',
           borderRadius: 'var(--theme-ui-colors-borderRadius)',
-          padding: '2px',
           minWidth: '80px',
           maxWidth: '30%',
           overflow: 'hidden',
+          height: '',
+          lineHeight: '100%',
+          padding: '5px 2px',
         }}
         aria-label="Select Keyword"
       >
@@ -213,10 +217,10 @@ const [playingIndex, setPlayingIndex] = useState(null);
                         marginRight: '',
                         borderRadius: 'var(--theme-ui-colors-borderRadius)',
                         height: '',
+                        lineHeight: '100%',
                         padding: '6px 6px',
                         minWidth: '80px',
                         maxWidth: '80%',
-                        lineHeight: '100%',
                       }}
                       aria-label="Search"
                     />
@@ -239,12 +243,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   color: 'var(--theme-ui-colors-siteColorText)',
                   textAlign: 'center',
                   fontSize: '10px',
-                  height: '',
                   maxWidth: '',
-                  padding: '5px',
-                  borderRadius: 'var(--theme-ui-colors-borderRadius)',
+                  height: '',
                   lineHeight: '100%',
-                  opacity: '.8'
+                  padding: '5px 2px',
+                  borderRadius: 'var(--theme-ui-colors-borderRadius)',
+                  // opacity: '.8'
                 }}
                 aria-label="{dicClear}"
               >
@@ -400,11 +404,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
               ""
             )}
             
-            {showPopup ? (
+            <br />
+{showPopup ? (
   <SignUp />
         ) : (
           ""
-        )}
+)}
 
 
         
@@ -430,7 +435,7 @@ export const pageQuery = graphql`
   query ($id: String!, $homecount: Int) {
     allMarkdownRemark(
       sort: [{ frontmatter: { spotlight: ASC } }, { frontmatter: { date: DESC } }]
-      filter: { frontmatter: { template: { eq: "blog-post" } } }
+      filter: { frontmatter: { template: { eq: "blog-post" }, draft: { ne: true } } }
       limit: $homecount
     ) {
       edges {
@@ -453,12 +458,13 @@ export const pageQuery = graphql`
                   quality: 80
                   layout: CONSTRAINED
                   formats: [AUTO, WEBP, AVIF]
-                  )
+                )
               }
             }
             category
             tags
             slug
+            draft 
           }
         }
       }
@@ -482,5 +488,6 @@ export const pageQuery = graphql`
     }
   }
 `;
+
 
 export default HomePage;

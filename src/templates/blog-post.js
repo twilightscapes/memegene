@@ -360,7 +360,7 @@ const OriginalUrl = frontmatter.youtube.youtuber
                 },
               },
               youtube: {
-                playerVars: { showinfo:0, autoplay:YouTubeAutostart, controls:YouTubeControls, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
+                playerVars: { showinfo: false, autoplay:YouTubeAutostart, controls:YouTubeControls, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
               },
             }}
           
@@ -1379,7 +1379,7 @@ zindex:'1'
 
   <div className="panel" style={{padding:'0 0', border:'0px solid red', margin:'0 0', textAlign:'center', fontSize:'1.5rem', minWidth:'50%', width:'100%'}}>
       <div
-        className="blog-post-content bodycontent" style={{ fontSize:'clamp(1.2rem, 2.8vw, 1.8rem)', textAlign:'center', width:'100%', maxWidth:'', padding:'2vh 6% 10vh 6%', margin:'0 auto', border:'1px solid red', color:'inherit'}}
+        className="blog-post-content bodycontent" style={{ fontSize:'clamp(1.2rem, 2.8vw, 1.8rem)', textAlign:'center', width:'100%', maxWidth:'', padding:'2vh 6% 20vh 6%', margin:'0 auto', border:'1px solid red', color:'inherit'}}
         dangerouslySetInnerHTML={{ __html: html }}
       />    
 </div>
@@ -1485,7 +1485,7 @@ zindex:'1'
 
 <div className="panel" style={{padding:'0 0', borderTop:'0px solid', margin:'0 0', textAlign:'center', fontSize:'1.5rem', minWidth:'50%', width:'100%', maxWidth:'', border:'0px solid yellow', borderRadius:''}}>
 <div
-  className="blog-post-content bodycontent" style={{ fontSize:'clamp(1.2rem, 2.8vw, 1.8rem)', textAlign:'center', width:'100%', maxWidth:'', padding:'0 6% 0 6%', margin:'0 auto', color:'inherit !important'}}
+  className="blog-post-content bodycontent" style={{ fontSize:'clamp(1.2rem, 2.8vw, 1.8rem)', textAlign:'center', width:'100%', maxWidth:'', padding:'0 6% 20vh 6%', margin:'0 auto', color:'inherit !important'}}
   dangerouslySetInnerHTML={{ __html: html }}
 />    
 </div>
@@ -1675,7 +1675,13 @@ export default Post
 
 
 export const pageQuery = graphql`
-  query BlogPostQueryBlogPostQuery($id: String!) {
+  fragment isDraft on MarkdownRemark {
+    frontmatter {
+      draft
+    }
+  }
+
+  query BlogPostQuery($id: String!) {
     site {
       siteMetadata {
         title
@@ -1688,6 +1694,7 @@ export const pageQuery = graphql`
       }
     }
     markdownRemark(id: { eq: $id }) {
+      ...isDraft
       id
       html
       excerpt(pruneLength: 148)
@@ -1754,5 +1761,20 @@ export const pageQuery = graphql`
         }
       }
     }
+    allMarkdownRemark(
+      sort: { order: ASC, fields: [frontmatter___date] }
+      filter: { frontmatter: { template: { eq: "blog-post" }, draft: { ne: true } } }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            slug
+            date(formatString: "MMMM DD, YYYY")
+          }
+        }
+      }
+    }
   }
-`
+`;

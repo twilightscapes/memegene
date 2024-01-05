@@ -401,19 +401,15 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
 
 
 
-<div style={{minHeight:'', maxWidth:'', overflowX:'hidden', position:'relative', zIndex:''}}>
+<main style={{}}>
 {children}
-</div>
+
       
 
 
  
 
-{image ? (
-<img className="backimage" src={image} alt="Default Background" style={{height:'100vh', width:'100vw', position:'fixed', zIndex:'-2', top:'0', objectFit:'cover',}} width="10" height="10" />
-) : (
-  ""
-)}
+
 
       
 {/* show footer */}
@@ -423,7 +419,15 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
   ""
 )}
 {/* end show footer */}
-      
+
+
+
+      </main>
+      {image ? (
+<img className="backimage" src={image} alt="Default Background" style={{height:'100vh', width:'100vw', position:'fixed', zIndex:'-2', top:'0', objectFit:'cover',}} width="10" height="10" />
+) : (
+  ""
+)}
       </>
 
     
