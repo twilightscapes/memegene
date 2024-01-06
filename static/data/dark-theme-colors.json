@@ -1,12 +1,12 @@
 {
-  "siteColor": "#ff0000",
-  "siteColorText": "white",
-  "headerColor": "rgba(0, 0, 0, .8)",
   "headerColorText": "#fff",
-  "siteBackground": "#111",
-  "text": "#ddd",
+  "siteColorText": "white",
   "textShadow": "rgba(0, 0, 0, .1)",
+  "text": "#ddd",
+  "siteBackground": "#111",
+  "siteFont": "Titan One",
+  "headerColor": "rgba(0, 0, 0, 0.55)",
   "borderColor": "#333",
-  "borderRadius": "3px",
-  "siteFont": "Titan One"
+  "siteColor": "#ff0000",
+  "borderRadius": "3px"
 }
