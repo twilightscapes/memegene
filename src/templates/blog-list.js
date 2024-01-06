@@ -13,7 +13,14 @@ import { MdArrowForwardIos, MdArrowBackIos } from 'react-icons/md';
 import ReactPlayer from 'react-player/lazy';
 const BlogList = ({ data, pageContext }) => {
 
-  const { showModals, postcount, showDates, showNav, showTitles } = useSiteMetadata();
+  const { postcount, featureOptions, proOptions } = useSiteMetadata();
+
+
+
+  const {  showDates, showNav, showTitles } = featureOptions
+
+  const { showModals } = proOptions
+  
   const posts = data.allMarkdownRemark.edges;
   const { numPages, currentPage } = pageContext;
 
@@ -31,7 +38,7 @@ const BlogList = ({ data, pageContext }) => {
         <body className="archivepage utilitypage" />
       </Helmet>
 
-      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '' : '', }}>
+      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vh' : '8vh', }}>
         <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
 
         {posts.slice(0, currentPage * postcount).map(({ node }, index) => (

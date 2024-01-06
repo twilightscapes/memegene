@@ -12,7 +12,7 @@ import { RiArrowUpFill } from "react-icons/ri"
 import GoBack from "../components/goBack"
 import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-4'
 import Menu from "../components/menu"
-import { BiLeftArrow } from "react-icons/bi"
+// import { BiLeftArrow } from "react-icons/bi"
 import defaultColors from "../../static/data/default-colors.json";
 import userStyles from "../../static/data/userStyles.json"
 // import MenuSocial from "../components/menu-social"
@@ -51,38 +51,22 @@ import Footer from "../components/footer"
     }, []);
 
 
-    const { language } = useSiteMetadata();
-    const { dicSearch, dicGoBack } = language;
+    const { language, navOptions, featureOptions, proOptions } = useSiteMetadata();
+    const { dicSearch, dicClose } = language;
+    const { showNav, showNav2 } = navOptions
+    const { showfooter, showSwipe, showSearch } = featureOptions
+    const { showModals } = proOptions
+
+    
 
 const { companyname } = useSiteMetadata()
 const { iconimage } = useSiteMetadata()
 
 const { image } = useSiteMetadata()
 
-const { showModals } = useSiteMetadata()
-
-const { showNav } = useSiteMetadata()
-const { showNav2 } = useSiteMetadata()
-// const { showInfo } = useSiteMetadata()
-// const { showFeature } = useSiteMetadata()
-// const { showPosts } = useSiteMetadata()
-const { showSearch } = useSiteMetadata()
 
 
-// const { showfooter } = useSiteMetadata()
-// const { showPopup } = useSiteMetadata()
-// const { font1 } = useSiteMetadata()
-// const { userStyles } = useSiteMetadata()
-const { showfooter } = useSiteMetadata()
-const { showSwipe } = useSiteMetadata()
 
-// function truncateText(text, maxLength) {
-//   if (text.length > maxLength) {
-//     return text.substring(0, maxLength) + '';
-//   } else {
-//     return text;
-//   }
-// }
 
 useEffect(() => {
   sessionStorage.setItem("currentScrollPos", window.pageYOffset)
@@ -157,7 +141,10 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
   {modal ? (
     <div id="modalCloser" style={{display:'', position:'fixed', top:'60px', right:'5px', padding:'0px', fontSize:'', opacity:'1 !important', zIndex:'22',}}>
     <Link state={{noScroll: true }} to={closeTo} style={{fontSize:'',  textDecoration:'none', lineHeight:'', display:'flex', flexDirection:'column', color:'#fff', cursor:'pointer'}}>
-    <button className="button" style={{ display: 'flex', justifyContent: 'center', padding:'0 .5vw' }}> <span className="icon -left" style={{ paddingRight: '' }}><BiLeftArrow /></span> {" "}{dicGoBack}</button>
+    <button className="button" style={{ display: 'flex', justifyContent: 'center', padding:'0 .5vw' }}>
+      {/* <span className="icon -left" style={{ paddingRight: '' }}><BiLeftArrow /></span> {" "} */}
+    {dicClose}
+    </button>
     </Link>
     </div>
   ) : (
@@ -170,7 +157,7 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
 <div
         className={`upbar button ${showBackToTop ? 'visible' : ''}`}
         style={{
-          position:'fixed', bottom:'20px', zIndex:'4', left:'', right:'1vw', display:'flex', justifyContent:'center', width:'auto', maxWidth:'80vw', margin:'0 auto', gap:'5vw', padding:'0', border:'1px solid var(--theme-ui-colors-borderColor)', borderRadius:'', textShadow:'0 1px 1px rgba(0, 0, 0, .7)', fontSize:'', verticalAlign:'center',
+          position:'fixed', bottom:'20px', zIndex:'4', left:'', right:'1vw', display:'flex', justifyContent:'center', width:'auto', maxWidth:'80vw', margin:'0 auto', gap:'5vw', padding:'0', border:'none', borderRadius:'', textShadow:'0 1px 1px rgba(0, 0, 0, .7)', fontSize:'', verticalAlign:'center',
           transform: showBackToTop ? 'translateY(0)' : 'translateY(200%)',
         }}
       >
@@ -181,11 +168,11 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
               document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
             }}
             aria-label="Link to Top"
-            style={{cursor: 'pointer', height: '', fontSize: ''}}
+            style={{cursor: 'pointer', height: '', fontSize: '', border:'none', outline:'none'}}
           >
-        <div className="uparrow" style={{display:'flex', flexDirection:'column', gap:'0', padding:'1vh 1vw', alignItems:'center', textAlign:'center'}}>
+        <div className="uparrow" style={{display:'flex', flexDirection:'column', gap:'0', padding:'', alignItems:'center', textAlign:'center'}}>
           
-            <RiArrowUpFill className="" style={{cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fontSize: '3rem'}} />
+            <RiArrowUpFill className="" style={{cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fill:'var(--theme-ui-colors-siteColorText)', fontSize: '3rem'}} />
         </div>
         </a>
       </div>
@@ -401,15 +388,8 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
 
 
 
-<main style={{}}>
+
 {children}
-
-      
-
-
- 
-
-
 
       
 {/* show footer */}
@@ -422,7 +402,7 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
 
 
 
-      </main>
+      
       {image ? (
 <img className="backimage" src={image} alt="Default Background" style={{height:'100vh', width:'100vw', position:'fixed', zIndex:'-2', top:'0', objectFit:'cover',}} width="10" height="10" />
 ) : (

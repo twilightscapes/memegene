@@ -13,8 +13,13 @@ import { MdArrowForwardIos } from 'react-icons/md';
 import ReactPlayer from 'react-player/lazy'
 const TagIndex = ({ data }) => {
 
-  const { showDates, postcount, showTitles, showNav, showModals, language } = useSiteMetadata()
+  const {  postcount, language, featureOptions, proOptions } = useSiteMetadata()
+  const { showDates, showTitles, showNav } = featureOptions
+  const { showModals  } = proOptions
   const { dicKeyword, dicPlayVideo, dicPlayMultimedia } = language;
+
+
+  
 
   const [selectedTag, setSelectedTag] = useState(''); // State to keep track of selected tag
   const [visibleItems, setVisibleItems] = useState(postcount); 
@@ -87,7 +92,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 </div>
        
 
-      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '6vw' : '6vw', }}>
+      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', }}>
         <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
    
           {data.allMarkdownRemark.edges &&

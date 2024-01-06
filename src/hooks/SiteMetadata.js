@@ -14,24 +14,34 @@ const useSiteMetadata = () => {
           twitterUsername
           iconimage
           companyname
-          showfooter
-          showNav
-          showNav2
-          showDates
-          showSearch
-          showSwipe
           postcount
           homecount
-          showArchive
-          showTitles
-          showConsent
-          showSocial
-          showBranding
-          showLegal
-          showModals
-          showContact
-          showPopup
-          ShowDisclaimer
+
+
+          featureOptions{
+            showfooter
+            showDates
+            showSearch
+            showSwipe
+            showArchive
+            showTitles
+            showSocial
+          }
+
+          proOptions{
+            showConsent
+            showBranding
+            showLegal
+            showModals
+            showContact
+            showPopup
+            ShowDisclaimer
+          }
+          navOptions{
+            showFooterMenu
+            showNav
+            showNav2
+          }
           magicOptions {
             showMagic
             showMagicCat
@@ -64,6 +74,13 @@ const useSiteMetadata = () => {
             dicClickToView
             dicSignUpText
             dicSignUpButton
+            dicClose
+            dicName
+            dicEmail
+            dicMessage
+            dicSubmit
+            dicPhone
+            dicConfirmation
           }
         }
       }

@@ -1,33 +1,46 @@
 {
   "meta": {
     "iconimage": "/assets/logo.svg",
-    "showModals": true,
-    "showContact": false,
-    "showArchive": false,
-    "showSearch": false,
-    "showNav": true,
     "companyname": "Meme Genes",
     "siteUrl": "https://memegenes.com",
-    "showDates": false,
     "twitterUsername": "toddlambert",
     "titleDefault": "MG Reports",
-    "showSocial": true,
-    "showNav2": false,
     "postcount": 12,
-    "showPopup": false,
     "homecount": 8,
+    "titleTemplate": "%s",
+    "title": "MG Reports",
+    "image": "/assets/newspaper.webp",
+    "description": "Do these memes make my butt look fat?",
+    "icon512": "/assets/logo.svg",
+    "navOptions": {
+      "showNav": true,
+      "showNav2": false,
+      "showFooterMenu": false
+    },
+    "featureOptions": {
+      "showArchive": false,
+      "showSearch": false,
+      "showDates": false,
+      "showTitles": false,
+      "showfooter": false,
+      "showSocial": false,
+      "showSwipe": true
+    },
+    "proOptions": {
+      "showModals": true,
+      "showContact": false,
+      "showBranding": false,
+      "ShowDisclaimer": true,
+      "showLegal": false,
+      "showConsent": false,
+      "showPopup": false
+    },
     "magicOptions": {
       "showMagic": true,
       "showMagicCat": false,
       "showMagicTag": true,
       "showMagicSearch": true
     },
-    "titleTemplate": "%s",
-    "ShowDisclaimer": true,
-    "showBranding": true,
-    "title": "MG Reports",
-    "showTitles": false,
-    "showfooter": false,
     "language": {
       "dicLoadMore": "Load More",
       "dicViewArchive": "View Archive",
@@ -54,13 +67,13 @@
       "dicClickToView": "Click To View",
       "dicSignUpButton": "Sign Up",
       "dicSignUpText": "Sign Up - Enter your email",
-      "dicClose": "X Close"
-    },
-    "image": "/assets/newspaper.webp",
-    "showLegal": false,
-    "description": "Do these memes make my butt look fat?",
-    "icon512": "/assets/logo.svg",
-    "showSwipe": true,
-    "showConsent": false
+      "dicClose": "X Close",
+      "dicName": "Your Name",
+      "dicEmail": "your@email.com",
+      "dicMessage": "Your Message",
+      "dicSubmit": "Send Message",
+      "dicPhone": "Your Phone Number",
+      "dicConfirmation": "Message Received"
+    }
   }
 }

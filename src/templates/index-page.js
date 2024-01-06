@@ -15,11 +15,16 @@ import ReactPlayer from 'react-player/lazy';
 import SignUp from '../components/newssign'
 
 const HomePage = ({ data }) => {
-  const { showModals, showDates, homecount, postcount, language, magicOptions, showNav, showArchive, showTitles, showPopup } = useSiteMetadata();
+
+  const { postcount, homecount, language, magicOptions, featureOptions, proOptions, navOptions  } = useSiteMetadata();
+
   const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
-
-
-const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia} = language;
+  
+  const { showModals, showPopup } = proOptions
+  const { showDates, showArchive, showTitles } = featureOptions
+  const { showNav } = navOptions
+  
+  const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
 
 
 
@@ -146,8 +151,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
                         background: 'var(--theme-ui-colors-siteColor)',
                         color: 'var(--theme-ui-colors-siteColorText)',
                         borderRadius: 'var(--theme-ui-colors-borderRadius)',
-                        minWidth: '80px',
-                        maxWidth: '30%',
+                        minWidth: '100px',
+                        maxWidth: '20%',
                         overflow: 'hidden',
                         height: '',
                         lineHeight: '100%',
@@ -178,7 +183,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
           background: 'var(--theme-ui-colors-siteColor)',
           color: 'var(--theme-ui-colors-siteColorText)',
           borderRadius: 'var(--theme-ui-colors-borderRadius)',
-          minWidth: '80px',
+          minWidth: '100px',
           maxWidth: '30%',
           overflow: 'hidden',
           height: '',
@@ -204,7 +209,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
               {showMagicSearch ? (
                 <>
-                  <label style={{ maxWidth: '' }}>
+                
                     <input
                       id="clearme"
                       type="text"
@@ -219,12 +224,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
                         height: '',
                         lineHeight: '100%',
                         padding: '6px 6px',
-                        minWidth: '80px',
+                        minWidth: '100px',
                         maxWidth: '80%',
                       }}
                       aria-label="Search"
                     />
-                  </label>
+                  
                 </>
               ) : (
                 ""
@@ -266,7 +271,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
         ""
       )}
 
-      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '6vw' : '6vw', }}>
+      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', }}>
         <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
 
         {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (

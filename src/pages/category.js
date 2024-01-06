@@ -8,8 +8,17 @@ import { Helmet } from "react-helmet";
 const CategoryIndex = ({ data, pageContext }) => {
   const { category } = pageContext;
   const categories = data.allMarkdownRemark.group.map((group) => group.fieldValue);
-  const { postcount, showModals, language } = useSiteMetadata();
+
+
+
+
+
+
+  const {  postcount, language, proOptions } = useSiteMetadata()
+
+  const { showModals  } = proOptions
   const { dicCategory } = language;
+
 
   const [visibleItems, setVisibleItems] = useState(postcount);
 
@@ -46,7 +55,7 @@ const CategoryIndex = ({ data, pageContext }) => {
       </div>
 </div>
 
-      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', marginTop: '', padding:'15vw 10vw 0 10vw' }}>
+      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', marginTop: '18vh', padding:'0 10vw 10vh 10vw' }}>
 
         <div className="sliderSpacer" style={{ height: "", paddingTop: "", display: "" }}></div>
 
@@ -86,7 +95,7 @@ const CategoryIndex = ({ data, pageContext }) => {
                 background: 'rgba(0, 0, 0, 0.5)',
                 border: '1px solid #999',
                 borderRadius: '8px',
-                fontSize: 'clamp(2.5rem,5vw,5rem)'
+                fontSize: 'clamp(2.5rem,3vw,3rem)'
               }}
             >
               {category}
