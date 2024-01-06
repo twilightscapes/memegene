@@ -32,7 +32,6 @@ scrollable: false
 showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
-contentinvideo: false
 mediawarnings:
  viewerwarning: Viewer Discretion Strongly Advised
  marate: MA

@@ -18,10 +18,11 @@ youtube:
  youtubeautostart: true
  youtubeloop: true
  clicktoplay: false
-audiostart: "20"
-audioend: "5000"
-audiotitle: "Poor Babies! Click here to laugh"
-liarliar: false
+ contentinvideo: true
+ audiostart: "20"
+ audioend: "5000"
+ audiotitle: "Poor Babies! Click here to laugh"
+ liarliar: false
 isnftforsale: false
 svgzindex: "0"
 comments: false
@@ -33,7 +34,6 @@ scrollable: false
 showZoom: false
 showPageNav: true
 nftdrop: "2023-04-03T10:00:00"
-contentinvideo: true
 bumpertext: ""
 mediawarnings:
  viewerwarning: Viewer Discretion Strongly Advised

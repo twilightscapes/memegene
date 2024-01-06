@@ -18,10 +18,11 @@ youtube:
  youtubeautostart: true
  youtubeloop: true
  clicktoplay: false
-audiotitle: PLAY Elon's DOPE Playlist
-audioend: ""
-audiostart: "90"
-liarliar: false
+ contentinvideo: true
+ audiotitle: PLAY Elon's DOPE Playlist
+ audioend: ""
+ audiostart: "90"
+ liarliar: false
 isnftforsale: false
 svgzindex: "0"
 comments: false
@@ -33,7 +34,7 @@ scrollable: false
 showZoom: true
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
-contentinvideo: true
+
 mediawarnings:
  viewerwarning: Viewer Discretion Strongly Advised
  marate: 

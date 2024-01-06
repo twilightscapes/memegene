@@ -23,13 +23,14 @@ youtube:
   youtubersuggestion1: null
   youtubersuggestion2: null
   youtubestart: "240"
+  contentinvideo: false
 bumpertext: ""
 comments: false
 shareable: true
 scrollable: false
 showZoom: true
 showPageNav: true
-contentinvideo: false
+
 audiotitle: null
 audioend: null
 liarliar: false
@@ -40,17 +41,7 @@ underlayImage: null
 svgImage: null
 svgzindex: "0"
 isnftforsale: false
-mediawarnings:
- viewerwarning: Viewer Discretion Strongly Advised
- marate: X
- marating1: X
- marating2: X
- marating3: X
- marating4: X
- maratingtx1: X
- maratingtx2: X
- maratingtx3: X
- maratingtx4: X
+
 ---
 
 

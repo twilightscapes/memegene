@@ -19,11 +19,11 @@ youtube:
  customcontrols: true
  youtubeautostart: false
  youtubeloop: true
-audiostart: "20"
-audioend: "5000"
-audiotitle: 
-bumpertext: ""
-liarliar: true
+ contentinvideo: true
+ audiostart: "20"
+ audioend: "5000"
+ audiotitle: 
+ liarliar: true
 isnftforsale: false
 svgzindex: "0"
 comments: false
@@ -35,7 +35,7 @@ scrollable: false
 showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
-contentinvideo: true
+
 mediawarnings:
  viewerwarning: Warning
 

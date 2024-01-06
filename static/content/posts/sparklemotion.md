@@ -16,6 +16,7 @@ youtube:
   youtubersuggestion1: null
   youtubersuggestion2: null
   youtubestart: "1"
+  contentinvideo: true
 audioend: "5000"
 scrollable: false
 nftdrop: 2023-02-11T10:00:00
@@ -48,7 +49,7 @@ comments: false
 svgImage: null
 liarliar: true
 svgzindex: "0"
-contentinvideo: true
+
 isnftforsale: false
 ---
 

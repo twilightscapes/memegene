@@ -17,6 +17,7 @@ youtube:
  youtubecontrols: true
  youtubeautostart: true
  youtubeloop: true
+ contentinvideo: true
 audiostart: "20"
 audioend: "5000"
 audiotitle: "Liar Liar!"
@@ -32,7 +33,6 @@ scrollable: false
 showZoom: false
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
-contentinvideo: true
 bumpertext: ""
 mediawarnings:
  viewerwarning: Viewer Discretion Strongly Advised

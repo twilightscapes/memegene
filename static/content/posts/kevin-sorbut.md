@@ -19,6 +19,7 @@ youtube:
   customcontrols: true
   youtubeautostart: false
   youtubeloop: true
+  contentinvideo: true
 audiostart: "20"
 audioend: "5000"
 audiotitle: 
@@ -35,7 +36,6 @@ scrollable: false
 showZoom: true
 showPageNav: true
 nftdrop: "2023-02-11T10:00:00"
-contentinvideo: true
 mediawarnings:
  viewerwarning: Warning! The following content contains lots of bullshit
  marate: BS

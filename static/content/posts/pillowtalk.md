@@ -18,15 +18,15 @@ youtube:
  youtubersuggestion3: ""
  youtubestart: "0"
  youtubersuggestion2: https://youtu.be/iiZnOlRPiE0
+ contentinvideo: true
+ liarliar: false
+ audiotitle: Alternate Soundtrack
+ audioend: "5000"
+ audiostart: "20"
 shareable: true
 scrollable: false
 showZoom: true
 showPageNav: true
-contentinvideo: false
-liarliar: false
-audiotitle: Alternate Soundtrack
-audioend: "5000"
-audiostart: "20"
 date: 2023-02-03 10:43
 comments: false
 featuredImage: /assets/Experiences-Header-8.jpg

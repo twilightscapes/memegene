@@ -19,6 +19,7 @@ youtube:
  customcontrols: false
  youtubeautostart: false
  youtubeloop: true
+ contentinvideo: true
 audiotitle: "Fuckin' Liar!"
 liarliar: true
 isnftforsale: false
@@ -32,7 +33,6 @@ scrollable: false
 showZoom: false
 showPageNav: true
 nftdrop: "2023-03-05T10:00:00"
-contentinvideo: true
 mediawarnings:
  viewerwarning: Viewer Discretion Strongly Advised
  marate: 
