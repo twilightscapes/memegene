@@ -1,58 +1,57 @@
 ---
+audiotitle: Liar Liar!
 template: blog-post
-title: 2 Billion Payoff for Jared Kushner stinks
-slug: /kushner-money
 date: 2023-02-12 05:59
+title: 2 Billion Payoff for Jared Kushner stinks
 description: Watch live footage of Jared getting paid for his crimes against our Country
-youtube:
- youtuber: https://youtu.be/EXkT06MtW1M
- youtuber2: 
- youtubeshoworiginal: true
- youtubersuggestion1:
- youtubersuggestion2:
- youtubersuggestion3:
- youtubestart: "15"
- youtubeend: 
- youtubemute: true
- youtubecontrols: false
- clicktoplay: false
- customcontrols: false
- youtubeautostart: true
- youtubeloop: true
- contentinvideo: true
-audiostart: "20"
-audioend: "5000"
-audiotitle: "Liar Liar!"
-liarliar: false
-isnftforsale: false
-svgzindex: "0"
-comments: false
-shareable: true
-underlayImage: 
-featuredImage: /assets/jared-2billion-promo.webp
-svgImage: 
-scrollable: false
-showZoom: true
-showPageNav: true
-nftdrop: "2023-02-11T10:00:00"
-
-bumpertext: ""
-mediawarnings:
- viewerwarning: Viewer Discretion Strongly Advised
- marate: MA
- marating1: YB
- maratingtx1: Use your brain please
- marating2: SS
- maratingtx2: Spontaneous & Sporadic
- marating3: LH
- maratingtx3: It's Humor - laugh
- marating4: AL
- maratingtx4: Adult Language
 tags:
   - jared
   - saudi
   - fraud
-spotlight: true
+underlayImage: null
+youtube:
+  youtubersuggestion3: null
+  youtuber2: null
+  youtubeloop: true
+  customcontrols: false
+  youtuber: https://youtu.be/EXkT06MtW1M
+  youtubeautostart: true
+  youtubeshoworiginal: true
+  clicktoplay: false
+  youtubeend: null
+  youtubecontrols: false
+  youtubemute: true
+  contentinvideo: true
+  youtubersuggestion1: null
+  youtubersuggestion2: null
+  youtubestart: "15"
+audioend: "5000"
+scrollable: false
+nftdrop: 2023-02-11T10:00:00
+slug: /kushner-money
+audiostart: "20"
+featuredImage: /assets/jared-2billion-promo.webp
+bumpertext: ""
+svgImage: null
+mediawarnings:
+  marating1: YB
+  marating2: SS
+  marating3: LH
+  marating4: AL
+  viewerwarning: Viewer Discretion Strongly Advised
+  marate: MA
+  maratingtx1: Use your brain please
+  maratingtx2: Spontaneous & Sporadic
+  maratingtx3: It's Humor - laugh
+  maratingtx4: Adult Language
+shareable: true
+showZoom: true
+showPageNav: true
+spotlight: false
+comments: false
+liarliar: false
+svgzindex: "0"
+isnftforsale: false
 ---
 
 <div class="contentinside" style="position:relative; aspect-ratio:16/9;  width:100%; border:0px solid white; display:flex; flex-direction:column; justify-content:center;">
