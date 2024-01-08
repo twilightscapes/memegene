@@ -52,7 +52,7 @@ tags:
   - jared
   - saudi
   - fraud
-spotlight: true
+spotlight: 
 ---
 
 <div class="contentinside" style="position:relative; aspect-ratio:16/9;  width:100%; border:0px solid white; display:flex; flex-direction:column; justify-content:center;">

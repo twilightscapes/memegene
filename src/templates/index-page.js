@@ -286,7 +286,6 @@ const [playingIndex, setPlayingIndex] = useState(null);
                 ref={playerRef}
                 url={node.frontmatter.youtube.youtuber}
                   allow="web-share"
-                  // style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '',aspectRatio:'16/9', }}
                   width="350px"
                   height="200px"
                   className='inline'
@@ -294,21 +293,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   // className={`relative ${index === playingIndex ? 'fixed' : 'relative'}`}
                   style={{
                     position: index === playingIndex ? 'fixed' : 'relative',
-                    
-                    // top: index === playingIndex ? '50%' : 'auto',
-                    // left: index === playingIndex ? '50%' : 'auto',
-                    // transform: index === playingIndex ? 'translate(-50%, -50%)' : 'none',
                     bottom: index === playingIndex ? '10vh' : '',
                     left: index === playingIndex ? '5%' : '',
                     margin:'0 auto',
                     transition: 'all 1.3s ease-in-out',
-                    // width: index === playingIndex ? '100%' : '350px',
-                    // height: index === playingIndex ? '100%' : '200px',
                     border: index === playingIndex ? '1px solid var(--theme-ui-colors-siteColor)' : 'inherit',
                     boxShadow: index === playingIndex ? '2px 1px 10px 10px rgba(0, 0, 0, 0.5)' : 'inherit',
-                    // width: '80vw',
-                    // height:'60vh',
-                    // margin: index === playingIndex ? '0' : '0 auto 15px auto',
                     zIndex: index === playingIndex ? '9999' : '1',
                     aspectRatio: '16/9',
                   }}
