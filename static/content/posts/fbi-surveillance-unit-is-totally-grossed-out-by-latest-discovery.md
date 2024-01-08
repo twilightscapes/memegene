@@ -8,7 +8,6 @@ description: An FBI Surveillance Unit became debilitated by the sights of while
 shareable: true
 showZoom: false
 showPageNav: true
-spotlight: null
 tags:
   - fbi
   - trump
