@@ -924,14 +924,16 @@ ul li{display:inline-block}
     /* height: 100% !important; */
   }
 
+
+
   body.blogpost {padding-top:8vh !important;}
   /* .grid-container .post-card1 iframe{margin-left:-5%;} */
 
   .ReactModal__Content {width:100vw !important; }
   
-  .ReactModal__Content{margin-top:0 !important;}
+  .ReactModal__Content{margin-top:8vh !important;}
 
-#modalCloser {top:125px !important;}
+#modalCloser {top:70vh !important; right:1vw;}
 
 body.contactpage .ReactModal__Content{padding-top:10vh !important;}
 
@@ -967,7 +969,6 @@ body.contactpage .ReactModal__Content{padding-top:10vh !important;}
   .horizontal-scroll iframe{max-height:200px !important; margin-top:8vh; }
 
 
-
   .topmenu {gap:1vw ; padding:0 ;}
   .topmenu li {margin-top:2vh ;}
 
@@ -976,14 +977,14 @@ body.contactpage .ReactModal__Content{padding-top:10vh !important;}
     color:#ddd;
   }
 
-  .topmenu {gap:1vw ; padding:0 ;}
-  .topmenu li {margin-top:2vh ;
-    padding:0 1vw; border-radius: 10px 12px 0 0;}
-  
 
-  }
+    footer .missioncontrol {position: relative !important;}
+    footer header{margin-bottom: 2vh !important;}
+    footer .topmenu {margin-top:4vh !important; width:100vw !important;}
 
-  
+  } 
+
+  /* END 48rem */
 
 
 
@@ -1074,6 +1075,8 @@ body.contactpage .ReactModal__Content{padding-top:10vh !important;}
 }
 
 
+#gobacker{position:fixed; top:60px ; right:1vw; z-index:11;}
+
 
 iframe.virtualtour{
 	filter: invert(90%) grayscale(1);
@@ -1128,7 +1131,7 @@ iframe.virtualtour{
 #resume span{display:flex;flex-direction:column;gap:20px;position:-webkit-sticky;position:sticky;top:0}
 #resume span div{display:block;width:100%}
 .nameblock{background:transparent;color:inherit;text-shadow:none}
-#gobacker{position:fixed; top:80vh ; right:1vw; z-index:11;}
+#gobacker{position:fixed; top:70vh ; right:1vw; z-index:11;}
 
 
 
@@ -1410,7 +1413,7 @@ body:has(.ReactModal__Content) {overflow-x:hidden !important; overflow-y:hidden 
 
 
 
-  /* #gatsby-focus-wrapper {
+  #gatsby-focus-wrapper {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
@@ -1429,16 +1432,18 @@ body:has(.ReactModal__Content) {overflow-x:hidden !important; overflow-y:hidden 
   
   #gatsby-focus-wrapper > main {
     grid-area: main;
-    overflow: auto;
+    /* overflow: auto; */
   }
   
-  #gatsby-focus-wrapper > footer {
+  /* #gatsby-focus-wrapper > footer {
     grid-area: footer;
   } */
 
 
-  /* #___gatsby > main {
+  #___gatsby > main {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 600px 1fr;
-  } */
+  }
+
+  body.category .contentpanel a:first-of-type{display:none !important}

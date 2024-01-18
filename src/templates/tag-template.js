@@ -14,12 +14,14 @@ const Tag = ({ data, pageContext }) => {
   const { tag } = pageContext;
   const posts = data.allMarkdownRemark.edges;
 
-  const { featureOptions, proOptions } = useSiteMetadata()
-  const { showDates } = featureOptions
+  const { featureOptions, proOptions, language } = useSiteMetadata()
+  const { showDates, showNav, showTitles } = featureOptions
   const { showModals  } = proOptions
+  const { dicPlayMultimedia } = language;
 
 
   const [selectedTag, setSelectedTag] = useState(tag);
+  
 
   const allTags = data.allMarkdownRemark.group.map(tag => tag.fieldValue);
   
@@ -38,6 +40,7 @@ const Tag = ({ data, pageContext }) => {
     return <p>No posts found.</p>;
   }
 
+
   return (
     <Layout>
       <Helmet>
@@ -50,7 +53,7 @@ const Tag = ({ data, pageContext }) => {
       <div className="magicisland">
         <div className="cattags font">
         
-      <select className="" value={selectedTag} onChange={handleTagChange} style={{ background: '#222', outline: '1px solid #111', borderRadius: '3px', padding: '2px', width:'380px', display:'block', margin:'0 1%', overflow:'hidden', height:'34px', lineHeight:'100%' }}>
+        <select className="" id="tag-select" value={selectedTag} onChange={handleTagChange} style={{ background: 'var(--theme-ui-colors-siteColor)', color:'var(--theme-ui-colors-siteColorText)', borderRadius: 'var(--theme-ui-colors-borderRadius)', padding: '2px', width:'380px', display:'block', margin:'0 1%', overflow:'hidden', height:'34px', lineHeight:'100%' }}>
   <option value=''>All Keywords</option>
   {allTags.map(tag => (
     <option key={tag} value={tag}>
@@ -63,82 +66,65 @@ const Tag = ({ data, pageContext }) => {
 
       <section id="showPosts" style={{marginTop:''}}>
 
-      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', marginTop: '' }}>
+      <div className="contentpanel grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', }}>
         <div className='sliderSpacer' style={{ height: '', paddingTop: '0', display: 'none' }}></div>
 
         {filteredPosts.map(({ node }) => {
           // const featuredImg = node.frontmatter.featuredImage;
           return (
-            <div className='post-card1' style={{ justifyContent: 'center', alignItems: 'center' }} key={node.id}>
+            <div className='post-card1' style={{ alignItems: '', overflow: 'visible', position:'relative' }} key={node.id}>
               {/* Render featured image thumbnail if it exists */}
         
-              <Link state={showModals ? { modal: true } : {}} className="postlink" to={node.frontmatter.slug}>
+              <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
+
 
 {node.frontmatter.featuredImage ? (
-    <GatsbyImage
-      image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
-      alt={node.frontmatter.title + " - Featured image"}
-      className="featured-image1"
-      placeholder="blurred"
-      loading="eager"
-      style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto' }}
-    />
+  <GatsbyImage
+    image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
+    alt={node.frontmatter.title + " - Featured image"}
+    className="featured-image1"
+    placeholder="blurred"
+    style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
+  />
 ) : (
-
-    <StaticImage
-      className="featured-image1"
-      src="../../static/assets/default-og-image.webp"
-      alt="Default Image"
-      style={{ position: 'relative', zIndex: '' }}
-    />
-
+  <StaticImage
+    className="featured-image1"
+    src="../../static/assets/default-og-image.webp"
+    alt="Default Image"
+    style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
+  />
 )}
 
-
-<div className="post-content" style={{display:'flex', flexDirection:'column', justifyContent:'start', width:'100%', height:'', position:'relative', background:'', padding:'0', margin:'0 auto 0 auto', textAlign:'center', overFlow:'hidden'}}>
-
-  {node.frontmatter.youtube.youtuber ? (
-
-<div className="spotlight" style={{border:'0px solid green', }}>
-<div className="posticons" style={{flexDirection:'column', justifyContent:'center', margin:'0 auto'}}>
-<div style={{display:'flex', justifyContent:'space-around', gap:'2vw', color:'fff', }}>
-<FaImage className="posticon" style={{margin:'0 auto', width:'60%', height:'30px', fontSize:''}} />
-<ImPlay className="posticon" style={{margin:'0 auto', width:'60%', height:'30px', fontSize:''}} />
-<AiOutlinePicLeft className="posticon" style={{margin:'0 auto', width:'60%', height:'30px', fontSize:''}} />
-</div>
-Play Multimedia
-</div>
-</div>
-
-) : (
-""
-)}
-
-<div className="panel" style={{display:'flex', justifyContent:'space-between', alignItems:'center', margin:'10px auto', width:'auto', maxWidth:'80vw', gap:'.4vw', height:'', textAlign:'center', padding:'1vh 2vw', fontSize:'clamp(1rem, 1vw, 1rem)',  background:'rgba(0, 0, 0, 0.7)', borderRadius:'', border:'0px solid red', color:'#aaa' }}>
-      <h2 className="title" style={{ }}>
-        {node.frontmatter.title}
-      </h2>
-    {/* <p style={{position:'', textAlign:'center', border:'0px solid red', fontSize:'70%', minWidth:'100px'}}>
-      <TimeAgo date={node.frontmatter.date}/>
-    </p> */}
-  </div>
-
-
-
-
-
-
-
-</div>
-
+{node.frontmatter.youtube.youtuber ? (
+    <div className="spotlight font" style={{border:'0px solid'}}>
+      <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
+          <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+          <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+          <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', }} />
+        </div>
+        {dicPlayMultimedia}
+      </div>
+    </div>
+  ) : ("")}
 </Link>
-{showDates ? (
-            <p style={{position:'', textAlign:'center', border:'0px solid red', fontSize:'70%', minWidth:'100px'}}>
-            <TimeAgo date={node.frontmatter.date}/>
-          </p>
-          ) : (
-            ""
-          )}
+
+<div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
+
+<div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
+  {showTitles ? (
+    <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
+  ) : (
+    ""
+  )}
+
+  {showDates ? (
+    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
+      <TimeAgo date={node.frontmatter.date} />
+    </p>
+  ) : ("")}
+</div>
+</div>
               
             </div>
           );
@@ -153,7 +139,13 @@ Play Multimedia
 export const query = graphql`
   query($tag: String!) {
     allMarkdownRemark(
-      filter: {frontmatter: {tags: {in: [$tag]}}}
+      filter: {
+        frontmatter: {
+          template: { eq: "blog-post" }
+          draft: { ne: true }
+          tags: { in: [$tag] }
+        }
+      }
       sort: {frontmatter: {date: DESC}}
     ) {
       edges {
@@ -169,7 +161,11 @@ export const query = graphql`
             }
             featuredImage {
               childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+                gatsbyImageData(
+                  quality: 80
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
             tags

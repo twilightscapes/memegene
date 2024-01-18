@@ -78,51 +78,52 @@ const Post = ({ data, pageContext }) => {
     
 
 
-  const Pagination = props => (
 
-  
-    <div className="pagination -post1" style={{position:'', bottom:'',}}>
-      <ul className="" style={{display:'flex', gap:'2vw', justifyContent:'space-around', paddingTop:'5px', alignItems:'center'}}>
-        
-  
-      {props.next && props.next.frontmatter.template === "blog-post" && (
-          <li style={{display:'flex', justifyContent:'space-between', width:'50%'}}>
-  <Link  state={showModals ? { modal: true } : {}} to={props.next.frontmatter.slug + "/"}  rel="next">
-  <button className="" style={{display:'flex', justifyContent:'', }}>
-  <span className="page-title">
-    {props.next.frontmatter.title}
-  {/* Newer */}
-  </span>
-  {/* &nbsp;&nbsp;<AiFillCaretLeft /> */}
-  </button>
-  </Link>
-          </li>
-        )}
-  
-        <div className="specialfont" style={{fontSize:'clamp(1rem, 1vw, 1rem)', marginTop:'', fontWeight:'bold', border:'0px solid', display:'grid', color:'#999', placeItems:'center', justifyContent:'center', margin:'0 auto'}}>
-          <Link title="Go Home" state={showModals ? { modal: true } : {}} to="/" style={{padding:'', textAlign:'center', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width:'80px',}}>
-          <div style={{}}>GO TO</div>
-          <FaHome style={{fontSize:'25px'}} /></Link>
+    
+    const Pagination = props => {
+
+    
+      return (
+        <div className="pagination -post1" style={{ position: '', bottom: '' }}>
+          <ul className="" style={{ display: 'flex', gap: '2vw', justifyContent: 'space-around', paddingTop: '5px', alignItems: 'center' }}>
+            {props.next && props.next.frontmatter.template === "blog-post" && !props.next.frontmatter.draft && (
+              <li style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
+                <Link state={showModals ? { modal: true } : {}} to={props.next.frontmatter.slug + "/"} rel="next">
+                  <button className="" style={{ display: 'flex', justifyContent: '' }}>
+                    <span className="page-title">
+                      {props.next.frontmatter.title}
+                    </span>
+                  </button>
+                </Link>
+              </li>
+            )}
+    
+            <div className="specialfont" style={{ fontSize: 'clamp(1rem, 1vw, 1rem)', marginTop: '', fontWeight: 'bold', border: '0px solid', display: 'grid', color: '#999', placeItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
+              <Link title="Go Home" state={showModals ? { modal: true } : {}} to="/" style={{ padding: '', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '80px' }}>
+                <div style={{}}>GO TO</div>
+                <FaHome style={{ fontSize: '25px' }} />
+              </Link>
+            </div>
+    
+            {props.previous && props.previous.frontmatter.template === "blog-post" && !props.previous.frontmatter.draft && (
+              <li style={{ display: 'flex', justifyContent: 'space-between', width: '50%' }}>
+                <Link style={{}} to={props.previous.frontmatter.slug + "/"} state={showModals ? { modal: true } : {}} rel="prev">
+                  <button className="" style={{ display: 'flex', justifyContent: '' }}>
+                    <span className="page-title">
+                      {props.previous.frontmatter.title}
+                    </span>
+                  </button>
+                </Link>
+              </li>
+            )}
+          </ul>
         </div>
-  
-        
-  {props.previous && props.previous.frontmatter.template === "blog-post" && (
-          // <li style={{border:'1px solid', borderRadius:'12px', filter:'drop-shadow(0 0px 6px rgba(0, 0, 0, 1))'}}>
-          <li style={{display:'flex', justifyContent:'space-between', width:'50%'}}>
-  <Link style={{}}  to= {props.previous.frontmatter.slug + "/"} state={showModals ? { modal: true } : {}}  rel="prev">
-   <button className="" style={{display:'flex', justifyContent:'',}}>
-   {/* <AiFillCaretRight />&nbsp;&nbsp; */}
-    <span className="page-title">
-  {props.previous.frontmatter.title}
-  {/* Previous */}
-  </span>
-  </button>
-            </Link>
-          </li>
-        )}
-      </ul>
-    </div>
-  )
+      );
+    };
+    
+      
+    
+
 
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   /* eslint-disable-next-line no-unused-vars */
@@ -222,13 +223,14 @@ const Post = ({ data, pageContext }) => {
 //   )
 // }
 
+const ShowOriginal = frontmatter.youtube ? frontmatter.youtube.youtubeshoworiginal : false;
 
 // const IsNft = frontmatter.isnftforsale
-const ShowOriginal = frontmatter.youtube.youtubeshoworiginal
+// const ShowOriginal = frontmatter.youtube.youtubeshoworiginal
 const ShareThis = frontmatter.shareable
 // const Comments = frontmatter.comments
 
-const YouTubeStart = frontmatter.youtube.youtubestart
+const YouTubeStart = frontmatter.youtube.youtubestart ? frontmatter.youtube.youtubestart : null;
 const YouTubeEnd = frontmatter.youtube.youtubeend
 const YouTubeMute = frontmatter.youtube.youtubemute
 const YouTubeControls = frontmatter.youtube.youtubecontrols
@@ -993,7 +995,7 @@ const YouTube = frontmatter.youtube.youtuber
     {FrontImage ? (
       // Show zoom or regular Gatsby image based on showZoom flag
       frontmatter.showZoom ? (
-        <div className="imageonly" style={{ display: "flex", justifyContent: "center", maxHeight: "" }}>
+        <div className="imageonly" style={{ display: "flex", justifyContent: "center", minHeight: "45vh" }}>
           <InnerImageZoom
           // className="featured-image1"
             src={getSrc(FrontImage)}
@@ -1090,7 +1092,8 @@ const YouTube = frontmatter.youtube.youtuber
    
                 {/* <img className="homepage-bg" src={iconimage} width="250px" height="150px" alt="UrbanFetish" style={{ width:'', margin:'120px auto 0 auto', filter:'drop-shadow(2px 2px 2px #000)', background:'transparent !important', position:'relative', top:''}} /> */}
 
-                {frontmatter.mediawarnings.marate ? (
+                {frontmatter.mediawarnings?.marate ? (
+                // {frontmatter.mediawarnings.marate ? (
 <>
 
 <div className="flex-items" style={{fontSize:'clamp(.6rem, 1.4vw, 2rem)', fontWeight:'bold', margin:'0 auto 0 auto', textTransform:'uppercase',}}>The following is rated: <strong>{frontmatter.mediawarnings.marate}</strong></div>
@@ -1492,7 +1495,7 @@ zindex:'1'
       </header>
               )}
 
-<div className="panel" style={{padding:'0 0', borderTop:'0px solid', margin:'0 0', textAlign:'center', fontSize:'1.5rem', minWidth:'50%', width:'100%', maxWidth:'', border:'0px solid yellow', borderRadius:''}}>
+<div className="panel" style={{padding:'2vh 0', borderTop:'0px solid', margin:'0 0', textAlign:'center', fontSize:'1.5rem', minWidth:'50%', width:'100%', maxWidth:'', border:'0px solid yellow', borderRadius:''}}>
 <div
   className="blog-post-content bodycontent" style={{ fontSize:'clamp(1.2rem, 2.8vw, 1.8rem)', textAlign:'center', width:'100%', maxWidth:'', padding:'0 6% 0 6%', margin:'0 auto', color:'inherit !important'}}
   dangerouslySetInnerHTML={{ __html: html }}
@@ -1562,32 +1565,26 @@ textShadow:'2px 2px 0 #222', filter:'drop-shadow(0px 0px 5px rgba(155,155,155,1)
 
 
 
- {ShowOriginal ? (
-      <div id="original" style={{height:'', margin:'10vh auto', paddingTop:'5vh',   display:'grid', placeContent:'center', border:'0px solid blue'}}>
+         {ShowOriginal && (
+  <div id="original" style={{ height: '', margin: '10vh auto', paddingTop: '5vh', display: 'grid', placeContent: 'center', border: '0px solid blue' }}>
+    {YouTube && (
+      <div className="panel" style={{ position: 'relative', width: '100%', maxWidth: '800px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', fontSize: '100%', borderRadius: '' }}>
+        <div style={{ maxWidth: '90vw', width: '100%', height: '', maxHeight: '', padding: '0', position: 'relative', bottom: '0', textAlign: 'center', border: '0px solid blue', margin: '0 auto', borderRadius: '12px' }}>
+          {/* <Iframer2 /> */}
+          <a href={OriginalUrl} rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div style={{ display: 'grid', placeContent: 'center', fontWeight: 'bold', padding: '1rem', fontSize: '2rem', width: '100%', height: '', border: '0px solid', borderRadius: '12px' }}>
+              Support Our Video Sponsors
+              <ImPlay style={{ margin: '0 auto', width: '50%', fontSize: '60px' }} />
+              {dicClickToView}
+            </div>
+          </a>
+        </div>
+      </div>
+    )}
+    <br />
+  </div>
+)}
 
-{YouTube ? (
-          <div  className="panel" style={{position:'relative', width:'100%', maxWidth:'800px', margin:'0 auto', textAlign:'center', display:'flex', flexDirection:'column', fontSize:'100%', borderRadius:'' }}>
-<div style={{maxWidth:'90vw', width:'100%', height:'', maxHeight:'', padding:'0', position:'relative', bottom:'0', textAlign:'center', border:'0px solid blue', margin:'0 auto', borderRadius:'12px'}}>
-
-                    {/* <Iframer2 /> */}
-<a href={OriginalUrl} rel="noopener noreferrer" style={{textDecoration:'none', color:'inherit'}}>
- <div style={{display:'grid', placeContent:'center', fontWeight:'bold', padding:'1rem', fontSize:'2rem', width:'100%', height:'', border:'0px solid', borderRadius:'12px'}}>Support Our Video Sponsors
-
-<ImPlay style={{margin:'0 auto', width:'50%', fontSize:'60px'}} />
-{dicClickToView}
-</div>
-</a>                   
-       </div>
- 
-       </div>
-           ) : (
-            ""
-          )}
-<br />
-</div>
-    ) : (
-            ""
-          )}
 
 
 
@@ -1715,6 +1712,7 @@ query BlogPostQuery($id: String!) {
       description
       showZoom
       showPageNav
+      draft
       youtube {
         youtuber
         youtuber2
@@ -1770,9 +1768,10 @@ query BlogPostQuery($id: String!) {
       }
     }
   }
+
   allMarkdownRemark(
-    sort: {frontmatter: {date: ASC}}
-    filter: {frontmatter: {template: {eq: "blog-post"}, draft: {ne: true}}}
+    sort: { frontmatter: { date: ASC } }
+    filter: { frontmatter: { template: { eq: "blog-post" }, draft: { eq: false } } }
   ) {
     edges {
       node {
@@ -1781,9 +1780,13 @@ query BlogPostQuery($id: String!) {
           title
           slug
           date(formatString: "MMMM DD, YYYY")
+          draft
         }
       }
     }
   }
+  
 }
+
 `;
+

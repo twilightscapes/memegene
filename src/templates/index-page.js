@@ -46,14 +46,20 @@ const HomePage = ({ data }) => {
   const allTags = Array.from(allTagsSet);
 
   const filteredPosts = allPosts.filter(({ node }) => {
-    const { title, tags, category: categories } = node.frontmatter;
+    const { title, tags, category: categories, spotlight } = node.frontmatter;
     const titleMatch = query === "" || title.toLowerCase().includes(query.toLowerCase());
     const categoryMatch = selectedCategory === "" || (Array.isArray(categories) && categories.includes(selectedCategory));
     const tagMatch = selectedTag === "" || (tags && Array.isArray(tags) && tags.includes(selectedTag));
-    
-
+  
+    // Check if spotlight is explicitly set to false or is undefined
+    if (spotlight === false || spotlight === undefined) {
+      return false; // Exclude posts with spotlight: false
+    }
+  
     return titleMatch && categoryMatch && tagMatch;
   });
+  
+  
 
   const sortedTags = allTags
   .filter(tag => tag)
@@ -99,10 +105,16 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
   const handleCategoryChange = (event) => {
     const category = event.target.value;
-    setSelectedCategory(category);
-    setSelectedTag("");
+    // Check if there are categories before updating the state
+    if (allCategories.includes(category)) {
+      setSelectedCategory(category);
+    } else {
+      setSelectedCategory('');
+    }
+    setSelectedTag('');
     setVisibleItems(homecount);
   };
+  
 
   const handleTagChange = (event) => {
     const tag = event.target.value;
@@ -173,37 +185,32 @@ const [playingIndex, setPlayingIndex] = useState(null);
                 ""
               )}
 
-{showMagicTag ? (
-  <>
-    {sortedTags.length > 1 && (
-      <select
-        value={selectedTag}
-        onChange={handleTagChange}
-        style={{
-          background: 'var(--theme-ui-colors-siteColor)',
-          color: 'var(--theme-ui-colors-siteColorText)',
-          borderRadius: 'var(--theme-ui-colors-borderRadius)',
-          minWidth: '100px',
-          maxWidth: '30%',
-          overflow: 'hidden',
-          height: '',
-          lineHeight: '100%',
-          padding: '5px 2px',
-        }}
-        aria-label="Select Keyword"
-      >
-        <option value="">{dicKeyword}</option>
-        {sortedTags.map((tag, index) => (
-          <option key={`${tag}_${index}`} value={tag.trim()}>
-            {tag.trim()} ({allPosts.filter(({ node }) => (node.frontmatter.tags || []).includes(tag)).length})
-          </option>
-        ))}
-      </select>
-    )}
-  </>
-) : (
-  ""
+{showMagicTag && allTags.length > 0 && (
+  <select
+    value={selectedTag}
+    onChange={handleTagChange}
+    style={{
+      background: 'var(--theme-ui-colors-siteColor)',
+      color: 'var(--theme-ui-colors-siteColorText)',
+      borderRadius: 'var(--theme-ui-colors-borderRadius)',
+      minWidth: '100px',
+      maxWidth: '30%',
+      overflow: 'hidden',
+      height: '',
+      lineHeight: '100%',
+      padding: '5px 2px',
+    }}
+    aria-label="Select Keyword"
+  >
+    <option value="">{dicKeyword}</option>
+    {sortedTags.map((tag, index) => (
+      <option key={`${tag}_${index}`} value={tag.trim()}>
+        {tag.trim()} ({allPosts.filter(({ node }) => (node.frontmatter.tags || []).includes(tag)).length})
+      </option>
+    ))}
+  </select>
 )}
+
 
 
 
@@ -232,7 +239,26 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   
                 </>
               ) : (
-                ""
+                <input
+                      id="clearme"
+                      type="text"
+                      placeholder={dicSearch + ":"}
+                      onChange={handleSearch}
+                      style={{
+                        width: '',
+                        background: 'var(--theme-ui-colors-siteColor)',
+                        color: 'var(--theme-ui-colors-siteColorText)',
+                        marginRight: '',
+                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
+                        height: '',
+                        lineHeight: '100%',
+                        padding: '0',
+                        minWidth: '0',
+                        maxWidth: '0',
+                        visibility: 'hidden'
+                      }}
+                      aria-label="Search"
+                    />
               )}
 
               <button
@@ -279,13 +305,15 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 <div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible', position:'relative' }}>
 
-{node.frontmatter.youtube.showVidOnly ? (
+{(node.frontmatter.youtube?.showVidOnly && node.frontmatter.youtube.showVidOnly) ? (
+
 <div style={{minWidth:'300px', minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent', zindex:'1'}}>
                 <ReactPlayer
                 playing={index === playingIndex}
                 ref={playerRef}
                 url={node.frontmatter.youtube.youtuber}
                   allow="web-share"
+                  // style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '',aspectRatio:'16/9', }}
                   width="350px"
                   height="200px"
                   className='inline'
@@ -293,12 +321,21 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   // className={`relative ${index === playingIndex ? 'fixed' : 'relative'}`}
                   style={{
                     position: index === playingIndex ? 'fixed' : 'relative',
+                    
+                    // top: index === playingIndex ? '50%' : 'auto',
+                    // left: index === playingIndex ? '50%' : 'auto',
+                    // transform: index === playingIndex ? 'translate(-50%, -50%)' : 'none',
                     bottom: index === playingIndex ? '10vh' : '',
                     left: index === playingIndex ? '5%' : '',
                     margin:'0 auto',
                     transition: 'all 1.3s ease-in-out',
+                    // width: index === playingIndex ? '100%' : '350px',
+                    // height: index === playingIndex ? '100%' : '200px',
                     border: index === playingIndex ? '1px solid var(--theme-ui-colors-siteColor)' : 'inherit',
                     boxShadow: index === playingIndex ? '2px 1px 10px 10px rgba(0, 0, 0, 0.5)' : 'inherit',
+                    // width: '80vw',
+                    // height:'60vh',
+                    // margin: index === playingIndex ? '0' : '0 auto 15px auto',
                     zIndex: index === playingIndex ? '9999' : '1',
                     aspectRatio: '16/9',
                   }}
@@ -346,8 +383,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
                     />
                   )}
+{(node.frontmatter.youtube?.youtuber && node.frontmatter.youtube.youtuber) ? (
 
-{node.frontmatter.youtube.youtuber ? (
                       <div className="spotlight font" style={{border:'0px solid'}}>
                         <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
@@ -466,6 +503,7 @@ export const pageQuery = graphql`
             tags
             slug
             draft 
+            spotlight
           }
         }
       }

@@ -198,6 +198,8 @@ export default function Footer() {
   return (
 
 
+    
+
     showfooter ? (
   
 
@@ -214,8 +216,8 @@ export default function Footer() {
 
     
 {showFooterMenu ? (
-  <header>
-  <div id="footermenu" className="menu print panel1 header" style={{position:'relative', width:'100vw', top:'0', zIndex:'', maxHeight:'', overFlow:'', boxShadow:'0 0 0 rgba(0,0,0,.7)', padding:'0 2%', alignItems:'start', borderRadius:'0', display:'flex', justifyContent:'space-around', gap:'10px', color:'var(--theme-ui-colors-headerColorText)',  borderBottom:'0px solid #222',}}>
+  <header style={{}}>
+  <div id="footermenu" className="menu print panel1 header" style={{position:'relative', width:'100%', top:'0', zIndex:'', maxHeight:'', overFlow:'', boxShadow:'0 0 0 rgba(0,0,0,.7)', padding:'0 2%', margin:'', alignItems:'start', borderRadius:'0', display:'flex', justifyContent:'space-around', gap:'10px', color:'var(--theme-ui-colors-headerColorText)',  borderBottom:'0px solid #222',}}>
 
 {/* {loggedIn ? (
 <div style={{position:'absolute', left:'10px', top:'22px', cursor:'pointer'}}><BlueCheck /></div>
@@ -326,10 +328,13 @@ export default function Footer() {
       <nav className="footerlinks" aria-label="footer">
 
 
-      { showLegal ? (
+      
         <div style={{width:'100%', textAlign: 'center', justifyContent: 'center', fontSize: '.95rem', textDecoration:'none', display:'grid', margin:'1rem auto'}}>
-
+{ showLegal ? (
 <div style={{display:'flex', justifyContent:'center', gap:'4%' }}><Link state={{modal: true}} to="/disclaimer/">{dicDisclaimer}</Link> | <Link state={{modal: true}} to="/privacy/">{dicPrivacy}</Link> | <Link state={{modal: true}} to="/terms/">{dicTerms}</Link></div>
+) : (
+""
+  )}
   <br />
   <br />
 {dicCopyright} &copy;
@@ -337,9 +342,7 @@ export default function Footer() {
 &nbsp;
  {companyname}
 </div>
-      ) : (
-""
-  )}
+      
 
 
 
@@ -366,7 +369,15 @@ export default function Footer() {
     </footer>
 
     ) : (
-      ""
+      <footer className="" style={{display:'flex', flexDirection:'column', zIndex:'1', justifyContent:'end', padding:'0', marginTop:'0', width:'100vw',textAlign:'center'}}>
+          { showBranding ? (
+      <div style={{textAlign: 'center', margin: '0 0 2rem 0', justifyContent: 'center', fontSize: '.75rem', position:'relative', right:'', top:'10px'}}>
+    <a href="https://pirateweb.org" rel="noreferrer">{dicPirate}</a> &nbsp; | &nbsp; <a href={speedIt} rel="noreferrer">{dicSiteReport}</a>
+    </div>
+          ) : (
+    ""
+      )}
+      </footer>
     )
 
 

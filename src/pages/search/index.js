@@ -15,23 +15,16 @@ import SignUp from '../../components/newssign'
 import ReactPlayer from 'react-player/lazy';
 
 const SearchPage = ({ data }) => {
-  const { postcount, language, magicOptions, featureOptions, proOptions  } = useSiteMetadata();
+  const { postcount, language, magicOptions, featureOptions, proOptions, navOptions  } = useSiteMetadata();
 
   const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
   
   const { showModals, showPopup } = proOptions
-  const { showDates, showArchive, showTitles, showNav } = featureOptions
+  const { showDates, showArchive, showTitles } = featureOptions
+  const { showNav } = navOptions
+  // eslint-disable-next-line
+  const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
   
-  const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults} = language;
-  
-
-
-
-
-
-
-
-
   // const { markdownRemark } = data;
   // const { frontmatter, excerpt } = markdownRemark;
 
@@ -76,7 +69,7 @@ const extractVideoId = (url) => {
 };
 /* eslint-enable no-useless-escape */
 
-
+const playerRef = useRef(null);
 
 
 const [playingIndex, setPlayingIndex] = useState(null);
@@ -87,7 +80,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
   const handleVideoPause = () => {
     setPlayingIndex(null);
-  };const playerRef = useRef(null);
+  };
 
 
   useEffect(() => {
@@ -102,8 +95,13 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
   const handleCategoryChange = (event) => {
     const category = event.target.value;
-    setSelectedCategory(category);
-    setSelectedTag("");
+    // Check if there are categories before updating the state
+    if (allCategories.includes(category)) {
+      setSelectedCategory(category);
+    } else {
+      setSelectedCategory('');
+    }
+    setSelectedTag('');
     setVisibleItems(postcount);
   };
 
@@ -143,7 +141,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 {showMagic ? (
         <>
           <div className="magicisland">
-            <div className="cattags font">
+            <div className="cattags font panel" >
               {showMagicCat ? (
                 <>
                   {allCategories.length > 1 && (
@@ -153,11 +151,13 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       style={{
                         background: 'var(--theme-ui-colors-siteColor)',
                         color: 'var(--theme-ui-colors-siteColorText)',
-                        borderRadius: '3px',
-                        padding: '2px',
-                        minWidth: '80px',
-                        maxWidth: '30%',
+                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
+                        minWidth: '100px',
+                        maxWidth: '20%',
                         overflow: 'hidden',
+                        height: '',
+                        lineHeight: '100%',
+                        padding: '5px 2px',
                       }}
                       aria-label="Select Category"
                     >
@@ -171,44 +171,63 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   )}
                 </>
               ) : (
-                ""
+                <select
+                      value={selectedCategory}
+                      onChange={handleCategoryChange}
+                      style={{
+                        background: 'var(--theme-ui-colors-siteColor)',
+                        color: 'var(--theme-ui-colors-siteColorText)',
+                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
+                        minWidth: '100px',
+                        maxWidth: '20%',
+                        overflow: 'hidden',
+                        height: '',
+                        lineHeight: '100%',
+                        padding: '5px 2px',
+                      }}
+                      aria-label="Select Category"
+                    >
+                      <option value="">{dicCategory}</option>
+                      {allCategories.filter(category => category).map((category, index) => (
+                        <option key={`${category}_${index}`} value={category.trim()}>
+                          {category.trim()}
+                        </option>
+                      ))}
+                    </select>
               )}
 
-{showMagicTag ? (
-  <>
-    {sortedTags.length > 1 && (
-      <select
-        value={selectedTag}
-        onChange={handleTagChange}
-        style={{
-          background: 'var(--theme-ui-colors-siteColor)',
-          color: 'var(--theme-ui-colors-siteColorText)',
-          borderRadius: '3px',
-          padding: '2px',
-          minWidth: '80px',
-          maxWidth: '30%',
-          overflow: 'hidden',
-        }}
-        aria-label="Select Keyword"
-      >
-        <option value="">{dicKeyword}</option>
-        {sortedTags.map((tag, index) => (
-          <option key={`${tag}_${index}`} value={tag.trim()}>
-            {tag.trim()} ({allPosts.filter(({ node }) => (node.frontmatter.tags || []).includes(tag)).length})
-          </option>
-        ))}
-      </select>
-    )}
-  </>
-) : (
-  ""
+{showMagicTag && allTags.length > 0 && (
+  <select
+    value={selectedTag}
+    onChange={handleTagChange}
+    style={{
+      background: 'var(--theme-ui-colors-siteColor)',
+      color: 'var(--theme-ui-colors-siteColorText)',
+      borderRadius: 'var(--theme-ui-colors-borderRadius)',
+      minWidth: '100px',
+      maxWidth: '30%',
+      overflow: 'hidden',
+      height: '',
+      lineHeight: '100%',
+      padding: '5px 2px',
+    }}
+    aria-label="Select Keyword"
+  >
+    <option value="">{dicKeyword}</option>
+    {sortedTags.map((tag, index) => (
+      <option key={`${tag}_${index}`} value={tag.trim()}>
+        {tag.trim()} ({allPosts.filter(({ node }) => (node.frontmatter.tags || []).includes(tag)).length})
+      </option>
+    ))}
+  </select>
 )}
+
 
 
 
               {showMagicSearch ? (
                 <>
-                  <label style={{ maxWidth: '' }}>
+                
                     <input
                       id="clearme"
                       type="text"
@@ -221,17 +240,35 @@ const [playingIndex, setPlayingIndex] = useState(null);
                         marginRight: '',
                         borderRadius: 'var(--theme-ui-colors-borderRadius)',
                         height: '',
-                        padding: '6px 6px',
-                        minWidth: '80px',
-                        maxWidth: '80%',
                         lineHeight: '100%',
+                        padding: '6px 6px',
+                        minWidth: '100px',
+                        maxWidth: '80%',
                       }}
                       aria-label="Search"
                     />
-                  </label>
+                  
                 </>
               ) : (
-                ""
+                <input
+                      id="clearme"
+                      type="text"
+                      placeholder={dicSearch + ":"}
+                      onChange={handleSearch}
+                      style={{
+                        width: '',
+                        background: 'var(--theme-ui-colors-siteColor)',
+                        color: 'var(--theme-ui-colors-siteColorText)',
+                        marginRight: '',
+                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
+                        height: '',
+                        lineHeight: '100%',
+                        padding: '6px 6px',
+                        minWidth: '100px',
+                        maxWidth: '80%',
+                      }}
+                      aria-label="Search"
+                    />
               )}
 
               <button
@@ -247,12 +284,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   color: 'var(--theme-ui-colors-siteColorText)',
                   textAlign: 'center',
                   fontSize: '10px',
-                  height: '',
                   maxWidth: '',
-                  padding: '5px',
-                  borderRadius: '3px',
+                  height: '',
                   lineHeight: '100%',
-                  opacity: '.8'
+                  padding: '5px 2px',
+                  borderRadius: 'var(--theme-ui-colors-borderRadius)',
+                  // opacity: '.8'
                 }}
                 aria-label="{dicClear}"
               >
@@ -278,7 +315,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 <div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible', position:'relative' }}>
 
-{node.frontmatter.youtube.showVidOnly ? (
+{(node.frontmatter.youtube?.showVidOnly && node.frontmatter.youtube.showVidOnly) ? (
+
 <div style={{minWidth:'300px', minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent', zindex:'1'}}>
                 <ReactPlayer
                 playing={index === playingIndex}
@@ -355,7 +393,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
                     />
                   )}
 
-{node.frontmatter.youtube.youtuber ? (
+
+{(node.frontmatter.youtube?.youtuber && node.frontmatter.youtube.youtuber) ? (
                       <div className="spotlight font" style={{border:'0px solid'}}>
                         <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
@@ -391,19 +430,25 @@ const [playingIndex, setPlayingIndex] = useState(null);
                   </>
                 )} */}
 
-                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'3px', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
-                  {showTitles ? (
+{showTitles ? (
+  <>
+                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
+                  
                     <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
-                  ) : (
-                    ""
-                  )}
+            
 
                   {showDates ? (
                     <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
                       <TimeAgo date={node.frontmatter.date} />
                     </p>
                   ) : ("")}
+
+
                 </div>
+                </>
+) : (
+  ""
+)}
               </div>
 
           </div>
