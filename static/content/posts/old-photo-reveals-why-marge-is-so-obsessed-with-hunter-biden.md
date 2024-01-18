@@ -25,9 +25,9 @@ youtube:
   youtubestart: "0"
 mediawarnings:
   viewerwarning: MA
+draft: false
 shareable: true
 showZoom: false
 showPageNav: true
 spotlight: true
-draft: true
 ---
