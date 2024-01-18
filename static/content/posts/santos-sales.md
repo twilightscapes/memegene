@@ -1,56 +1,55 @@
 ---
-template: blog-post
-title: Info found on pager reveals George Santos hidden alter-ego
-slug: /santos-sales
-date: 2023-10-02 12:00
-description: A recently found pager show a shocking life of sellatious activities
-youtube:
- youtuber: "https://youtu.be/ZSVcJ0AkCfs"
- youtuber2: ""
- youtubeshoworiginal: false
- youtubersuggestion1: ""
- youtubersuggestion2: ""
- youtubersuggestion3: ""
- youtubestart: "3"
- youtubeend: "246"
- youtubemute: true
- youtubecontrols: false
- youtubeautostart: true
- youtubeloop: true
- clicktoplay: false
 audiotitle: PLAY Elon's DOPE Playlist
-audioend: ""
-audiostart: "90"
-liarliar: false
-isnftforsale: false
-svgzindex: "0"
-comments: false
-shareable: true
+template: blog-post
+date: 2023-10-02 12:00
+tags:
+  - santos
+  - crook
+  - prison
 underlayImage: /assets/santos-sales.webp
-featuredImage: /assets/santos-sales-promo.webp
-svgImage: /assets/santos-sales.svg
+youtube:
+  youtubersuggestion3: ""
+  youtuber2: ""
+  youtubeloop: true
+  youtuber: https://youtu.be/ZSVcJ0AkCfs
+  youtubeautostart: true
+  youtubeshoworiginal: false
+  clicktoplay: false
+  youtubeend: "246"
+  youtubecontrols: false
+  youtubemute: true
+  youtubersuggestion1: ""
+  youtubersuggestion2: ""
+  youtubestart: "3"
+audioend: ""
 scrollable: false
-showZoom: true
-showPageNav: true
-nftdrop: "2023-03-05T10:00:00"
-contentinvideo: false
+nftdrop: 2023-03-05T10:00:00
+slug: /santos-sales
+audiostart: "90"
+featuredImage: /assets/santos-sales-promo.webp
 mediawarnings:
- viewerwarning: Viewer Discretion Strongly Advised
- marate: MA
- marating1: DA
- marating2: SP
- marating3: CM
- marating4: 
- maratingtx1: Dumb Ass
- maratingtx2: Sleazy Princess
- maratingtx3: Congressional Misconduct
- maratingtx4: 
-
-tags: 
- - santos
- - crook
- - prison
-spotlight: true
+  marating1: DA
+  marating2: SP
+  marating3: CM
+  marating4: null
+  viewerwarning: Viewer Discretion Strongly Advised
+  marate: MA
+  maratingtx1: Dumb Ass
+  maratingtx2: Sleazy Princess
+  maratingtx3: Congressional Misconduct
+  maratingtx4: null
+shareable: true
+showZoom: true
+spotlight: false
+comments: false
+title: Info found on pager reveals George Santos hidden alter-ego
+svgImage: /assets/santos-sales.svg
+showPageNav: true
+liarliar: false
+description: A recently found pager show a shocking life of sellatious activities
+svgzindex: "0"
+contentinvideo: false
+isnftforsale: false
 ---
 
 
