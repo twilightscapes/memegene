@@ -2,8 +2,8 @@
 template: blog-post
 date: 2024-01-21 21:31
 slug: /white-gurls
-title: White Gurls - Liz and Haley have girl talk
-description: Liz and Haley discuss their racial discrimination
+title: White Gurls - Liz and Nikki have girl talk
+description: Liz and Nikki discuss their racial discrimination
 tags:
   - white
   - nikki
