@@ -1,53 +1,51 @@
 ---
+audiotitle: Fuckin' Liar!
 template: blog-post
-title: RFK Jr. Reads The Declaration of Independence
-slug: /rfk-reads-independence
 date: 2023-10-10 04:00
+slug: /rfk-reads-independence
+title: RFK Jr. Reads The Declaration of Independence
 description: How much of a patriot are you? Can you listen to the whole thing?
-youtube:
- youtuber: "https://youtu.be/DNF420oBZno"
- youtuber2: 
- youtubeshoworiginal: true
- youtubersuggestion1: ""
- youtubersuggestion2: "https://youtu.be/xCuyPvfkmug"
- youtubersuggestion3: "https://youtu.be/dQw4w9WgXcQ"
- youtubestart: "483"
- youtubeend: "490"
- youtubemute: false
- youtubecontrols: false
- clicktoplay: false
- customcontrols: true
- youtubeautostart: false
- youtubeloop: true
-audiotitle: "Fuckin' Liar!"
-liarliar: true
-isnftforsale: false
-svgzindex: "0"
-comments: false
-shareable: true
-underlayImage: 
+tags:
+  - rfkjr
 featuredImage: /assets/rfkjr-reads-promo.webp
-svgImage: 
+underlayImage: null
+svgImage: null
+youtube:
+  youtubersuggestion3: https://youtu.be/dQw4w9WgXcQ
+  youtuber2: null
+  youtubeloop: true
+  customcontrols: true
+  youtuber: https://youtu.be/DNF420oBZno
+  youtubeautostart: false
+  youtubeshoworiginal: true
+  clicktoplay: false
+  youtubeend: ""
+  youtubecontrols: false
+  youtubemute: false
+  youtubersuggestion1: ""
+  youtubersuggestion2: https://youtu.be/xCuyPvfkmug
+  youtubestart: "0"
 scrollable: false
-showZoom: true
-showPageNav: true
-nftdrop: "2023-03-05T10:00:00"
-contentinvideo: false
+nftdrop: 2023-03-05T10:00:00
 mediawarnings:
- viewerwarning: Viewer Discretion Strongly Advised
- marate: MA
- marating1: DA
- marating2: BS
- marating3: 
- marating4: 
- maratingtx1: Dumb Ass
- maratingtx2: Total BS
- maratingtx3: 
- maratingtx4: 
-
-tags: 
- - rfkjr
-
+  marating1: DA
+  marating2: BS
+  marating3: null
+  marating4: null
+  viewerwarning: Viewer Discretion Strongly Advised
+  marate: MA
+  maratingtx1: Dumb Ass
+  maratingtx2: Total BS
+  maratingtx3: null
+  maratingtx4: null
+shareable: true
+showZoom: true
+comments: false
+showPageNav: true
+liarliar: true
+svgzindex: "0"
+contentinvideo: false
+isnftforsale: false
 ---
 
 ## You make the decision!
