@@ -50,7 +50,7 @@ import Footer from "../components/footer"
 
 
     const { language, navOptions, featureOptions, proOptions } = useSiteMetadata();
-    const { dicSearch, dicClose, dicPirate } = language;
+    const { dicSearch, dicPirate } = language;
     const { showNav, showNav2 } = navOptions
     const { showfooter, showSwipe, showSearch } = featureOptions
     const { showModals, showBranding } = proOptions
@@ -125,18 +125,17 @@ const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFo
 <ModalRoutingContext.Consumer >
 {({ modal, closeTo }) => (
 <>
-  {modal ? (
+  {/* {modal ? (
     <div id="modalCloser" style={{display:'', position:'fixed', top:'', right:'', padding:'0px', fontSize:'', opacity:'1 !important', zIndex:'22',}}>
     <Link state={{noScroll: true }} to={closeTo} style={{fontSize:'',  textDecoration:'none', lineHeight:'', display:'flex', flexDirection:'column', color:'#fff', cursor:'pointer'}}>
     <button className="button" style={{ display: 'flex', justifyContent: 'center', padding:'0 .5vw' }}>
-      {/* <span className="icon -left" style={{ paddingRight: '' }}><BiLeftArrow /></span> {" "} */}
     {dicClose}
     </button>
     </Link>
     </div>
   ) : (
 ''
-  )}
+  )} */}
 </>
 )}
 </ModalRoutingContext.Consumer>

@@ -30,6 +30,7 @@
       "showLegal": false,
       "showConsent": false,
       "showDefault": true,
+      "startUrl": "youtube",
       "showPopup": false
     },
     "titleTemplate": "%s",
