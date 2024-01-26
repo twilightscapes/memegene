@@ -29,6 +29,7 @@
       "ShowDisclaimer": true,
       "showLegal": false,
       "showConsent": false,
+      "showDefault": true,
       "showPopup": false
     },
     "titleTemplate": "%s",

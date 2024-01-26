@@ -2,20 +2,22 @@ import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/siteLayout";
 import { Helmet } from "react-helmet";
-import BlogPosts from "../components/HomePosts";
+import HomePosts from "../components/HomePosts";
 import Seo from "../components/seo";
 import { getSrc } from "gatsby-plugin-image";
-
+import useSiteMetadata from "../hooks/SiteMetadata";
 const HomePage = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, excerpt } = markdownRemark;
 
+  const { proOptions  } = useSiteMetadata();
+  const { showDefault } = proOptions
   // Check if localStorage is available
   const isLocalStorageAvailable = typeof window !== "undefined" && window.localStorage;
 
   // Set the initial state directly from localStorage if available, otherwise set to true
   const storedValue = isLocalStorageAvailable ? localStorage.getItem("isSliderVisible") : null;
-  const initialSliderVisible = storedValue ? JSON.parse(storedValue) : true;
+  const initialSliderVisible = storedValue ? JSON.parse(storedValue) : showDefault;
 
   const [isSliderVisible, setIsSliderVisible] = useState(initialSliderVisible);
 
@@ -54,7 +56,7 @@ const HomePage = ({ data }) => {
       />
 
       <div className="post-container">
-        <BlogPosts isSliderVisible={isSliderVisible} />
+        <HomePosts isSliderVisible={isSliderVisible} />
       </div>
     </Layout>
   );

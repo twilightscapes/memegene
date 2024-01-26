@@ -11,7 +11,14 @@ import { ImPlay } from "react-icons/im";
 import { FaImage } from "react-icons/fa";
 import { AiOutlinePicLeft } from "react-icons/ai";
 // import { getSrc } from "gatsby-plugin-image";
-const BlogPosts = ({ isSliderVisible }) => {
+// const HomePosts = ({ isSliderVisible }) => {
+
+const HomePosts = ({ isSliderVisible }) => {
+// eslint-disable-next-line
+  const [sliderVisible, setSliderVisible] = useState(false); // Change the state variable name
+
+
+
 
   const { postcount, homecount, language, magicOptions, featureOptions, proOptions, navOptions  } = useSiteMetadata();
 
@@ -68,17 +75,28 @@ const BlogPosts = ({ isSliderVisible }) => {
     const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
 
 
-    useEffect(() => {
-      // Check if window is defined to ensure it's running in a client-side environment
-      if (typeof window !== 'undefined') {
-          // Save the current state to local storage when isSliderVisible changes
-          localStorage.setItem("isSliderVisible", JSON.stringify(isSliderVisible));
-      }
-  }, [isSliderVisible]); // Include isSliderVisible in the dependency array
+
+    
   
 
 
-
+    useEffect(() => {
+      // Check if window is defined to ensure it's running in a client-side environment
+      if (typeof window !== 'undefined') {
+        // Set the default visibility to true if localStorage value is not available
+        const storedSliderVisibility = localStorage.getItem("isSliderVisible");
+        const initialSliderVisible = storedSliderVisibility ? JSON.parse(storedSliderVisibility) : true;
+        // Set the initial visibility based on the prop or localStorage
+        setSliderVisible(isSliderVisible ?? initialSliderVisible);
+      }
+  
+      // Cleanup function if needed
+      return () => {
+        // Cleanup logic here...
+      };
+    }, [isSliderVisible]); // Run this effect whenever isSliderVisible changes
+    
+    
 
   const scrollRef = useRef(null);
 
@@ -236,7 +254,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
         <div
           className="slider"
           onWheel={handleScroll}
-        ref={scrollRef}
+          ref={scrollRef}
           style={{
             display: "flex",
             flexDirection: "row"
@@ -377,29 +395,31 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 
 {numVisibleItems < filteredPosts.length && (
-          <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeSelf: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
-
-            <button className="button font" onClick={showMoreItems} style={{maxWidth:''}}>
+          <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
+          <button className="button font" onClick={showMoreItems} style={{maxWidth:''}}>
               {dicLoadMore}
-            </button>
+          </button>
+          </div>
+        )}
 
-            {showArchive ? (
-              <Link state={showModals ? { modal: true } : {}} to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center' }}>{dicViewArchive} &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
-            ) : (
-              ""
-            )}
-            
-            <br />
+
 {showPopup ? (
-  <SignUp />
+  <div className="loadmore" style={{ display: 'grid', flexDirection: 'column', placeContent: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
+            <SignUp />
+  </div>
         ) : (
           ""
 )}
 
 
-        
-          </div>
-        )}
+{showArchive ? (
+              <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '', textAlign: 'center', zIndex:'1' }}>
+                <Link state={showModals ? { modal: true } : {}} to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center', maxWidth:'300px', alignItems:'center', }}>{dicViewArchive} &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
+            </div>
+            ) : (
+              ""
+            )}
+
 
 
 
@@ -550,33 +570,30 @@ const [playingIndex, setPlayingIndex] = useState(null);
             <button className="button font" onClick={showMoreItems} style={{maxWidth:''}}>
               {dicLoadMore}
             </button>
+          </div>
+        )}
 
-            {showArchive ? (
-              <Link state={showModals ? { modal: true } : {}} to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center' }}>{dicViewArchive} &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
-            ) : (
-              ""
-            )}
-            
-            <br />
 {showPopup ? (
+  <div className="loadmore" style={{minWidth:'300px'}}>
   <SignUp />
+  </div>
         ) : (
           ""
 )}
 
 
-        
-          </div>
-        )}
+{showArchive ? (
+              <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '', textAlign: 'center', zIndex:'1' }}>
+                <Link state={showModals ? { modal: true } : {}} to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center', maxWidth:'300px', alignItems:'center', }}>{dicViewArchive} &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
+            </div>
+            ) : (
+              ""
+            )}
 
-
-
-
-
-
-        
       </div>
       );
+
+      
     }
   };
 
@@ -586,8 +603,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
     <>
       <div
         className="todd"
-        onWheel={handleScroll}
-        ref={scrollRef}
+
         style={{
           overflowX: "auto",
           overflowY: "hidden"
@@ -747,4 +763,4 @@ const [playingIndex, setPlayingIndex] = useState(null);
   );
 };
 
-export default BlogPosts;
+export default HomePosts;
