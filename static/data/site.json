@@ -25,13 +25,15 @@
     "proOptions": {
       "showModals": true,
       "showContact": false,
-      "showDefault": true,
-      "startUrl": "tag/trump/",
-      "showPopup": false,
-      "ShowDisclaimer": true,
       "showBranding": false,
+      "ShowDisclaimer": true,
       "showLegal": false,
-      "showConsent": false
+      "showConsent": false,
+      "showDefault": true,
+      "startUrl": "youtube",
+      "showProfile": false,
+      "showFeature": false,
+      "showPopup": false
     },
     "titleTemplate": "%s",
     "title": "MG Reports",
