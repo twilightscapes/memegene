@@ -22,13 +22,7 @@ const HomePosts = ({ isSliderVisible }) => {
 
   const { postcount, homecount, language, magicOptions, featureOptions, proOptions  } = useSiteMetadata();
 
-  const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
-  
-  const { showModals, showPopup } = proOptions
-  const { showDates, showArchive, showTitles } = featureOptions
 
-    
-  const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
 
   const data = useStaticQuery(graphql`
   query ($homecount: Int) {
@@ -69,7 +63,13 @@ const HomePosts = ({ isSliderVisible }) => {
 
 
 
-    
+const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
+  
+const { showModals, showPopup } = proOptions
+const { showDates, showArchive, showTitles } = featureOptions
+
+  
+const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
 
 
 
@@ -254,7 +254,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
     const containerClass = isSliderVisible ? "slider" : "grid-container contentpanel";
     return (
       <>
-<div id="stoptop" className={containerClass}
+<div id="posttop" className={containerClass}
       onWheel={handleScroll}
       ref={scrollRef}
       // style={{ paddingTop: showNav ? '8vw' : '8vw'}}

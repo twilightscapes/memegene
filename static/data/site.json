@@ -5,10 +5,10 @@
     "siteUrl": "https://memegenes.com",
     "featureOptions": {
       "showArchive": false,
-      "showSearch": false,
+      "showSearch": true,
       "showDates": false,
-      "showTitles": false,
-      "showfooter": false,
+      "showTitles": true,
+      "showfooter": true,
       "showSocial": false,
       "showSwipe": true
     },
