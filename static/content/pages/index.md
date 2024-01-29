@@ -1,16 +1,12 @@
 ---
 draft: true
-addressText: It's all in the genes
 profileName: Meme Gene
-slug: /
-tagline: Do these memes make my butt look fat?
-featuredImage: /assets/santos-sales-promo.webp
-secondaryImage: /assets/default-user.webp
-underlayImage: /assets/transparent.png
+profileSocial: false
+addressText: It's all in the genes
 youtube:
   youtubersuggestion3: "null"
   showVidOnly: false
-  audiotitle: ""
+  audiotitle: "null"
   youtuber2: ""
   audioend: "0"
   youtubeloop: false
@@ -28,6 +24,10 @@ youtube:
   youtubersuggestion1: "null"
   youtubersuggestion2: "null"
   youtubestart: "0"
+slug: /
+tagline: Do these memes make my butt look fat?
+featuredImage: /assets/santos-sales-promo.webp
+secondaryImage: /assets/default-user.webp
 scrollable: false
 portfolio:
   openText: ""
@@ -35,6 +35,7 @@ portfolio:
 nftdrop: x
 excludeFromRSS: true
 skillsText: null
+underlayImage: /assets/transparent.png
 bumpertext: x
 showZoom: false
 cta:
@@ -45,7 +46,6 @@ homecount: 5
 addressText2: ""
 spotlight: false
 comments: false
-profileName: Meme Gene
 pagePW: ""
 skillsTitle: ""
 svgImage: /assets/transparent.png
@@ -77,7 +77,6 @@ sharethis: false
 category:
   - ""
 profTitle: Hi, I'm Gene!
-profileSocial: false
 ---
 <div class="" style="text-align:left;">Memes are a way of life for
   many and this site is meant to be an outlet for that. This site was created to
