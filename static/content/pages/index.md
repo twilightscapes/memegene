@@ -1,6 +1,7 @@
 ---
 draft: true
 profileName: Meme Gene
+profileSocial: false
 addressText: It's all in the genes 
 youtube:
   youtubersuggestion3: "null"
