@@ -1,13 +1,12 @@
 ---
 draft: true
 addressText: It's all in the genes
+profileName: Meme Gene
 slug: /
 tagline: Do these memes make my butt look fat?
 featuredImage: /assets/santos-sales-promo.webp
 secondaryImage: /assets/default-user.webp
 underlayImage: /assets/transparent.png
-profileName: Meme Gene
-addressText: It's all in the genes 
 youtube:
   youtubersuggestion3: "null"
   showVidOnly: false
