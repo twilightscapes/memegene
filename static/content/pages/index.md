@@ -1,11 +1,12 @@
 ---
 draft: true
-addressText: The Fleet Launches Soon!
+profileName: Meme Gene
+addressText: It's all in the genes 
 youtube:
   youtubersuggestion3: "null"
   showVidOnly: false
   audiotitle: "null"
-  youtuber2: "null"
+  youtuber2: ""
   audioend: "0"
   youtubeloop: false
   customcontrols: false
@@ -22,12 +23,6 @@ youtube:
   youtubersuggestion1: "null"
   youtubersuggestion2: "null"
   youtubestart: "0"
-profText: <div class="" style="text-align:left;">Memes are a way of life for
-  many and this site is meant to be an outlet for that. This site was created to
-  make it easy to post new memes and have somewhere to archive all of
-  them.</div><br /> <p>Please enjoy(and share) the memes! <br /><br />Stay tuned
-  for really big news about the platform that we're building and that we'll soon
-  be offering to everyone. </p>
 slug: /
 tagline: Do these memes make my butt look fat?
 featuredImage: /assets/santos-sales-promo.webp
@@ -45,6 +40,7 @@ showZoom: false
 cta:
   ctaText: Reserve Your Galleon
   ctaLink: /contact
+  showCTA: false
 homecount: 5
 addressText2: ""
 spotlight: false
@@ -75,9 +71,15 @@ svgzindex: x
 coverletter:
   coverText: About PIRATE
   coverLink: /contact
+  showCover: false
 sharethis: false
 category:
   - ""
-profTitle: Hoist Your Flag!
+profTitle: Hi, I'm Gene!
 ---
-c
+<div class="" style="text-align:left;">Memes are a way of life for
+  many and this site is meant to be an outlet for that. This site was created to
+  make it easy to post new memes and have somewhere to archive all of
+  them.</div><br /> <p>Please enjoy(and share) the memes! <br /><br />Stay tuned
+  for really big news about the platform that we're building and that we'll soon
+  be offering to everyone. </p>

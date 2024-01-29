@@ -26,7 +26,7 @@
       "showModals": true,
       "showContact": false,
       "showDefault": true,
-      "showProfile": false,
+      "showProfile": true,
       "startUrl": "youtube",
       "showPopup": false,
       "showHomePosts": true,
@@ -59,7 +59,7 @@
       "dicConfirmation": "Message Received",
       "dicDark": "Dark",
       "dicSubmit": "Send Message",
-      "dicPirate": "Powered by PIRATE",
+      "dicPirate": "PIRATE Plus",
       "dicResults": "Result",
       "dicLight": "Light",
       "dicDisclaimer": "Disclaimer",
@@ -68,9 +68,11 @@
       "dicClose": "X Close",
       "dicSwipe": "Swipe",
       "dicCategory": "Category",
-      "dicPlayMultimedia": "View Multimedia",
+      "dicPlayMultimedia": "Play Multimedia",
       "dicEmail": "your@email.com",
-      "dicViewArchive": "View Archive"
+      "dicViewArchive": "View Archive",
+      "dicProfileAudioText": "I'm grooving to:",
+      "dicProfileAudioActionText": "Listen Now!"
     },
     "image": "/assets/newspaper.webp",
     "navOptions": {
