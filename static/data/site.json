@@ -33,6 +33,7 @@
       "startUrl": "youtube",
       "showProfile": false,
       "showFeature": false,
+      "showHomePosts": true,
       "showPopup": false
     },
     "titleTemplate": "%s",
