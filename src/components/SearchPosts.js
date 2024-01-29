@@ -13,29 +13,23 @@ import { AiOutlinePicLeft } from "react-icons/ai";
 // import { getSrc } from "gatsby-plugin-image";
 // const HomePosts = ({ isSliderVisible }) => {
 
-const HomePosts = ({ isSliderVisible }) => {
+const BlogPosts = ({ isSliderVisible }) => {
 // eslint-disable-next-line
   const [sliderVisible, setSliderVisible] = useState(false); // Change the state variable name
 
 
 
 
-  const { postcount, homecount, language, magicOptions, featureOptions, proOptions  } = useSiteMetadata();
+  const { postcount, language, magicOptions, featureOptions, proOptions  } = useSiteMetadata();
 
-  const { showMagic, showMagicCat, showMagicTag, showMagicSearch } = magicOptions;
   
-  const { showModals, showPopup } = proOptions
-  const { showDates, showArchive, showTitles } = featureOptions
-
-    
-  const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
 
   const data = useStaticQuery(graphql`
-  query ($homecount: Int) {
+  query ($postcount: Int) {
     allMarkdownRemark(
       sort: [{ frontmatter: { spotlight: ASC } }, { frontmatter: { date: DESC } }]
       filter: { frontmatter: { template: { eq: "blog-post" }, draft: { ne: true } } }
-      limit: $homecount
+      limit: $postcount
     ) {
       edges {
         node {
@@ -72,7 +66,13 @@ const HomePosts = ({ isSliderVisible }) => {
     
 
 
+    const { showMagicCat, showMagicTag } = magicOptions;
+  
+    const { showModals, showPopup } = proOptions
+    const { showDates, showArchive, showTitles } = featureOptions
 
+    
+    const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
 
 
 
@@ -138,7 +138,7 @@ const HomePosts = ({ isSliderVisible }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
   // eslint-disable-next-line
-  const [visibleItems, setVisibleItems] = useState(homecount);
+  const [visibleItems, setVisibleItems] = useState(postcount);
 
   const allCategoriesSet = new Set(allPosts.flatMap(({ node }) => node.frontmatter.category));
   const allCategories = Array.from(allCategoriesSet);
@@ -195,13 +195,13 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 
   useEffect(() => {
-    setVisibleItems(homecount);
-  }, [filteredPosts, homecount]);
+    setVisibleItems(postcount);
+  }, [filteredPosts, postcount]);
 
   const handleSearch = (event) => {
     const query = event.target.value;
     setQuery(query);
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   };
 
   const handleCategoryChange = (event) => {
@@ -213,7 +213,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
       setSelectedCategory('');
     }
     setSelectedTag('');
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   };
   
 
@@ -221,10 +221,10 @@ const [playingIndex, setPlayingIndex] = useState(null);
     const tag = event.target.value;
     setSelectedTag(tag);
     setSelectedCategory("");
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   };
 
-  const [numVisibleItems, setNumVisibleItems] = useState(homecount);
+  const [numVisibleItems, setNumVisibleItems] = useState(postcount);
 
   const showMoreItems = () => {
     setNumVisibleItems((prevNumVisibleItems) => prevNumVisibleItems + postcount);
@@ -235,7 +235,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
     setQuery('');
     setSelectedCategory('');
     setSelectedTag('');
-    setVisibleItems(homecount);
+    setVisibleItems(postcount);
   }
 
 
@@ -249,9 +249,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
   
 
   const renderContent = () => {
-
-    
-    const containerClass = isSliderVisible ? "slider" : "grid-container contentpanel";
+    const containerClass = isSliderVisible ? "slider" : "grid-container contentpanel1";
     return (
       <>
 <div className={containerClass}
@@ -428,6 +426,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
   );
 };
 
+
   
   return (
     <>
@@ -439,9 +438,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
         }}
       >
 
-{showMagic ? (
-        <>
-          <div className="magicisland" style={{position:'absolute'}}>
+
+          <div className="magicisland">
             <div className="cattags font panel" >
               {showMagicCat ? (
                 <>
@@ -504,7 +502,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 
 
-              {showMagicSearch ? (
+
                 <>
                 
                     <input
@@ -528,28 +526,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                     />
                   
                 </>
-              ) : (
-                <input
-                      id="clearme"
-                      type="text"
-                      placeholder={dicSearch + ":"}
-                      onChange={handleSearch}
-                      style={{
-                        width: '',
-                        background: 'var(--theme-ui-colors-siteColor)',
-                        color: 'var(--theme-ui-colors-siteColorText)',
-                        marginRight: '',
-                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
-                        height: '',
-                        lineHeight: '100%',
-                        padding: '0',
-                        minWidth: '0',
-                        maxWidth: '0',
-                        visibility: 'hidden'
-                      }}
-                      aria-label="Search"
-                    />
-              )}
+            
 
               <button
                 type="reset"
@@ -582,16 +559,12 @@ const [playingIndex, setPlayingIndex] = useState(null);
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        ""
-      )}
 
-      
+
         {renderContent()}
       </div>
     </>
   );
 };
 
-export default HomePosts;
+export default BlogPosts;

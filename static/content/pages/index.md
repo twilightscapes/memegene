@@ -24,13 +24,9 @@ youtube:
 
 showPageNav: false
 showZoom: false
-profText: <p>PIRATE is a social network with NO central control or ownership. It's based on leading Open-Source platforms and runs on individually owned websites. </p>
-
- <p>PIRATE leverages the power of free services to host your own web app that you can control from any device, all for FREE! </p>
-
- <p>Easily edit your homepage, update your profile, and publish engaging content on your OWN website/app.</p>
+profText: <div class="" style="text-align:left;">Memes are a way of life for many and this site is meant to be an outlet for that. This site was created to make it easy to post new memes and have somewhere to archive all of them.</div><br /> <p>Please enjoy(and share) the memes! <br /><br />Stay tuned for really big news about the platform that we're building and that we'll soon be offering to everyone. </p>
 tagline: You're the Captain of your content!
-featuredImage: /assets/losser.webp
+featuredImage: /assets/santos-sales-promo.webp
 secondaryImage: /assets/default-user.webp
 scrollable: false
 portfolio:

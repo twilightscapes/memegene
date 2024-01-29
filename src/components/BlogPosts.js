@@ -11,10 +11,18 @@ import { ImPlay } from "react-icons/im";
 import { FaImage } from "react-icons/fa";
 import { AiOutlinePicLeft } from "react-icons/ai";
 // import { getSrc } from "gatsby-plugin-image";
+// const HomePosts = ({ isSliderVisible }) => {
+
 const BlogPosts = ({ isSliderVisible }) => {
+// eslint-disable-next-line
+  const [sliderVisible, setSliderVisible] = useState(false); // Change the state variable name
 
-  const { postcount, language, magicOptions, featureOptions, proOptions, navOptions  } = useSiteMetadata();
 
+
+
+  const { postcount, language, magicOptions, featureOptions, proOptions  } = useSiteMetadata();
+
+  
 
   const data = useStaticQuery(graphql`
   query ($postcount: Int) {
@@ -54,27 +62,42 @@ const BlogPosts = ({ isSliderVisible }) => {
 `);
 
 
-    const scrollRef = useRef(null);
+
     
 
 
-    const { showMagic, showMagicCat, showMagicTag } = magicOptions;
+    const { showMagicCat, showMagicTag } = magicOptions;
   
     const { showModals, showPopup } = proOptions
     const { showDates, showArchive, showTitles } = featureOptions
-    const { showNav } = navOptions
     
     const { dicLoadMore, dicViewArchive, dicCategory, dicKeyword, dicSearch, dicClear, dicResults, dicPlayVideo, dicPlayMultimedia  } = language;
+
+
+
+    
+  
 
 
     useEffect(() => {
       // Check if window is defined to ensure it's running in a client-side environment
       if (typeof window !== 'undefined') {
-          // Save the current state to local storage when isSliderVisible changes
-          localStorage.setItem("isSliderVisible", JSON.stringify(isSliderVisible));
+        // Set the default visibility to true if localStorage value is not available
+        const storedSliderVisibility = localStorage.getItem("isSliderVisible");
+        const initialSliderVisible = storedSliderVisibility ? JSON.parse(storedSliderVisibility) : true;
+        // Set the initial visibility based on the prop or localStorage
+        setSliderVisible(isSliderVisible ?? initialSliderVisible);
       }
-  }, [isSliderVisible]); // Include isSliderVisible in the dependency array
   
+      // Cleanup function if needed
+      return () => {
+        // Cleanup logic here...
+      };
+    }, [isSliderVisible]); // Run this effect whenever isSliderVisible changes
+    
+    
+
+  const scrollRef = useRef(null);
 
   const handleScroll = (e) => {
     if (scrollRef.current) {
@@ -82,6 +105,26 @@ const BlogPosts = ({ isSliderVisible }) => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Your scroll handling logic
+    };
+  
+    const currentScrollRef = scrollRef.current;
+  
+    if (currentScrollRef) {
+      currentScrollRef.addEventListener("scroll", handleScroll);
+    }
+  
+    return () => {
+      if (currentScrollRef) {
+        currentScrollRef.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [scrollRef]);
+
+
+  
 
 
   // const markdownRemark = data.allMarkdownRemark.edges[0]?.node;
@@ -205,370 +248,197 @@ const [playingIndex, setPlayingIndex] = useState(null);
   
 
   const renderContent = () => {
-    if (isSliderVisible) {
-      return (
-        <div
-          className="slider"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
+    const containerClass = isSliderVisible ? "slider" : "grid-container contentpanel";
+    return (
+      <>
+<div className={containerClass}
+      onWheel={handleScroll}
+      ref={scrollRef}
+      // style={{ paddingTop: showNav ? '8vw' : '8vw'}}
+      >
 
+
+
+        {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
+  
+
+<div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible', position:'relative' }}>
+
+{(node.frontmatter.youtube?.showVidOnly && node.frontmatter.youtube.showVidOnly) ? (
+
+<div style={{minWidth:'300px', minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent', zindex:'1'}}>
+                <ReactPlayer
+                playing={index === playingIndex}
+                ref={playerRef}
+                url={node.frontmatter.youtube.youtuber}
+                  allow="web-share"
+                  // style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '',aspectRatio:'16/9', }}
+                  width="350px"
+                  height="200px"
+                  className='inline'
+                  playsinline
+                  // className={`relative ${index === playingIndex ? 'fixed' : 'relative'}`}
+                  style={{
+                    position: index === playingIndex ? 'fixed' : 'relative',
+                    
+                    // top: index === playingIndex ? '50%' : 'auto',
+                    // left: index === playingIndex ? '50%' : 'auto',
+                    // transform: index === playingIndex ? 'translate(-50%, -50%)' : 'none',
+                    bottom: index === playingIndex ? '10vh' : '',
+                    left: index === playingIndex ? '5%' : '',
+                    margin:'0 auto',
+                    transition: 'all 1.3s ease-in-out',
+                    // width: index === playingIndex ? '100%' : '350px',
+                    // height: index === playingIndex ? '100%' : '200px',
+                    border: index === playingIndex ? '1px solid var(--theme-ui-colors-siteColor)' : 'inherit',
+                    boxShadow: index === playingIndex ? '2px 1px 10px 10px rgba(0, 0, 0, 0.5)' : 'inherit',
+                    // width: '80vw',
+                    // height:'60vh',
+                    // margin: index === playingIndex ? '0' : '0 auto 15px auto',
+                    zIndex: index === playingIndex ? '9999' : '1',
+                    aspectRatio: '16/9',
+                  }}
+                  light={`https://i.ytimg.com/vi/${extractVideoId(node.frontmatter.youtube.youtuber)}/hqdefault.jpg`}
+                  config={{
+                    file: {
+                      attributes: {
+                        crossOrigin: "anonymous",
+                      },
+                    },
+                    youtube: {
+                      playerVars: { showinfo: 0, autoplay: 1, controls: 1, mute: 0, loop: 1 },
+                    },
+                  }}
+                  playIcon={
+                    <div style={{display:'flex', flexDirection:'column', placeContent:'', justifyContent:'', position:'absolute', zindex:'1', top:'', fontWeight:'bold', padding:'3% 0 0 0', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
+                      <div className="spotlight font" style={{}}>
+                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
+                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+                          </div>
+                          {dicPlayVideo}
+                        </div>
+                      </div>
+                    </div>}
+                    onPlay={() => handleVideoPlay(index)}
+                    onPause={handleVideoPause}
+                />
+                </div>
+              ) : (
+                <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
+                  {node.frontmatter.featuredImage ? (
+                    <GatsbyImage
+                      image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
+                      alt={node.frontmatter.title + " - Featured image"}
+                      className="featured-image1"
+                      placeholder="blurred"
+                      style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
+                    />
+                  ) : (
+                    <StaticImage
+                      className="featured-image1"
+                      src="../../static/assets/default-og-image.webp"
+                      alt="Default Image"
+                      style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
+                    />
+                  )}
+{(node.frontmatter.youtube?.youtuber && node.frontmatter.youtube.youtuber) ? (
+
+                      <div className="spotlight font" style={{border:'0px solid'}}>
+                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
+                            <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
+                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', }} />
+                          </div>
+                          {dicPlayMultimedia}
+                        </div>
+                      </div>
+                    ) : ("")}
+                </Link>
+              )}
+
+              <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
+
+{showTitles ? (
+  <>
+                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
+                  
+                    <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
+            
+
+                  {showDates ? (
+                    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
+                      <TimeAgo date={node.frontmatter.date} />
+                    </p>
+                  ) : ("")}
+
+
+                </div>
+                </>
+) : (
+  ""
+)}
+              </div>
+
+          </div>
+
+
+      
+        ))}
+
+
+<div className="loadmore post-card1" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
+{numVisibleItems < filteredPosts.length && (
           
-                {/* <div className="horizontal-scroll1 contentpanel1" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', }}>
-        <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div> */}
-
-        {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
-  
-
-<div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible', position:'relative' }}>
-
-{(node.frontmatter.youtube?.showVidOnly && node.frontmatter.youtube.showVidOnly) ? (
-
-<div style={{minWidth:'300px', minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent', zindex:'1'}}>
-                <ReactPlayer
-                playing={index === playingIndex}
-                ref={playerRef}
-                url={node.frontmatter.youtube.youtuber}
-                  allow="web-share"
-                  // style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '',aspectRatio:'16/9', }}
-                  width="350px"
-                  height="200px"
-                  className='inline'
-                  playsinline
-                  // className={`relative ${index === playingIndex ? 'fixed' : 'relative'}`}
-                  style={{
-                    position: index === playingIndex ? 'fixed' : 'relative',
-                    
-                    // top: index === playingIndex ? '50%' : 'auto',
-                    // left: index === playingIndex ? '50%' : 'auto',
-                    // transform: index === playingIndex ? 'translate(-50%, -50%)' : 'none',
-                    bottom: index === playingIndex ? '10vh' : '',
-                    left: index === playingIndex ? '5%' : '',
-                    margin:'0 auto',
-                    transition: 'all 1.3s ease-in-out',
-                    // width: index === playingIndex ? '100%' : '350px',
-                    // height: index === playingIndex ? '100%' : '200px',
-                    border: index === playingIndex ? '1px solid var(--theme-ui-colors-siteColor)' : 'inherit',
-                    boxShadow: index === playingIndex ? '2px 1px 10px 10px rgba(0, 0, 0, 0.5)' : 'inherit',
-                    // width: '80vw',
-                    // height:'60vh',
-                    // margin: index === playingIndex ? '0' : '0 auto 15px auto',
-                    zIndex: index === playingIndex ? '9999' : '1',
-                    aspectRatio: '16/9',
-                  }}
-                  light={`https://i.ytimg.com/vi/${extractVideoId(node.frontmatter.youtube.youtuber)}/hqdefault.jpg`}
-                  config={{
-                    file: {
-                      attributes: {
-                        crossOrigin: "anonymous",
-                      },
-                    },
-                    youtube: {
-                      playerVars: { showinfo: 0, autoplay: 1, controls: 1, mute: 0, loop: 1 },
-                    },
-                  }}
-                  playIcon={
-                    <div style={{display:'flex', flexDirection:'column', placeContent:'', justifyContent:'', position:'absolute', zindex:'1', top:'', fontWeight:'bold', padding:'3% 0 0 0', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
-                      <div className="spotlight font" style={{}}>
-                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
-                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                          </div>
-                          {dicPlayVideo}
-                        </div>
-                      </div>
-                    </div>}
-                    onPlay={() => handleVideoPlay(index)}
-                    onPause={handleVideoPause}
-                />
-                </div>
-              ) : (
-                <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
-                  {node.frontmatter.featuredImage ? (
-                    <GatsbyImage
-                      image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
-                      alt={node.frontmatter.title + " - Featured image"}
-                      className="featured-image1"
-                      placeholder="blurred"
-                      style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
-                    />
-                  ) : (
-                    <StaticImage
-                      className="featured-image1"
-                      src="../../static/assets/default-og-image.webp"
-                      alt="Default Image"
-                      style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
-                    />
-                  )}
-{(node.frontmatter.youtube?.youtuber && node.frontmatter.youtube.youtuber) ? (
-
-                      <div className="spotlight font" style={{border:'0px solid'}}>
-                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
-                            <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', }} />
-                          </div>
-                          {dicPlayMultimedia}
-                        </div>
-                      </div>
-                    ) : ("")}
-                </Link>
-              )}
-
-              <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
-
-{showTitles ? (
-  <>
-                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
-                  
-                    <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
-            
-
-                  {showDates ? (
-                    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
-                      <TimeAgo date={node.frontmatter.date} />
-                    </p>
-                  ) : ("")}
-
-
-                </div>
-                </>
-) : (
-  ""
-)}
-              </div>
-
-          </div>
-
-
-      
-        ))}
-
-
-{numVisibleItems < filteredPosts.length && (
-          <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeSelf: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
-
-            <button className="button font" onClick={showMoreItems} style={{maxWidth:''}}>
+          <button className="button font" onClick={showMoreItems} style={{maxWidth:''}}>
               {dicLoadMore}
-            </button>
+          </button>
+          
+        )}
 
-            {showArchive ? (
-              <Link state={showModals ? { modal: true } : {}} to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center' }}>{dicViewArchive} &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
-            ) : (
-              ""
-            )}
-            
-            <br />
+{showArchive ? (
+      
+      <Link state={showModals ? { modal: true } : {}} to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center', maxWidth:'300px', alignItems:'center', }}>{dicViewArchive} &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
+
+  ) : (
+    ""
+  )}
+</div>
+
 {showPopup ? (
-  <SignUp />
+  <div className="loadmore post-card1" style={{ display: 'grid', flexDirection: 'column', placeContent: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
+            <SignUp />
+  </div>
         ) : (
           ""
 )}
 
 
-        
-          </div>
-        )}
 
 
 
 
 
-
-        
-      </div>
-
-      );
-    } else {
-      return (
-        <div className="contentpanel1 grid-container" style={{ justifyContent: 'center', alignItems: 'center', paddingTop: showNav ? '8vw' : '8vw', width:'100vw' }}>
-        <div className="sliderSpacer" style={{ height: '', paddingTop: '', display: '' }}></div>
-
-        {filteredPosts.slice(0, numVisibleItems).map(({ node }, index) => (
-  
-
-<div key={index} className="post-card1" style={{ alignItems: '', overflow: 'visible', position:'relative' }}>
-
-{(node.frontmatter.youtube?.showVidOnly && node.frontmatter.youtube.showVidOnly) ? (
-
-<div style={{minWidth:'300px', minHeight: index === playingIndex ? '200px' : '200px', background: index === playingIndex ? 'rgba(0, 0, 0, 0.5)' : 'transparent', zindex:'1'}}>
-                <ReactPlayer
-                playing={index === playingIndex}
-                ref={playerRef}
-                url={node.frontmatter.youtube.youtuber}
-                  allow="web-share"
-                  // style={{ position: 'relative', margin: '0 auto 15px auto', zIndex: '',aspectRatio:'16/9', }}
-                  width="350px"
-                  height="200px"
-                  className='inline'
-                  playsinline
-                  // className={`relative ${index === playingIndex ? 'fixed' : 'relative'}`}
-                  style={{
-                    position: index === playingIndex ? 'fixed' : 'relative',
-                    
-                    // top: index === playingIndex ? '50%' : 'auto',
-                    // left: index === playingIndex ? '50%' : 'auto',
-                    // transform: index === playingIndex ? 'translate(-50%, -50%)' : 'none',
-                    bottom: index === playingIndex ? '10vh' : '',
-                    left: index === playingIndex ? '5%' : '',
-                    margin:'0 auto',
-                    transition: 'all 1.3s ease-in-out',
-                    // width: index === playingIndex ? '100%' : '350px',
-                    // height: index === playingIndex ? '100%' : '200px',
-                    border: index === playingIndex ? '1px solid var(--theme-ui-colors-siteColor)' : 'inherit',
-                    boxShadow: index === playingIndex ? '2px 1px 10px 10px rgba(0, 0, 0, 0.5)' : 'inherit',
-                    // width: '80vw',
-                    // height:'60vh',
-                    // margin: index === playingIndex ? '0' : '0 auto 15px auto',
-                    zIndex: index === playingIndex ? '9999' : '1',
-                    aspectRatio: '16/9',
-                  }}
-                  light={`https://i.ytimg.com/vi/${extractVideoId(node.frontmatter.youtube.youtuber)}/hqdefault.jpg`}
-                  config={{
-                    file: {
-                      attributes: {
-                        crossOrigin: "anonymous",
-                      },
-                    },
-                    youtube: {
-                      playerVars: { showinfo: 0, autoplay: 1, controls: 1, mute: 0, loop: 1 },
-                    },
-                  }}
-                  playIcon={
-                    <div style={{display:'flex', flexDirection:'column', placeContent:'', justifyContent:'', position:'absolute', zindex:'1', top:'', fontWeight:'bold', padding:'3% 0 0 0', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
-                      <div className="spotlight font" style={{}}>
-                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
-                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                          </div>
-                          {dicPlayVideo}
-                        </div>
-                      </div>
-                    </div>}
-                    onPlay={() => handleVideoPlay(index)}
-                    onPause={handleVideoPause}
-                />
-                </div>
-              ) : (
-                <Link className="postlink" state={showModals ? { modal: true } : {}} key={node.frontmatter.slug} to={node.frontmatter.slug}>
-                  {node.frontmatter.featuredImage ? (
-                    <GatsbyImage
-                      image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
-                      alt={node.frontmatter.title + " - Featured image"}
-                      className="featured-image1"
-                      placeholder="blurred"
-                      style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
-                    />
-                  ) : (
-                    <StaticImage
-                      className="featured-image1"
-                      src="../../static/assets/default-og-image.webp"
-                      alt="Default Image"
-                      style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
-                    />
-                  )}
-{(node.frontmatter.youtube?.youtuber && node.frontmatter.youtube.youtuber) ? (
-
-                      <div className="spotlight font" style={{border:'0px solid'}}>
-                        <div className="posticons" style={{ flexDirection: 'column', margin: '0 auto' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-around', gap: '2vw', color: 'fff', }}>
-                            <FaImage className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <ImPlay className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', fontSize: '' }} />
-                            <AiOutlinePicLeft className="posticon" style={{ margin: '0 auto', width: '60%', height: '30px', }} />
-                          </div>
-                          {dicPlayMultimedia}
-                        </div>
-                      </div>
-                    ) : ("")}
-                </Link>
-              )}
-
-              <div className="post-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '', position: 'relative', background: '', padding: '', margin: '0 auto 0 auto', textAlign: 'center', overFlow: 'hidden' }}>
-
-{showTitles ? (
-  <>
-                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
-                  
-                    <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
-            
-
-                  {showDates ? (
-                    <p style={{ position: '', textAlign: 'center', border: '0px solid red', fontSize: '', padding:'0', margin:'0 0 0 20px', maxWidth: '60px', lineHeight:'100%' }}>
-                      <TimeAgo date={node.frontmatter.date} />
-                    </p>
-                  ) : ("")}
-
-
-                </div>
-                </>
-) : (
-  ""
-)}
-              </div>
-
-          </div>
-
-
-      
-        ))}
-
-
-{numVisibleItems < filteredPosts.length && (
-          <div className="loadmore" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', placeSelf: 'center', gap: '',  textAlign: 'center', zIndex:'1' }}>
-
-            <button className="button font" onClick={showMoreItems} style={{maxWidth:''}}>
-              {dicLoadMore}
-            </button>
-
-            {showArchive ? (
-              <Link state={showModals ? { modal: true } : {}} to="/archive" className="font" style={{ background: 'var(--theme-ui-colors-headerColor)', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-headerColorText)', display: 'flex', padding: '8px', margin: '0 auto', justifyContent:'center' }}>{dicViewArchive} &nbsp;<MdArrowForwardIos style={{ marginTop: '' }} /></Link>
-            ) : (
-              ""
-            )}
-            
-            <br />
-{showPopup ? (
-  <SignUp />
-        ) : (
-          ""
-)}
-
-
-        
-          </div>
-        )}
-
-
-
-
-
-
-        
-      </div>
-      );
-    }
-  };
+      </div>  
+</>
+  );
+};
 
 
   
   return (
     <>
       <div
-        className="todd"
-        onWheel={handleScroll}
-        ref={scrollRef}
+        className="magicshell"
+
         style={{
           overflowX: "auto",
-          overflowY: "hidden",
-
+          overflowY: "hidden"
         }}
       >
 
-{showMagic ? (
-        <>
+
           <div className="magicisland">
             <div className="cattags font panel" >
               {showMagicCat ? (
@@ -632,6 +502,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 
 
+
+                <>
                 
                     <input
                       id="clearme"
@@ -653,27 +525,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                       aria-label="Search"
                     />
                   
-
-                <input
-                      id="clearme"
-                      type="text"
-                      placeholder={dicSearch + ":"}
-                      onChange={handleSearch}
-                      style={{
-                        width: '',
-                        background: 'var(--theme-ui-colors-siteColor)',
-                        color: 'var(--theme-ui-colors-siteColorText)',
-                        marginRight: '',
-                        borderRadius: 'var(--theme-ui-colors-borderRadius)',
-                        height: '',
-                        lineHeight: '100%',
-                        padding: '0',
-                        minWidth: '0',
-                        maxWidth: '0',
-                        visibility: 'hidden'
-                      }}
-                      aria-label="Search"
-                    />
+                </>
             
 
               <button
@@ -707,10 +559,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        ""
-      )}
+
+
         {renderContent()}
       </div>
     </>

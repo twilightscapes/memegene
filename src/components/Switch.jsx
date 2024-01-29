@@ -22,7 +22,7 @@ function Header() {
   useEffect(() => {
     if (isSliderVisible) {
       // Set initial scroll position to the top when in grid view
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     }
   }, [isSliderVisible]);
 
@@ -44,8 +44,6 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Your scroll-related logic here
-      // For example, you can log the scroll position
       console.log("Scroll position:", window.scrollY);
     };
   

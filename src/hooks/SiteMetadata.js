@@ -37,6 +37,9 @@ const useSiteMetadata = () => {
             ShowDisclaimer
             showDefault
             startUrl
+            showProfile
+            showFeature
+            showHomePosts
           }
           navOptions{
             showFooterMenu
