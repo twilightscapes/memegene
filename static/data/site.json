@@ -6,8 +6,8 @@
     "featureOptions": {
       "showArchive": false,
       "showSearch": false,
-      "showDates": false,
-      "showTitles": false,
+      "showDates": true,
+      "showTitles": true,
       "showfooter": false,
       "showSocial": false,
       "showDefault": true,
