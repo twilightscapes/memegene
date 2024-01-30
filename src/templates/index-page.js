@@ -23,9 +23,10 @@ import { AiOutlineAudioMuted } from 'react-icons/ai';
 import { StaticImage } from "gatsby-plugin-image"
 const HomePage = ({ data }) => {
 
-  const { language, proOptions, companyname  } = useSiteMetadata();
+  const { language, proOptions, featureOptions  } = useSiteMetadata();
 
-  const { showProfile, showDefault, showFeature, showHomePosts } = proOptions
+  const { showProfile, showFeature, showHomePosts } = proOptions
+  const { showDefault } = featureOptions
 
   const { dicPlayVideo, dicProfileAudioText, dicProfileAudioActionText} = language;
 
@@ -627,7 +628,8 @@ style={{height:'auto', width:'100vw', maxHeight:'100vh', position:'absolute', zI
 
 {showHomePosts ? (
 
-    <HomePosts isSliderVisible={isSliderVisible} className="scroll-area1" id="posttop" name="posttop" />
+
+    <HomePosts isSliderVisible={isSliderVisible} className="scroll-area" id="posttop" name="posttop" />
 
     ) : (
       ""
