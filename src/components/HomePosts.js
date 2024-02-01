@@ -268,7 +268,10 @@ const [playingIndex, setPlayingIndex] = useState(null);
 <div id="posttop" className={containerClass}
       onWheel={handleScroll}
       ref={scrollRef}
-      // style={{ paddingTop: showNav ? '8vw' : '8vw'}}
+      style={{ 
+        // paddingTop: showNav ? '8vw' : '8vw'
+        padding:''
+    }}
       >
 
 
@@ -376,9 +379,9 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 {showTitles ? (
   <>
-                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.4vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', }}>
+                <div className="panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', alignContent:'center', margin: '10px auto', maxWidth: '', gap: '.4vw', maxHeight: '74px', textAlign: 'left', padding: '10px 5%', fontSize: 'clamp(.7rem,.8vh,12px)', outline:'0px solid #444', overFlow:'hidden', lineHeight:'2.5vh', borderRadius:'var(--theme-ui-colors-borderRadius)', background: showTitles ? 'var(--theme-ui-colors-headerColor)' : 'transparent', color:'var(--theme-ui-colors-headerColorText)' }}>
                   
-                    <h2 className="title1" style={{width:'100%', }}>{node.frontmatter.title}</h2>
+                    <h2 className="title1" style={{maxWidth:'', }}>{node.frontmatter.title}</h2>
             
 
                   {showDates ? (
@@ -472,6 +475,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                         padding: '5px 2px',
                       }}
                       aria-label="Select Category"
+                      id="categoryselect"
                     >
                       <option value="">{dicCategory}</option>
                       {allCategories.filter(category => category).map((category, index) => (
@@ -488,6 +492,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
 
 {showMagicTag && allTags.length > 0 && (
   <select
+    id="tagselect"
     value={selectedTag}
     onChange={handleTagChange}
     style={{
@@ -563,6 +568,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
               )}
 
               <button
+                id="clearbutton"
                 type="reset"
                 value="reset"
                 className="muted"
@@ -587,7 +593,7 @@ const [playingIndex, setPlayingIndex] = useState(null);
                 {dicClear}
               </button>
 
-              <div style={{ position: '', right: '', top: '', textAlign: 'center', fontSize: '9px', color: 'var(--theme-ui-colors-headerColorText)', maxWidth: '' }}>
+              <div style={{ position: '', right: '', top: '', textAlign: 'center', fontSize: '9px', color: 'var(--theme-ui-colors-headerColorText)', borderRadius: 'var(--theme-ui-colors-borderRadius)', }}>
                 {filteredPosts.length} <br />
                 {dicResults}{filteredPosts.length !== 1 && 's'}
               </div>

@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',  // Add smooth behavior for scrolling
+      behavior: 'smooth', 
     });
   };
 
@@ -63,10 +63,17 @@ const Layout = ({ children }) => {
   return (
     <>
       <Helmet>
+      <meta
+    http-equiv="Content-Security-Policy"
+    content="font-src 'self' https://fonts.gstatic.com"
+  />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link id="yyy" rel="stylesheet" href={fontUrl} crossOrigin="anonymous" referrerPolicy="no-referrer-when-downgrade" />
+        
+
         <style>{`
+        
           ${userStyles.userStyles}
         `}</style>
       </Helmet>
@@ -74,52 +81,26 @@ const Layout = ({ children }) => {
       <Seo />
 
       <ModalRoutingContext.Consumer>
-        {({ modal, closeTo }) => (
-          <>
-            {/* Your modal-related code */}
-          </>
-        )}
-      </ModalRoutingContext.Consumer>
+  {({ modal, closeTo }) => {
+    // if (modal) {
+    //   document.body.style.position = 'fixed';
+    //   document.body.style.width = '100%';
+    //   return () => {
+    //     document.body.style.position = '';
+    //     document.body.style.width = '';
+    //   };
+    // }
+    return (
+      <>
+        <div>
+          {/* ... (modal-related code) */}
+        </div>
+      </>
+    );
+  }}
+</ModalRoutingContext.Consumer>
 
-      <div
-        className={`upbar button ${showBackToTop ? 'visible' : ''}`}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          zIndex: '4',
-          left: '',
-          right: '1vw',
-          display: 'flex',
-          justifyContent: 'center',
-          width: 'auto',
-          maxWidth: '80vw',
-          margin: '0 auto',
-          gap: '5vw',
-          padding: '0',
-          border: 'none',
-          borderRadius: '',
-          textShadow: '0 1px 1px rgba(0, 0, 0, .7)',
-          fontSize: '',
-          verticalAlign: 'center',
-          transform: showBackToTop ? 'translateY(0)' : 'translateY(200%)',
-        }}
-      >
-        <Link
-          to="#top"
-          aria-label="Link to Top"
-          onClick={scrollToTop}
-          style={{ cursor: 'pointer', height: '', fontSize: '', border: 'none', outline: 'none' }}
-        >
-          <div className="uparrow" style={{ display: 'flex', flexDirection: 'column', gap: '0', padding: '', alignItems: 'center', textAlign: 'center' }}>
-            <RiArrowUpFill
-              className=""
-              style={{ cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fill: 'var(--theme-ui-colors-siteColorText)', fontSize: '3rem' }}
-            />
-          </div>
-        </Link>
-      </div>
 
-      <div id="gobacker"><GoBack /></div>
 
       <header className="header" style={{ display: 'block', height: showNav ? '60px' : '0' }}>
         {showNav ? (
@@ -174,14 +155,101 @@ const Layout = ({ children }) => {
         )}
       </header>
 
+
+
+      <main id="top" name="pagetop">
+        {children}
+      <div className={`upbar button ${showBackToTop ? 'visible' : ''}`}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          zIndex: '60',
+          left: '',
+          right: '1vw',
+          display: 'flex',
+          justifyContent: 'center',
+          width: 'auto',
+          maxWidth: '80vw',
+          margin: '0 auto',
+          gap: '5vw',
+          padding: '0',
+          border: 'none',
+          borderRadius: '',
+          textShadow: '0 1px 1px rgba(0, 0, 0, .7)',
+          fontSize: '',
+          verticalAlign: 'center',
+          transform: showBackToTop ? 'translateY(0)' : 'translateY(200%)',
+        }}
+      >
+        <AnchorLink
+          to="#top"
+          aria-label="Link to Top"
+          onClick={scrollToTop}
+          style={{ cursor: 'pointer', height: '', fontSize: '', border: 'none', outline: 'none' }}
+        >
+          <div className="uparrow" style={{ display: 'flex', flexDirection: 'column', gap: '0', padding: '', alignItems: 'center', textAlign: 'center' }}>
+            <RiArrowUpFill
+              className=""
+              style={{ cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fill: 'var(--theme-ui-colors-siteColorText)', fontSize: '3rem' }}
+            />
+          </div>
+        </AnchorLink>
+      </div>
+      </main>
+
+      {showfooter ? (
+    <Footer />
+      ) : (
+        <footer className="" style={{display:'flex', flexDirection:'column', zIndex:'1', justifyContent:'end', padding:'0', marginTop:'0', width:'100vw',textAlign:'center'}}>
+          {showBranding ? (
+            <div style={{ textAlign: 'center', margin: '0 0 2rem 0', justifyContent: 'center', fontSize: '.75rem', position: 'relative', right: '', top: '10px' }}>
+              <a className="panel" href="https://pirateweb.org" rel="noreferrer">{dicPirate}</a>
+            </div>
+          ) : (
+            ""
+          )}
+        </footer>
+      )}
+
+
+
+      
+
+
+
+<div id="gobacker"><GoBack /></div>
+
+
+
+
+
+
+      {image ? (
+        <img type="image/svg+xml" className="backimage" src={image} alt="Default Background" style={{ height: '100vh', width: '100vw', position: 'fixed', zIndex: '-2', top: '0', objectFit: 'cover' }} width="10" height="10" />
+      ) : (
+        ""
+      )}
+
+      {showConsent ? (
+        <Consent />
+      ) : (
+        ""
+      )}
+
+
+
+
+
+
+
       {showNav2 ? (
-        <header>
+        <div>
 
           <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu" />
           <>{/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}</>
           <label htmlFor="openSidebarMenu" className="backdrop1"></label>
 
-          <label id="menuicon" htmlFor="openSidebarMenu" className="sidebarIconToggle bug panel">
+          <label id="menuicon" htmlFor="openSidebarMenu" className="sidebarIconToggle bug">
             <div style={{ textAlign: 'center', opacity: '1', maxWidth: '500px', color: 'var(--theme-ui-colors-headerColorText)', fontWeight: 'bold' }}>
               {iconimage ? (
                 <img className="" src={iconimage} alt={companyname} width="120" height="60" style={{ maxHeight: '60px', maxWidth: '120px', border: 'none' }} />
@@ -239,41 +307,13 @@ const Layout = ({ children }) => {
             </ul>
           </div>
 
-        </header>
+        </div>
       ) : (
         ""
       )}
 
-      <main>
-        <div id="top" name="pagetop"></div>
-        {children}
-      </main>
 
-      {showfooter ? (
-        <Footer />
-      ) : (
-        <footer className="" style={{ display: 'flex', flexDirection: 'column', zIndex: '1', justifyContent: 'end', padding: '0', marginTop: '0', width: '100vw', textAlign: 'center' }}>
-          {showBranding ? (
-            <div style={{ textAlign: 'center', margin: '0 0 2rem 0', justifyContent: 'center', fontSize: '.75rem', position: 'relative', right: '', top: '10px' }}>
-              <a className="panel" href="https://pirateweb.org" rel="noreferrer">{dicPirate}</a>
-            </div>
-          ) : (
-            ""
-          )}
-        </footer>
-      )}
 
-      {image ? (
-        <img type="image/svg+xml" className="backimage" src={image} alt="Default Background" style={{ height: '100vh', width: '100vw', position: 'fixed', zIndex: '-2', top: '0', objectFit: 'cover' }} width="10" height="10" />
-      ) : (
-        ""
-      )}
-
-      {showConsent ? (
-        <Consent />
-      ) : (
-        ""
-      )}
     </>
   );
 };
