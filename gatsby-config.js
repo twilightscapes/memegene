@@ -454,7 +454,7 @@ start_url: `${settings.meta.proOptions.startUrl}/?user_mode=app`,
 description: settings.meta.description,
 background_color: `transparent`,
 lang: `en`,
-theme_color: `transparent`,
+// theme_color: `transparent`,
 display: `standalone`,
 icon: `static${settings.meta.icon512}`, // path is relative to the root of the site.
 crossOrigin: `use-credentials`,
