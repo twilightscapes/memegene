@@ -71,9 +71,9 @@ const Layout = ({ children }) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link id="yyy" rel="stylesheet" href={fontUrl} crossOrigin="anonymous" referrerPolicy="no-referrer-when-downgrade" />
         
-
+        {/* .ReactModal__Content{opacity:.99} */}
         <style>{`
-        
+    
           ${userStyles.userStyles}
         `}</style>
       </Helmet>
@@ -226,7 +226,7 @@ const Layout = ({ children }) => {
 
 
       {image ? (
-        <img type="image/svg+xml" className="backimage" src={image} alt="Default Background" style={{ height: '100vh', width: '100vw', position: 'fixed', zIndex: '-2', top: '0', objectFit: 'cover' }} width="10" height="10" />
+        <img type="image/svg+xml" className="backimage" src={image} alt="Default Background" style={{}} width="10" height="10" />
       ) : (
         ""
       )}
