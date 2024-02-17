@@ -34,6 +34,8 @@
       "ShowDisclaimer": true,
       "showBranding": false,
       "showFeature": false,
+      "showResume": true,
+      "showLocation": true,
       "showLegal": false,
       "showConsent": false
     },
