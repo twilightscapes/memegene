@@ -1,474 +1,226 @@
-import React, { useState, useRef, useEffect, forwardRef } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from 'react-player/lazy';
 import { ImYoutube2 } from "react-icons/im";
-import { FaTwitch, FaFacebookSquare  } from "react-icons/fa";
-// import {Link} from "gatsby"
-// import { RiQuestionLine, RiCloseCircleFill } from "react-icons/ri"
-// import PirateLogo from "../img/logo.svg"
-import PageMenu from "./PageMenu"
-// import Layout from "../components/siteLayout"
-// import Seo from "../components/seo";
-// import { Helmet } from "react-helmet";
-// import useSiteMetadata from "../hooks/SiteMetadata"
-// import Player from "../components/Player";
-import PropTypes from "prop-types";
-import { MdPlayArrow } from "react-icons/md"
-import { MdPause } from "react-icons/md"
-import { MdVolumeOff } from "react-icons/md"
-// import { MdVolumeDown } from "react-icons/md"
-import { MdVolumeUp } from "react-icons/md"
-// import { StaticImage } from "gatsby-plugin-image"
-// import { ImPlay } from "react-icons/im"
+import { FaTwitch, FaFacebookSquare } from "react-icons/fa";
+import useSiteMetadata from "../hooks/SiteMetadata";
+import { RiCloseCircleFill } from "react-icons/ri";
+import { Link } from "gatsby"
+const VideoPlayer = ({ location }) => {
+  const queryParams = new URLSearchParams(location.search);
+  const videoUrlParam = queryParams.get('video');
+
+  const { featureOptions, proOptions } = useSiteMetadata();
 
 
-// import { IoArrowRedoSharp, IoArrowUndoSharp } from "react-icons/io5"
+  const { showBranding } = proOptions;
 
-const VideoPlayer = () => {
+  const { showNav } = featureOptions
 
-
-  // const { language } = useSiteMetadata();
-  // const { dicClickToView } = language;
-
-
-  // const { iconimage } = useSiteMetadata()
-
-  const [youtubelink, setYoutubelink] = useState("");
-
-  const fillFormFromClipboard = async () => {
-    try {
-      const clipboardText = await navigator.clipboard.readText();
-      setYoutubelink(clipboardText);
-    } catch (error) {
-      console.error("Error reading clipboard:", error);
-    }
-  };
+  const inputElement = useRef(null);
+  const playerRef = useRef(null);
+  const [youtubelink, setYoutubelink] = useState(videoUrlParam || "");
+  const [showShareDialog, setShowShareDialog] = useState(false);
 
   useEffect(() => {
+    const fillFormFromClipboard = async () => {
+      try {
+        const clipboardText = await navigator.clipboard.readText();
+        setYoutubelink(clipboardText);
+        updateQueryString(clipboardText);
+      } catch (error) {
+        console.error("Error reading clipboard:", error);
+      }
+    };
+
     fillFormFromClipboard();
-  }, []); // Empty dependency array to run the effect only once
+  }, []);
 
   const handleInputChange = (event) => {
     const { value } = event.target;
     setYoutubelink(value);
-  };
+    updateQueryString(value);
 
-  const handleInputClick = () => {
-    fillFormFromClipboard(); // Trigger clipboard check manually
+    const pirateVideoElement = document.getElementById('VideoPlayer');
+    if (pirateVideoElement) {
+      pirateVideoElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add any additional logic you need on form submission
   };
 
-  const inputElement = useRef(null);
+  const handleReset = () => {
+    setYoutubelink(""); // Clear the input field value
+    updateQueryString(""); // Clear the query string
+  };
 
-  useEffect(() => {
-    inputElement.current.onfocus = () => {
-      window.scrollBy(0, 0);
-      document.body.scrollTop = 0;
-    };
-  });
+  const updateQueryString = (value) => {
+    const newUrl = `${window.location.pathname}?video=${encodeURIComponent(value)}`;
+    window.history.pushState({}, '', newUrl);
+  };
 
+  function isRunningStandalone() {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(display-mode: standalone)').matches;
+    }
+    return false;
+  }
 
-
-
-
-
-
-  const finalUrl = youtubelink
-
-  const YouTubeStart = "0"
-  const YouTubeEnd = null
-  const YouTubeMute = false
-  const YouTubeControls = true
-  const YouTubeAutostart = true
-  const CustomControls = true
-  const YoutubeLoop = false
-  // const Suggestion2 = frontmatter.youtube.youtubersuggestion2
-  // const Suggestion3 = frontmatter.youtube.youtubersuggestion3
-  
-
-  
-  const ClickToPlay = false
-  
-
-
-
-
-
-// const [showControls, setShowControls] = useState(false);
-  // const [count, setCount] = useState(0);
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-
-    // const Playing  = useState(true);
-    const [state, setState] = useState({
-      playing: YouTubeAutostart,
-      controls: YouTubeControls,
-      light: ClickToPlay,
-      muted: YouTubeMute,
-      loop: YoutubeLoop,
-    });
-  
-    const playerRef = useRef(null);
-    const controlsRef = useRef(null);
-  
-    const {
-      playing,
-      controls,
-      light,
-      muted,
-      loop,
-      played,
-    } = state;
-  
-    const handlePlayPause = () => {
-      setState({ ...state, playing: !state.playing });
-    };
-  
-    const handleMute = () => {
-      setState({ ...state, muted: !state.muted });
-    };
-  
-  
-  
-  
-  
-  
-    const Controls = forwardRef(
-      (
-        {
-          // onSeek,
-          // onSeekMouseDown,
-          // onSeekMouseUp,
-          // onDuration,
-          // onRewind,
-          onPlayPause,
-          // onFastForward,
-          playing,
-          // played,
-          // elapsedTime,
-          // totalDuration,
-          onMute,
-          muted,
-          // onVolumeSeekDown,
-          // onChangeDispayFormat,
-          // playbackRate,
-          // onPlaybackRateChange,
-          // onToggleFullScreen,
-          volume,
-          // onVolumeChange,
-          // onBookmark,
-        },
-        ref
-      ) => {
-        // const classes = useStyles();
-        // const [anchorEl, setAnchorEl] = React.useState(null);
-        // const handleClick = (event) => {
-        //   setAnchorEl(event.currentTarget);
-        // };
-    
-        // const handleClose = () => {
-        //   setAnchorEl(null);
-        // };
-    
-        // const open = Boolean(anchorEl);
-        // const id = open ? "simple-popover" : undefined;
-    
-        // const { iconimage } = useSiteMetadata()
-    
-    
-        return (
-    
-    <div>
-    
-    
-    
-          {playing ? (
-  ""
-          ) : (
-  
-    
-    
-  
-     
-  
-  
-  <div className="videohide1 554 pane1" style={{position:'absolute', height:'auto', maxHeight:'85%', aspectRatio:'', width:'100%', zIndex:'3', top:'0', right:'0', textAlign:'center', display:'grid', placeContent:'', justifyContent:'', color:'var(--theme-ui-colors-text)', fontFamily:'Verdana, Sans-Serif, System', border:'0px solid red' }}>
-  
-  
-  
-  
-  <div aria-label="Click To Play" className="clickplays videohide 555" style={{position:'relative', zIndex:'', top:'0', border:'0px  solid blue', width:'100%', height:'', minHeight:'300px', aspectRatio:'', maxHeight:'', fontSize:'', textAlign:'center', display:'grid', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', padding:'2vh 0 0 0', background:'', color:'#ddd', transition:'all 2s ease-in-out', cursor:'pointer'}}>
-  
-  
-
-  
-           {/* <div style={{display:'grid', placeContent:'center', position:'relative', zindex:'1', fontWeight:'bold', padding:'3% 0 0 0', fontSize:'clamp(.6rem, 1.4vw, 2rem)', width:'100%', maxWidth:'25vw', height:'', border:'0px solid', borderRadius:'12px', margin:'0 auto 0 auto', opacity:'.99', textShadow:'2px 2px 2px black', color:'#fff' }}>
-
-
-<img className="homepage-bg" src={iconimage} width="250px" height="150px" alt="UrbanFetish" style={{ width:'', margin:'120px auto 0 auto', filter:'drop-shadow(2px 2px 2px #000)', background:'transparent !important', position:'relative', top:''}} />
-
-
-
-  <ImPlay style={{margin:'0 auto', width:'50%', fontSize:'clamp(2rem, 4.4vw, 3rem)', filter:'drop-shadow(0px 0px 12px #fff',}} />
-  {dicClickToView}
-  </div> */}
-  
-  
-  <button aria-label="Video Play/Pause Button"
-          onClick={onPlayPause}
-          className="videohide 644 pane2" 
-          style={{
-           color:'#ddd',
-           width:'100%', 
-           height:'auto',
-           display:'grid',
-           placeContent:'center',
-           position:'absolute',
-           aspectRatio:'16/9',
-           top:'',left:'0',right:'0',bottom:'0',
-           border:'0px solid blue',
-           zindex:'1'
-          }}
-        ></button>
-        
-        
-        </div>
-        </div>
-
-   )}
-
-    
-   
-    
-    
-          
-    
-    
-    <div ref={ref} className="controlsbox" style={{width:'', height:'', border:'0px solid blue', }}>
-    
-  <button
-          aria-label="Video Play/Pause Button"
-          onClick={onPlayPause}
-          className="videohide 679 pane3" 
-          style={{
-           color:'#ddd',
-           width:'99vw', 
-           height:'auto',
-           display:'block',
-           placeContent:'',
-           aspectRatio:'16/9',
-           bottom:'0',
-           left:'0',
-           right:'0',
-           border:'0px solid yellow',
-           zindex:'1', 
-           cursor:'pointer',
-           position:'absolute'
-          //  animation: 'fadeout 4s forwards'
-          }}
-        ></button>
-  
-  
-    <div className="vidcontrols">
-                    <button
-                      onClick={onPlayPause}
-                      className="controls panel" 
-                      style={{
-                        backgroundColor:'rgba(0,0,0, 0.6)',
-                        color:'#999',
-                        borderRadius:'', overFlow:'hidden'
-                    }}
-                    >
-                      {/* <MdPlayArrow style={{fontSize:'50px', position:'absolute'}}  /> */}
-                      {playing ? (
-                        
-                        <MdPause className="hudicon" style={{}} />
-                        
-                      ) : (
-                  
-                  <MdPlayArrow className="hudicon" style={{}}  />
-                  
-                      )}
-                    </button>
-    
-                    <button
-                      // onClick={() => setState({ ...state, muted: !state.muted })}
-                      onClick={onMute}
-                      className="controls panel"
-                      style={{
-                        backgroundColor:'rgba(0,0,0, 0.6)',
-                        color:'#999',
-                        borderRadius:'', overFlow:'hidden'
-                    }}
-                    >
-                      {muted ? (
-                        <MdVolumeOff className="hudicon" fontSize="" style={{}}  />
-                      ) : volume > 0.5 ? (
-                        <MdVolumeUp className="hudicon" fontSize="" style={{}}  />
-                      ) : (
-                        <MdVolumeUp className="hudicon" fontSize="" style={{}}  />
-                      )}
-                    </button>
-    </div>
-  
-          </div>
-          </div>
-        );
+  const handleShareButtonClick = () => {
+    if (typeof window !== 'undefined') {
+      if (navigator.share) { 
+        navigator.share({
+          title: 'PIRATE',
+          url: window.location.href // Use the current URL with the query string
+        }).then(() => {
+          console.log('Thanks for being a PIRATE!');
+        })
+        .catch(console.error);
+      } else {
+        setShowShareDialog(true);
       }
-    );
-    
-    Controls.propTypes = {
-      onSeek: PropTypes.func,
-      onSeekMouseDown: PropTypes.func,
-      onSeekMouseUp: PropTypes.func,
-      onDuration: PropTypes.func,
-      onRewind: PropTypes.func,
-      onPlayPause: PropTypes.func,
-      onFastForward: PropTypes.func,
-      onVolumeSeekDown: PropTypes.func,
-      onChangeDispayFormat: PropTypes.func,
-      onPlaybackRateChange: PropTypes.func,
-      onToggleFullScreen: PropTypes.func,
-      onMute: PropTypes.func,
-      playing: PropTypes.bool,
-      light: PropTypes.bool,
-      played: PropTypes.number,
-      elapsedTime: PropTypes.string,
-      totalDuration: PropTypes.string,
-      muted: PropTypes.bool,
-      playbackRate: PropTypes.number,
-    };
+    }
+  };
 
+  const closeShareDialog = () => {
+    setShowShareDialog(false);
+  };
 
+  const copyToClipboard = () => {
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText(window.location.href); // Copy the current URL with the query string to clipboard
+    }
+  };
 
   return (
-    
     <>
+      <div id="piratevideo" className='player-wrapper' style={{ display:'grid', placeContent:'', width:'100vw', transition: 'all 1s ease-in-out'}}>
 
-{/* <Layout>
-<Helmet>
-    <body id="body" className="youtube"/>
-  </Helmet>
-<Seo
-    title="AdFree Video Player"
-    description="Adfree Video Player"
-  /> */}
-<PageMenu />
-      <div className='player-wrapper' style={{marginTop:''}}>
+        {/* Share Dialog */}
+        <div className="share-dialog" style={{ display: showShareDialog ? 'block' : 'none', zIndex:'5', }}>
+
+<form style={{display:'flex', flexWrap: 'nowrap', alignItems:'center', gap:'2vw', width:'100vw', maxWidth:'800px', margin:'0 auto',  transition: 'all 1s ease-in-out'}}>
+        
 
 
-  
+          <Link to='/install' state={{modal: true}} style={{ display: "flex", justifyContent: "center", padding: ".5vh 1vw", maxWidth:'100px', maxHeight:"60px", margin: "0 auto", textAlign:'center', fontSize:'18px', fontWeight:'light', textShadow:'0 1px 0 #000' }} className="button print">Install Pirate</Link>
 
-        {/* <Player /> */}
-          <ReactPlayer
-              allow="web-share"
-              ref={playerRef}
-              style={{
-                position: 'relative', top:'0', margin: '0 auto 0 auto', zIndex: '0', aspectRatio:'16/9', overflow:'hidden', width:'100vw', minHeight:'90%', height:'100%', background:'transparent'}}
-              width="100%"
-              height="100%"
-              url={finalUrl}
-              playing={playing}
-              controls={controls}
-              light={light}
-              loop={loop}
-              muted={muted}
-              playsinline
-              config={{
-                  youtube: {
-                    playerVars: { showinfo:false, autoplay:YouTubeAutostart, controls:YouTubeControls, start:YouTubeStart, end:YouTubeEnd, mute:YouTubeMute, loop:YoutubeLoop }
-                  },
-              }}
-            playIcon={
-              <div style={{position:'absolute',
-              backgroundColor:'rgba(0,0,0,0.6)',
-               width:'100vw', height:'100%', minHeight:'40vh', maxHeight:'85vh', zIndex:'0', top:'0', right:'0', textAlign:'center', display:'grid', placeContent:'center', justifyContent:'center', 
-              color:'#ddd',
-              fontFamily:'Verdana, Sans-Serif, System' }}>
-<button aria-label="Click To Play" className="clickplays videohide 1042" style={{position:'relative', zIndex:'', top:'0', border:'0px  solid red', width:'100vw', background:'transparent', color:'', fontSize:'18px', textAlign:'center', display:'', flexDirection:'column', verticalAlign:'center', justifyContent:'center', alignItems:'center', aspectRatio:'16/9'}}>
-</button>
-
-<button
-aria-label="Video Play/Pause Button"
-className="" 
-style={{
-color:'#ddd',
-width:'100vw', 
-height:'',
-display:'grid',
-placeContent:'center',
-position:'fixed',
-top:'0',left:'0',right:'0',bottom:'0',
-zindex:'1'
-}}
-></button>
-
-          </div>
-          }
-          
-          />
-      </div>
-
-
-      <div className="form-container controller" style={{position:'relative', zindex:'10', marginTop:'0', height:'', padding:'2vh 2%', width:'100vw', background:'var(--theme-ui-colors-headerColor)'}}>
-          <div style={{ maxWidth:'800px', margin:'0 auto'}}>
-          <form className="youtubeform frontdrop" onSubmit={handleSubmit} id="youtubeform" name="youtubeform">
-      
-              <a title="Open YouTube" aria-label="Open YouTube" href="https://youtube.com" style={{ padding: '', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '', }}>
-                <ImYoutube2 style={{ fontSize:'50px' }} />
-              </a>
-          
-  
-              <a title="Open Facebook" aria-label="Open Facebook" href="https://www.facebook.com/watch/" style={{ padding: '', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '', }}>
-                <FaFacebookSquare style={{ fontSize: '30px' }} />
-              </a>
-
-              <a title="Open Twitch" aria-label="Open Twitch" href="https://www.twitch.tv/directory" style={{ padding: '', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '', }}>
-                <FaTwitch style={{ fontSize: '30px' }} />
-              </a>
+      <div className="link">
             <input
-            ref={inputElement}
-            id="youtubelink-input"
-              type="text"
-              name="youtubelink"
-              value={youtubelink}
-              onInput={handleInputChange}
-              
-              onClick={handleInputClick}
-              // onChange={handleInputChange}
-              style={{ padding: '1vh 1vw', width:'100%', minWidth: '', outline: '1px solid #333', borderRadius: 'var(--theme-ui-colors-borderRadius)', color: 'var(--theme-ui-colors-siteColor)' }}
-              placeholder="Paste Video Link"
-              className="youtubelinker"
-            />
-            <button type="reset" onClick={() => setYoutubelink("")} style={{ fontSize: '90%', color: '', fontWeight: 'bold', textAlign: 'left', width: '', margin: '5px 15px 0 0' }}>
-              Reset
-            </button>
-          </form>
+                type="text"
+                name="pagelink"
+                value={typeof window !== 'undefined' && window.location.href}
+                onChange={handleInputChange}
+                style={{ padding: '.5vh 1vw', width:'100%', maxWidth: '800px', fontSize:'clamp(.8rem,1.5vw,2rem)',transition: 'all 1s ease-in-out' }}
+                // placeholder="Paste Video Link"
+                className="youtubelinker font link pen-url"
+                aria-label="Copy This Url"
+              />
+            <button aria-label="Copy Link" className="copy-link font" onClick={copyToClipboard} style={{ color: '#fff', fontSize:'clamp(.8rem,1.5vw,2rem)', fontWeight: 'bold', textAlign: 'left', width: '', margin: '5px 15px 0 0' }}>Copy Link</button>
           </div>
-      </div>
 
 
-      {CustomControls ? (
-         <Controls
-         ref={controlsRef}
-         onPlayPause={handlePlayPause}
-         playing={playing}
-         played={played}
-         onMute={handleMute}
-         muted={muted}
-       />
-       
+
+        
+</form>
+      <button aria-label="Close" id="closeBtn" name="closeBtn" style={{ height: "", width:'100px', maxHeight: "", top: "", zIndex: "4", color: "#fff", display:'flex' }}className="close-button" onClick={closeShareDialog}>
+           <RiCloseCircleFill style={{width:'40px', height:'40px', marginLeft:''}} /></button>
+
+        </div>
+
+        {/* Share Button */}
+        {/* <button className="share-button" onClick={handleShareButtonClick}>Share</button> */}
+
+
+        {/* Form Container */}
+        <div className="form-container controller font" style={{position:'relative', zIndex:'4', top:'0', height:'auto', width:'100vw', margin:'0 auto', marginTop: showNav ? '0' : '0', transition: 'all 1s ease-in-out', background:'var(--theme-ui-colors-headerColor)'}}>
+          <div style={{ maxWidth: '800px', margin: '0 auto', paddingTop:'1.5vh' }}>
+            <form className="youtubeform frontdrop" onSubmit={handleSubmit} id="youtubeform" name="youtubeform">
+
+            {isRunningStandalone() ? (
+                <>
+                  <a title="Open YouTube" aria-label="Open YouTube" href="https://youtube.com">
+                    <ImYoutube2 style={{ fontSize: '50px' }} />
+                  </a>
+                  <a title="Open Facebook" aria-label="Open Facebook" href="https://www.facebook.com/watch/">
+                    <FaFacebookSquare style={{ fontSize: '30px' }} />
+                  </a>
+                  <a title="Open Twitch" aria-label="Open Twitch" href="https://www.twitch.tv/directory">
+                    <FaTwitch style={{ fontSize: '30px' }} />
+                  </a>
+                </>
+              ) : (
+                <>
+
+{showBranding ? (
+<>
+<button style={{ display: "flex", justifyContent: "center", padding: "0 .3vw", maxHeight:"60px", margin: "0 auto", textAlign:'center', fontSize:'14px', fontWeight:'light', textShadow:'0 1px 0 #000' }} className="button print" type="button" title="Add To Home Screen To Install PIRATE" onClick={handleShareButtonClick}>
+                    
+                    <div style={{ display: "flex", alignItems:'center', justifyContent: "center", padding: "4px .3vw", maxWidth: "", margin: "0 auto", textAlign:'center', fontSize:'12px', lineHeight:'100%', fontWeight:'light', textShadow:'0 1px 0 #000' }}>
+
+                    <svg style={{maxWidth:'30px', maxHeight:'30px'}}>
+                      <use href="#share-icon"></use>
+                    </svg> Add To Home Screen To Install Pirate Video</div>
+                  </button>
+
+                  
+                  <svg className="hidden">
+                    <defs>
+                      <symbol id="share-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-share"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></symbol>
+                    </defs>
+                  </svg>
+</>
           ) : (
-   ""
+            ""
           )}
+                  
+                  
+                </>
+              )}
 
-      {/* </Layout> */}
 
+              <input
+                ref={inputElement}
+                id="youtubelink-input"
+                type="text"
+                name="youtubelink"
+                value={youtubelink}
+                onChange={handleInputChange}
+                style={{ padding: '.5vh 1vw', width:'100%', maxWidth: '800px', fontSize:'clamp(.8rem,1.5vw,2rem)',transition: 'all 1s ease-in-out' }}
+                placeholder="Paste Video Link"
+                className="youtubelinker"
+                aria-label="Paste Video Link"
+              />
+              <button aria-label="Reset" type="reset" onClick={handleReset} style={{ color: '', fontSize:'clamp(.8rem,1.5vw,2rem)', fontWeight: 'bold', textAlign: 'left', width: '', margin: '5px 15px 0 0' }}>
+                Reset
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* ReactPlayer */}
+        <ReactPlayer
+          ref={playerRef}
+          allow="web-share"
+          style={{
+            position: 'relative', top: '0', margin: '0 auto 0 auto', zIndex: '1',  overflow: 'hidden', width: '100vw', minHeight: '', height: '100%', background: 'transparent',
+            transition: 'all 1s ease-in-out',
+          }}
+          width="100%"
+          height="100%"
+          url={youtubelink}
+          playing={true}
+          controls={true}
+          playsinline
+          config={{
+            youtube: {
+              playerVars: { showinfo: false, autoplay: false, controls: true, start: "0", end: null, mute: false, loop: false }
+            },
+          }}
+        />
+      </div>
     </>
-    
   );
 };
 

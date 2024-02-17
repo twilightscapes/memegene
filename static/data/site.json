@@ -4,15 +4,17 @@
     "companyname": "Meme Genes",
     "siteUrl": "https://memegenes.com",
     "featureOptions": {
+      "showDefault": true,
       "showArchive": false,
       "showSearch": false,
       "showDates": true,
+      "showSocial": false,
       "showTitles": true,
       "showfooter": false,
-      "showSocial": false,
+      "showSwipe": true,
       "showVideoPlayer": false,
-      "showDefault": true,
-      "showSwipe": true
+      "showHomePosts": true,
+      "showProfile": true
     },
     "twitterUsername": "toddlambert",
     "titleDefault": "MG Reports",
@@ -27,10 +29,8 @@
     "proOptions": {
       "showModals": true,
       "showContact": false,
-      "showProfile": true,
       "startUrl": "youtube",
       "showPopup": false,
-      "showHomePosts": true,
       "ShowDisclaimer": true,
       "showBranding": false,
       "showFeature": false,
