@@ -332,11 +332,18 @@ collections:
               default: "/contact/",
             }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Redirect to Thanks Page",
+          - { label: "Redirect to another page",
               name: "redirect",
               widget: "boolean",
               default: false,
               required: false
+            }
+
+          - {
+              label: "Redirect Url",
+              name: "redirectUrl",
+              widget: "string",
+              default: "/",
             }
 
           - { label: "Show Name Field",
@@ -638,6 +645,19 @@ collections:
                 collapsed: true
                 fields:
                   - widget: boolean
+                    name: showVideoPlayer
+                    label: Show Pirate Video on home page
+                    required: false 
+                  - widget: boolean
+                    name: showProfile
+                    label: Show Profile section on homepage
+                    required: false
+                  - widget: boolean
+                    name: showHomePosts
+                    label: Show posts section on homepage
+                    required: false
+                    default: true
+                  - widget: boolean
                     name: showfooter
                     label: Show the Footer
                     required: false
@@ -666,10 +686,10 @@ collections:
                     name: showSocial 
                     label: Show Social Links
                     required: false
-                  - widget: boolean
-                    name: showArchive 
-                    label: Show Archive link under "Load More" button
-                    required: false
+                  # - widget: boolean
+                  #   name: showArchive 
+                  #   label: Show Archive link under "Load More" button
+                  #   required: false
                     # PRO BELOW
               - name: "proOptions"
                 label: "Plus Features (PIRATE Plus users only)"
@@ -680,16 +700,6 @@ collections:
                     name: showFeature
                     label: Show Feature Image/Video section on homepage
                     required: false
-                  - widget: boolean
-                    name: showProfile
-                    label: Show Profile section on homepage
-                    required: false
-                  - widget: boolean
-                    name: showHomePosts
-                    label: Show posts section on homepage
-                    required: false
-                    default: true
-
                   - widget: boolean
                     name: showModals
                     label: Show Posts in Modal Window
@@ -763,7 +773,7 @@ collections:
                 options:
                   [
                     "facebook",
-                    "x-twitter",
+                    "twitter-x",
                     "linkedin",
                     "youtube",
                     "instagram",

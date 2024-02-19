@@ -61,7 +61,8 @@ const Layout = ({ children }) => {
 
   const fontUrl = `https://fonts.googleapis.com/css?family=${defaultColors?.siteFont}&display=swap`;
 
-  
+  const bodyClass = typeof document !== 'undefined' && document.body.classList.contains('social') ? 'social' : 'default'; 
+
   return (
     <>
       <Helmet>
@@ -127,7 +128,7 @@ const Layout = ({ children }) => {
             </Link>
 
             <ul className="topmenu" style={{ fontSize: 'clamp(.6rem, 1.6vw, 1.8rem)', textAlign: 'center', maxHeight: '', display: 'flex', justifyContent: 'space-between', gap: '4vw', alignItems: 'center', margin: '0 auto 0 auto', padding: '1.5vh 2% 0 2%', border: '0px solid white' }}>
-              <Menu />
+              <Menu bodyClass={bodyClass} />
             </ul>
 
             <div id="missioncontrol" className="missioncontrol sitecontrols" style={{ display: 'flex', justifyContent: 'space-around', fontSize: 'clamp(.8rem, 2.3vw, 2.5rem)', gap: '3vw', textAlign: 'center', maxHeight: '', alignItems: 'center', paddingTop: '5px' }}>
@@ -197,6 +198,7 @@ const Layout = ({ children }) => {
         >
           <div className="uparrow" style={{ display: 'flex', flexDirection: 'column', gap: '0', padding: '', alignItems: 'center', textAlign: 'center' }}>
             <RiArrowUpFill
+            aria-label="Link to Top"
               className=""
               style={{ cursor: 'pointer', color: 'var(--theme-ui-colors-siteColorText)', fill: 'var(--theme-ui-colors-siteColorText)', fontSize: '3rem' }}
             />

@@ -29,7 +29,7 @@
     "proOptions": {
       "showModals": true,
       "showContact": false,
-      "startUrl": "youtube",
+      "startUrl": "video",
       "showPopup": false,
       "ShowDisclaimer": true,
       "showBranding": false,
