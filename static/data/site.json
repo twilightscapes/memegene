@@ -9,12 +9,12 @@
       "showSearch": false,
       "showDates": true,
       "showSocial": false,
+      "showProfile": true,
+      "showHomePosts": true,
       "showTitles": true,
       "showfooter": false,
       "showSwipe": true,
-      "showVideoPlayer": true,
-      "showHomePosts": true,
-      "showProfile": true
+      "showVideoPlayer": true
     },
     "twitterUsername": "toddlambert",
     "titleDefault": "MG Reports",
@@ -29,13 +29,13 @@
     "proOptions": {
       "showModals": true,
       "showContact": false,
+      "showResume": true,
       "startUrl": "video",
       "showPopup": false,
-      "ShowDisclaimer": true,
-      "showBranding": false,
-      "showFeature": false,
-      "showResume": true,
       "showLocation": true,
+      "ShowDisclaimer": true,
+      "showBranding": true,
+      "showFeature": false,
       "showLegal": false,
       "showConsent": false
     },
