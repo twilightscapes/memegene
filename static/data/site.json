@@ -37,7 +37,8 @@
       "showResume": true,
       "showLocation": true,
       "showLegal": false,
-      "showConsent": false
+      "showConsent": false,
+      "showPWA": false
     },
     "titleTemplate": "%s",
     "title": "MG Reports",
