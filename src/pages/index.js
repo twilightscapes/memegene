@@ -48,7 +48,7 @@ const HomePage1 = ({ location }) => {
   return (
     <Layout>
       <Helmet>
-        <body id="body" className="youtube" />
+        <body id="body" className="youtube homepage" />
       </Helmet>
       <SeoWrapper location={location} />
       <div className='player-wrapper'>
