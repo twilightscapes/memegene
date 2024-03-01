@@ -1,48 +1,46 @@
 ---
 template: blog-post
-title: What is up with Joe Biden?
-slug: /biden-is-lost
 date: 2023-02-12 03:00
+title: What is up with Joe Biden?
 description: This man is having difficulties and nobody seems to want to admit that
-youtube:
- youtuber: https://youtu.be/WtYyfyr6Q-E
- youtuber2: 
- youtubeshoworiginal: true
- youtubersuggestion1: 
- youtubersuggestion2: 
- youtubersuggestion3: 
- youtubestart: "385"
- youtubeend: "421"
- youtubemute: false
- youtubecontrols: false
- clicktoplay: false
- customcontrols: true
- youtubeautostart: false
- youtubeloop: true
- contentinvideo: true
- audiostart: "20"
- audioend: "5000"
- audiotitle: 
- liarliar: true
-isnftforsale: false
-svgzindex: "0"
-comments: false
-shareable: true
-underlayImage: 
+tags:
+  - biden
+  - senile
 featuredImage: /assets/biden-is-lost-promo.webp
-svgImage: 
+underlayImage: null
+svgImage: null
+youtube:
+  youtubersuggestion3: null
+  audiotitle: null
+  youtuber2: null
+  audioend: "5000"
+  youtubeloop: true
+  customcontrols: true
+  audiostart: "20"
+  youtuber: https://youtu.be/WtYyfyr6Q-E
+  youtubeautostart: false
+  youtubeshoworiginal: true
+  clicktoplay: false
+  youtubeend: "421"
+  youtubecontrols: false
+  liarliar: true
+  youtubemute: false
+  contentinvideo: true
+  youtubersuggestion1: null
+  youtubersuggestion2: null
+  youtubestart: "385"
 scrollable: false
+nftdrop: 2023-02-11T10:00:00
+slug: /biden-is-lost
+mediawarnings:
+  viewerwarning: Warning
+shareable: true
 showZoom: true
 showPageNav: true
-nftdrop: "2023-02-11T10:00:00"
-
-mediawarnings:
- viewerwarning: Warning
-
-tags: 
- - biden
- - senile
-spotlight: true
+spotlight: false
+comments: false
+svgzindex: "0"
+isnftforsale: false
 ---
 
 <!-- <div class="contentinside" style="position:relative; z-index:0; min-width:50%; height:auto; margin-top:10%;  padding:1rem; font-size:clamp(1rem, 2.3vw, 3rem); left:0;, top:4vh; line-height:90%; text-shadow:0 2px 7px #000; background:rgba(0,0,0,0.8); border:0px solid yellow; text-align:center; width:100vw;">
