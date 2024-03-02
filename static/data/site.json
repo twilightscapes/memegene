@@ -14,7 +14,7 @@
       "showTitles": true,
       "showfooter": false,
       "showSwipe": true,
-      "showVideoPlayer": true
+      "showVideoPlayer": false
     },
     "twitterUsername": "toddlambert",
     "titleDefault": "MG Reports",
