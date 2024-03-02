@@ -46,6 +46,6 @@ mediawarnings:
 
 tags: 
  - rfkjr
-spotlight: true
+spotlight: 
 ---
 

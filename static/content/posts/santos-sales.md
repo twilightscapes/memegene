@@ -40,7 +40,7 @@ mediawarnings:
   maratingtx4: null
 shareable: true
 showZoom: true
-spotlight: false
+spotlight: 
 comments: false
 title: Info found on pager reveals George Santos hidden alter-ego
 svgImage: /assets/santos-sales.svg

@@ -47,7 +47,7 @@ mediawarnings:
 shareable: true
 showZoom: true
 showPageNav: true
-spotlight: false
+spotlight: 
 comments: false
 liarliar: false
 svgzindex: "0"

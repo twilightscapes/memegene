@@ -49,7 +49,7 @@ mediawarnings:
 tags: 
  - elonmusk
  - tesla
-spotlight: true
+spotlight:
 ---
 
 
