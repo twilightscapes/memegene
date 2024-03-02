@@ -417,7 +417,10 @@ const handleAutoplayChange = (event) => {
         width: '100%',
         // transform: hideEditor ? 'translateY(-100%)' : 'none',
         transition: 'transform 0.5s ease-in-out',
-        background: 'var(--theme-ui-colors-headerColor)',
+
+        // background: 'var(--theme-ui-colors-headerColor)',
+// color: '--theme-ui-colors-headerColorText'
+color:'#999'
         // height: hideEditor ? '0' : 'auto'
 
       }}
@@ -681,6 +684,7 @@ padding: '1vh 2vw',
 // transform: hideEditor ? 'translateY(-100%)' : 'none',
 transition: 'transform 0.2s ease-in-out',
 background: 'var(--theme-ui-colors-headerColor)',
+
 // height: hideEditor ? 'auto' : '0'
 
 }}
