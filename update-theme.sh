@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 # Set the URL of your central repository
 THEME_REPO_URL="https://github.com/twilightscapes/pirateplus"
@@ -12,8 +12,9 @@ mv src user_src_backup
 # Clone the central repository
 git clone --branch $BRANCH_OR_TAG --depth 1 $THEME_REPO_URL tmp_theme
 
-# Replace the src folder, excluding index.js files in pages directory
-find tmp_theme/src -type f -not -path "*/pages/index.js" -exec cp --parents {} ./src \;
+# Replace the src folder
+rm -rf src
+mv tmp_theme/src .
 
 # Replace the gatsby-config.js file
 cp tmp_theme/gatsby-config.js .
@@ -34,3 +35,7 @@ cp tmp_theme/package.json .
 rm -rf tmp_theme
 
 echo "PIRATE Plus updated successfully!"
+
+
+
+# echo "No Theme Updated - Needed"
