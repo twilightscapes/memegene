@@ -6,7 +6,7 @@ title: Shhh, it's time for the Trump Rally
 description: For those who get a bit too excited about their rallies
 tags:
   - trump
-featuredImage: /assets/trump-time.webp
+featuredImage: /assets/meme-trump-time.webp
 youtube:
   showVidOnly: false
   audiotitle: "0"
@@ -25,6 +25,6 @@ youtube:
 mediawarnings:
   viewerwarning: MA
 shareable: false
-showZoom: true
+showZoom: false
 showPageNav: true
 ---
