@@ -366,7 +366,7 @@ module.exports = {
         htmlTitle: `PIRATE CMS`,
         htmlFavicon: `static/assets/logo.svg`,
         includeRobots: false,
-        logo_url: 'https://piratesocial.org/assets/logo.svg'
+        logo_url: 'https://pirateweb.org/assets/logo.svg'
       },
     },
     // 'gatsby-plugin-netlify-identity-widget',
@@ -450,7 +450,7 @@ module.exports = {
       options: {
 name: settings.meta.companyname,
 short_name: settings.meta.companyname,
-start_url: `${settings.meta.proOptions.startUrl}/?pro=true`,
+start_url: `${settings.meta.proOptions.startUrl}`,
 description: settings.meta.description,
 background_color: `transparent`,
 lang: `en`,
