@@ -24,7 +24,7 @@ youtube:
   youtubestart: "0"
 mediawarnings:
   viewerwarning: MA
-shareable: false
+shareable: true
 showZoom: false
 showPageNav: true
 ---
