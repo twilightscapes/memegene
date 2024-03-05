@@ -37,7 +37,7 @@ mediawarnings:
 shareable: true
 showZoom: true
 showPageNav: true
-spotlight: 
+
 comments: false
 svgzindex: "0"
 isnftforsale: false

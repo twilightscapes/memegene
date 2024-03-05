@@ -6,7 +6,6 @@ date: 2023-11-19 01:33
 description: Trump hits on someone he thinks is his daughter
 shareable: true
 showZoom: true
-spotlight: true
 tags:
   - butt
   - chug

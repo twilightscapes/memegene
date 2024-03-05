@@ -2,7 +2,7 @@
 audiotitle: Fuckin' Liar!
 date: 2023-10-11 18:00
 showZoom: true
-spotlight: 
+
 youtube:
   youtubersuggestion3: https://youtu.be/dQw4w9WgXcQ
   showVidOnly: true

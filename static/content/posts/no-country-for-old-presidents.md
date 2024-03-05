@@ -29,5 +29,5 @@ mediawarnings:
 shareable: true
 showZoom: true
 showPageNav: true
-spotlight: 
+
 ---

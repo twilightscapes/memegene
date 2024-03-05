@@ -38,7 +38,7 @@ contentinvideo: false
 tags: 
   - trump
   - propaganda
-spotlight: 
+
 mediawarnings:
  viewerwarning: Viewer Discretion Strongly Advised
  marate: 

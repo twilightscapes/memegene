@@ -29,5 +29,4 @@ draft: false
 shareable: true
 showZoom: false
 showPageNav: true
-spotlight: true
 ---

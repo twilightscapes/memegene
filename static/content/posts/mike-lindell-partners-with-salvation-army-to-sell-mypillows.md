@@ -8,7 +8,6 @@ category: []
 shareable: true
 showZoom: false
 showPageNav: true
-spotlight: 
 tags:
   - bankrupt
   - lindell
