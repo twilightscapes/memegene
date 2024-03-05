@@ -28,6 +28,6 @@ youtube:
 mediawarnings:
   viewerwarning: MA
 shareable: true
-showZoom: true
+showZoom: false
 showPageNav: true
 ---
