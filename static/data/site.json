@@ -14,7 +14,7 @@
       "showTitles": true,
       "showfooter": false,
       "showSwipe": true,
-      "showVideoPlayer": false
+      "showVideoPlayer": true
     },
     "twitterUsername": "toddlambert",
     "titleDefault": "Meme Genes",
@@ -30,7 +30,7 @@
       "showModals": true,
       "showContact": false,
       "showResume": true,
-      "startUrl": "video",
+      "startUrl": "/",
       "showPopup": false,
       "showLocation": true,
       "ShowDisclaimer": true,
