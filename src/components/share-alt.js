@@ -10,21 +10,44 @@ const ShareAlt = () => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(siteUrl + pathname);
+    const fullUrl = siteUrl + pathname;
+  
+    // Copy URL to clipboard
+    const tempInput = document.createElement("input");
+    tempInput.value = fullUrl;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+  
     setCopied(true);
     setTimeout(() => setCopied(false), 2000); // Reset copied status after 2 seconds
+  
+    // Share URL using Web Share API if available
+    if (navigator.share) {
+      navigator.share({
+        title: 'PIRATE',
+        url: fullUrl
+      }).then(() => {
+        console.log('Thanks for being a Pirate!');
+      }).catch(console.error);
+    }
   };
+  
+  
+  
+  
 
   return (
     <>
-      <div style={{ padding: "0 0 2vh 0" }}>
-        <p className="font pleaseshare" style={{ margin: "1vh auto 0 auto", textAlign: "center", fontSize: "90%", fontWeight:'bold' }}>Please Share:</p>
+      <div style={{ padding: "1vh 0 2vh 0" }}>
+        <p className="font pleaseshare" style={{ margin: "1vh auto", textAlign: "center", fontSize: "90%", fontWeight:'bold' }}>Please Share:</p>
         <div style={{ background: "transparent", borderRadius: "var(--theme-ui-colors-borderRadius)", width: "400px", color: "", fill: "", padding: " 0", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center", margin: "0 auto" }}>
           {/* Input field to display and copy URL */}
           <div style={{ display: "flex", gap:'2vw', flexDirection: "", alignItems: "center"}}>
-            <input className="youtubelinker" type="text" value={siteUrl + pathname} readOnly style={{ padding: '.5vh 1vw', minWidth:'305px', width: '100%', maxWidth: '400px', fontSize: 'clamp(.6rem,1vw,1rem)', transition: 'all 1s ease-in-out', background:'rgba(0,0,0,.2)', outline:'1px solid #999', border:'0px solid var(--theme-ui-colors-siteColor)' }} />
+            <input className="youtubelinker" type="text" value={siteUrl + pathname} readOnly style={{ padding: '.5vh .5vw', minWidth:'305px', width: '100%', maxWidth: '400px', fontSize: 'clamp(.6rem,1vw,1rem)', transition: 'all 1s ease-in-out', background:'rgba(0,0,0,.2)', outline:'1px solid #999', border:'0px solid var(--theme-ui-colors-siteColor)' }} />
 
-            <button className="button non" aria-label="Copy Url" onClick={handleCopy} style={{ display: "flex", gap: '.5vw', justifyContent: "center", padding: ".6vh 4px", width:'60px', minWidth:'30px', maxHeight: "", margin: "0 auto", textAlign: 'center', fontSize: '14px', fontWeight: 'light', textShadow: '0 1px 0 #444', marginLeft:'', }}>{copied ? "Copied" : "Copy"}</button>
+            <button className="button non" aria-label="Copy Url" onClick={handleCopy} style={{ display: "flex", gap: '.5vw', justifyContent: "center", padding: ".6vh .8vw", width:'100px', minWidth:'30px', maxHeight: "", margin: "0 auto", textAlign: 'center', fontSize: '14px', fontWeight: 'light', textShadow: '0 1px 0 #444', marginLeft:'', }}>{copied ? "Copied" : "Copy"}</button>
           </div>
         </div>
       </div>
