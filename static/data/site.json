@@ -7,7 +7,7 @@
       "showDefault": true,
       "showArchive": false,
       "showSearch": false,
-      "showDates": true,
+      "showDates": false,
       "showSocial": false,
       "showProfile": true,
       "showHomePosts": true,
