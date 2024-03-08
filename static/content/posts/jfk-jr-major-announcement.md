@@ -8,7 +8,6 @@ tags:
   - celebrity
   - qanon
 featuredImage: /assets/jfk-jr-announcement.webp
-spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"
@@ -17,7 +16,7 @@ youtube:
   customcontrols: true
   audiostart: "0"
   youtuber: https://youtu.be/dQw4w9WgXcQ?si=6RYChWE7lCS_ETQj
-  youtubeautostart: true
+  youtubeautostart: false
   clicktoplay: false
   youtubeend: ""
   youtubecontrols: false
@@ -31,4 +30,5 @@ mediawarnings:
 shareable: true
 showZoom: false
 showPageNav: true
+spotlight: null
 ---
