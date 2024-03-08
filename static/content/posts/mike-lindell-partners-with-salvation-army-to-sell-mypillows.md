@@ -12,6 +12,7 @@ tags:
   - bankrupt
   - lindell
   - mypillow
+spotlight: true
 youtube:
   showVidOnly: false
   youtubemute: false

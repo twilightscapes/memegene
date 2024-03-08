@@ -9,6 +9,7 @@ tags:
   - boebert
   - trash
   - bankrupt
+spotlight:
 youtube:
 
   youtubersuggestion3: null

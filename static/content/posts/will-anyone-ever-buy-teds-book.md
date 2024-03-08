@@ -8,6 +8,7 @@ description: Will anyone ever buy Teds book?
 shareable: true
 showZoom: true
 showPageNav: true
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

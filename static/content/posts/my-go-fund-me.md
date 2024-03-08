@@ -4,6 +4,7 @@ title: Mike Lindell announces MyPillow to become MyGoFundMe
 slug: /my-go-fund-me
 date: 2023-10-06 03:00
 description: Mike says hes broke
+spotlight:
 youtube:
   youtuber: https://youtu.be/0ksYkekCUCA
   youtuber2: 

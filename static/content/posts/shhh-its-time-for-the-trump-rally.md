@@ -7,6 +7,7 @@ description: For those who get a bit too excited about their rallies
 tags:
   - trump
 featuredImage: /assets/meme-trump-time.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

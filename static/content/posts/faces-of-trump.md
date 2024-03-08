@@ -10,6 +10,7 @@ tags:
   - maga
   - trump
 featuredImage: /assets/face-on-maga.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

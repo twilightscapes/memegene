@@ -7,6 +7,7 @@ description: Like qualudes and short walks on the beach?
 
 tags:
   - celebrity
+spotlight:
 youtube:
   youtubersuggestion3: null
   youtuber2: null

@@ -10,6 +10,7 @@ showZoom: true
 showPageNav: true
 tags:
   - trump
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

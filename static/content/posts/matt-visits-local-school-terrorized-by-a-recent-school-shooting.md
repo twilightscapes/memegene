@@ -7,6 +7,7 @@ description: Matt visits local school terrorized by a recent school shooting
 tags:
   - gaetz
 featuredImage: /assets/matt-school-stalker.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

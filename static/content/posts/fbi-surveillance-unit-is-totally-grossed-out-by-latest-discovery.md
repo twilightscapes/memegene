@@ -11,6 +11,7 @@ showPageNav: true
 tags:
   - fbi
   - trump
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

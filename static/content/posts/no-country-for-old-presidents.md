@@ -9,6 +9,7 @@ tags:
   - rfk
   - trump
 featuredImage: /assets/no-country-for-old-men.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

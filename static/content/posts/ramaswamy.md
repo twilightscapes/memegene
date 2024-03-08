@@ -4,6 +4,7 @@ title: Learn the TRUTH about Vivek Ramaswamy - find out who he is now
 slug: /ramaswamy
 date: 2023-09-06 22:00
 description: Ramaswamy will say anything and sell anything in order to get your vote.
+spotlight:
 youtube:
  youtuber: "https://youtu.be/JREQvKiKWoY?si=XSjARozfq2I9_tWM"
  youtuber2: 

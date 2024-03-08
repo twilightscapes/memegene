@@ -4,6 +4,7 @@ title: Rudy starts up his own GoFundMe
 slug: /rudy-gofundme
 date: 2023-10-06 03:00
 description: Rudy is so broke he is drinking rubbing alcohol
+spotlight:
 youtube:
   youtuber: https://youtu.be/0ksYkekCUCA
   youtuber2: 

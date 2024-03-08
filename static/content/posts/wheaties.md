@@ -7,6 +7,7 @@ description: One of the premiere specimens of the male human form has a new look
 
 tags:
   - celebrity
+spotlight:
 youtube:
   youtubersuggestion3: null
   youtuber2: null

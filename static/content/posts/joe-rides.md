@@ -7,6 +7,7 @@ description: After numberous stumbles, the Secret Service felt it was "just" tim
 
 tags:
   - biden
+spotlight:
 youtube:
   youtubersuggestion3: null
   youtuber2: null

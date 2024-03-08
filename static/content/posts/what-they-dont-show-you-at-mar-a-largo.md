@@ -8,6 +8,7 @@ tags:
   - grifter
   - trump
 featuredImage: /assets/donny-cardboard.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

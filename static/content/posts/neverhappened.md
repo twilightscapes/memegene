@@ -9,6 +9,7 @@ tags:
   - trump
   - neverhappened
   - history
+spotlight:
 youtube:
   youtubersuggestion3: null
   youtuber2: null

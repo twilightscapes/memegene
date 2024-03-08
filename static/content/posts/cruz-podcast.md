@@ -4,6 +4,7 @@ title: Get YOUR PODCAST HERE! screams Ted Cruz
 slug: /cruz-podcast
 date: 2023-10-09 04:00
 description: Ted Cruz is a hack Podcaster acting(and being paid) as a US Senator.
+spotlight:
 youtube:
  youtuber: "https://youtu.be/Kb5hg5byGgc"
  youtuber2: 

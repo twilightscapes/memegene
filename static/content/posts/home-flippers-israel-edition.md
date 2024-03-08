@@ -10,6 +10,7 @@ showPageNav: true
 tags:
   - jared
   - ivanka
+spotlight:
 youtube:
   showVidOnly: false
   youtubemute: false

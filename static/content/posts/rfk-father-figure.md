@@ -4,6 +4,7 @@ title: RFK Jr Sings George Michael's Father Figure
 slug: /rfk-father-figure
 date: 2023-10-10 12:00
 description: Ted Cruz is a hack Podcaster acting(and being paid) as a US Senator.
+spotlight:
 youtube:
  youtuber: "https://youtu.be/krljgzF-Dpc"
  youtuber2: 

@@ -4,6 +4,7 @@ title: White House on lockdown after Biden found missing
 slug: /biden-sleepwalk
 date: 2023-10-12 14:00
 description: President Biden dressed in PJs went for a walk while asleep
+spotlight:
 youtube:
  youtuber: "https://youtu.be/Y5C1JA1A5Wg"
  youtuber2: 

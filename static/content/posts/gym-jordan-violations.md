@@ -4,6 +4,7 @@ title: Creepy Gym Jordan ignored allegations of sexual abuse
 slug: /gym-jordan-violations
 date: 2023-03-01 22:00
 description: "I didn't see nothin"
+spotlight:
 youtube:
   youtuber: https://youtu.be/0gq0o83HW24
   youtuber2: 

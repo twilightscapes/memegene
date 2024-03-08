@@ -4,6 +4,7 @@ title: Is Ted Cruz the Zodiac Killer?
 slug: /zodiac-cruz
 date: 2023-09-26 04:00
 description: Proof is stacking up and it looks like Ted Cruz may be the Zodiac Killer 
+spotlight:
 youtube:
  youtuber: "https://youtu.be/xCuyPvfkmug"
  youtuber2: 

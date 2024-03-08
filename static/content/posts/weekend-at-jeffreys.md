@@ -8,6 +8,7 @@ tags:
   - epstein
   - deviants
 featuredImage: /assets/weekend-at-jeffs.webp
+spotlight:
 youtube:
   showVidOnly: false
   youtubeloop: true

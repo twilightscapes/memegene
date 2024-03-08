@@ -8,6 +8,7 @@ tags:
   - white
   - nikki
 featuredImage: /assets/white-gurls.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

@@ -9,6 +9,7 @@ showZoom: true
 tags:
   - butt
   - chug
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

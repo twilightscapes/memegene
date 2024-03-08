@@ -4,6 +4,7 @@ title: President Biden to be Special Guest at Disney for the Summer
 slug: /biden-bot
 date: 2023-07-02 16:00
 description: Watch Disney's newest President added to park.
+spotlight:
 youtube:
   youtuber: "https://youtu.be/bhC91MTsKn0"
   youtuber2: 

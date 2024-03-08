@@ -1,6 +1,7 @@
 ---
 draft: true
 audiotitle: null
+spotlight:
 youtube:
   youtubersuggestion3: null
   youtuber2: null

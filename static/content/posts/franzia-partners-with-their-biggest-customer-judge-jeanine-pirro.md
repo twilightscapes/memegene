@@ -11,6 +11,7 @@ showZoom: true
 showPageNav: true
 tags:
   - celebrity
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

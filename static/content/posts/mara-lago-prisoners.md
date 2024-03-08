@@ -14,6 +14,7 @@ viewerwarning: Viewer Discretion Strongly Advised
 marate: MA
 showZoom: true
 showPageNav: true
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

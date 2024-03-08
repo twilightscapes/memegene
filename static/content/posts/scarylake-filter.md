@@ -4,6 +4,7 @@ title: Skari Lake revealed as two-faced by filter glitch
 slug: /scarylake-filter
 date: 2023-02-04 10:43
 description: Aw Snap! What was that? Skari Lake's face literally just slid off her head.
+spotlight:
 youtube:
  youtuber: "https://youtu.be/uJn3yxOPeGs"
  youtuber2: ""

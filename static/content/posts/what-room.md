@@ -8,6 +8,7 @@ tags:
   - killer
   - trump
 featuredImage: /assets/whatroom.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

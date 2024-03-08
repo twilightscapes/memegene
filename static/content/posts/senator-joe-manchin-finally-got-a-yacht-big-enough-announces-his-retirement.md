@@ -10,6 +10,7 @@ showZoom: true
 showPageNav: true
 tags:
   - joemanchin
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

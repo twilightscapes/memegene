@@ -4,6 +4,7 @@ title: Exclusive Preview Trailer of YellowStone season 5 Part Two
 slug: /yellowstone-season-5-part-2
 date: 2023-02-11 03:00
 description: Exclusive! Trailer of YellowStone season 5 Part Two is here! There's more drama and action than any season before.
+spotlight:
 youtube:
  youtuber: "https://youtu.be/S1LC7jDHqr0"
  youtuber2: 

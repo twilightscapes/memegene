@@ -4,6 +4,7 @@ title: Trump Goggles reveal the world according to how MAGA sees it
 slug: /trump-goggles
 date: 2023-09-09 16:00
 description: John Carpenter nailed it. See what Trumpers see.
+spotlight:
 youtube:
  youtuber: "https://youtu.be/iOZcb9Otojk"
  youtuber2: 

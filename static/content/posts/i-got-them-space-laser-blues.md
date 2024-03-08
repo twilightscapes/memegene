@@ -7,6 +7,7 @@ description: Glidden announces new color of paint called Space Laser blue
 tags:
   - products
 featuredImage: /assets/img_1025.jpeg
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

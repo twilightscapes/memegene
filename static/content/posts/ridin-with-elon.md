@@ -4,6 +4,7 @@ title: Take the ride of your life with Elon in his Cyber Truck
 slug: /ridin-with-elon
 date: 2023-10-01 09:00
 description: Experience the thrill of riding with Elon Musk in a Tesla Cyber Truck
+spotlight:
 youtube:
  youtuber: "https://youtu.be/yAzAfsY6mEI"
  youtuber2: "https://youtu.be/gJLIiF15wjQ"

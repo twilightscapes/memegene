@@ -11,6 +11,7 @@ showPageNav: true
 tags:
   - podcast
   - tedcruz
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

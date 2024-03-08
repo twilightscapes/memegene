@@ -8,6 +8,7 @@ tags:
   - celebrity
   - qanon
 featuredImage: /assets/jfk-jr-announcement.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

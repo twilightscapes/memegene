@@ -4,6 +4,7 @@ title: My Last Bed
 slug: /mylastbed
 date: 2023-02-02 15:43
 description: When its that time and you want to go in compfort.
+spotlight:
 youtube:
  youtuber: 
  youtuber2: 

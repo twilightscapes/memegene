@@ -4,6 +4,7 @@ title: YellowStone is just Broke Back Mountain but for Conservatives
 slug: /yellowbackmtn
 date: 2023-02-10 10:43
 description: The Bro Love in this show is what gets conservative guys up in the morning.
+spotlight:
 youtube:
  youtuber: 
  youtuber2: 

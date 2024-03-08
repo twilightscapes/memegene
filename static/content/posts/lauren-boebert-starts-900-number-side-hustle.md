@@ -11,6 +11,7 @@ showPageNav: true
 tags:
   - trash
   - boeber
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

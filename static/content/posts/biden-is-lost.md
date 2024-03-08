@@ -9,6 +9,7 @@ tags:
 featuredImage: /assets/biden-is-lost-promo.webp
 underlayImage: null
 svgImage: null
+spotlight:
 youtube:
   youtubersuggestion3: null
   audiotitle: null

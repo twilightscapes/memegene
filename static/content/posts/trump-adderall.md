@@ -4,6 +4,7 @@ title: Is Trump on Adderall?
 slug: /trump-adderall
 date: 2023-10-02 20:00
 description: Definitive proof that Trump is an Adderall huffer
+spotlight:
 youtube:
  youtuber: "https://youtu.be/QNo2YyBYpqA"
  youtuber2: 

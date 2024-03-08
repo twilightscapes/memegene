@@ -4,6 +4,7 @@ title: Mike Lindell claims "Trump Stiffed Me" on his MyPillows
 slug: /trump-stiffed-me
 date: 2023-08-11 03:00
 description: Mike says hes owed thousands by Trump who refuses to pay 
+spotlight:
 youtube:
   youtuber: https://youtu.be/xCajS0x0k2Q
   youtuber2: 

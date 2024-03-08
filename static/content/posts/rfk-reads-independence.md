@@ -10,6 +10,7 @@ tags:
 featuredImage: /assets/rfkjr-reads-promo.webp
 underlayImage: null
 svgImage: null
+spotlight:
 youtube:
   youtubersuggestion3: https://youtu.be/dQw4w9WgXcQ
   youtuber2: null

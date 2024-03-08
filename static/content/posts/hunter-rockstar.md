@@ -4,6 +4,7 @@ title: Just another player trying to make stacks and slap backs
 slug: /hunter-rockstar
 date: 2023-02-12 03:00
 description: Party with Hunter Biden and try to keep up!
+spotlight:
 youtube:
   youtuber: "https://youtu.be/Yq5OBekqY6A"
   youtuber2: 

@@ -4,6 +4,7 @@ title: Nancy Pelosi and Mitch McConnell announce controvserial new plans for usi
 slug: /congress-clones
 date: 2023-09-09 03:00
 description: Frozen senators might become the normal state for members of congress
+spotlight:
 youtube:
  youtuber: "https://youtu.be/Zpw2R8Wh_9E?si=IsibjL57fjEXoIR6"
  youtuber2: 

@@ -4,6 +4,7 @@ title: UNRELEASED FOOTAGE - Rust Movie Set
 slug: /rust-scene
 date: 2023-04-20 16:00
 description: Click to watch Alec Baldwin in FINAL uncut scene
+spotlight:
 youtube:
   youtuber: "https://youtu.be/y4SwgwCdz4c"
   youtuber2: 

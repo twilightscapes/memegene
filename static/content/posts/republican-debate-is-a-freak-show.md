@@ -11,6 +11,7 @@ showPageNav: true
 tags:
   - rondesantis
   - election2024
+spotlight:
 youtube:
   youtubemute: false
   youtubeautostart: false

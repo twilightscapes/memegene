@@ -8,6 +8,7 @@ description: The last thing to go through his mind at night is how to Make Ameri
 tags:
   - celebrity
   - trump
+spotlight:
 youtube:
   youtubersuggestion3: null
   youtuber2: null

@@ -4,6 +4,7 @@ title: Watch Trump meets his cell mates
 slug: /trump-cellmate
 date: 2023-09-30 22:00
 description: See Trump get "introduced" to the homies
+spotlight:
 youtube:
  youtuber: "https://youtu.be/hDciMlTXDbA"
  youtuber2: 

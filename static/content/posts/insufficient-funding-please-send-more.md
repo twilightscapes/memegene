@@ -8,6 +8,7 @@ tags:
   - bankruptcy
   - trump
 featuredImage: /assets/trump-bounced-check.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"

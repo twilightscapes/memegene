@@ -4,6 +4,7 @@ title: Jordan gets answer from his finger about Speaker position
 slug: /jordan-shining
 date: 2023-10-13 20:00
 description: Jim Jordan is talking to his finger again
+spotlight:
 youtube:
   youtuber: null
   youtuber2: null

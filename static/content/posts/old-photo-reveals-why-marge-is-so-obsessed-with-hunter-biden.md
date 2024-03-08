@@ -8,6 +8,7 @@ tags:
   - hunter
   - mtg
 featuredImage: /assets/marge-hunter.webp
+spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"
