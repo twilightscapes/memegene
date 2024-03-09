@@ -2,14 +2,7 @@
 template: blog-post
 date: 2024-02-25 19:20
 slug: /no-country-for-old-presidents
-title: No Country For Old Presidents
-description: This is not the direction for our country, it's a recipe for a coen bros film
-tags:
-  - biden
-  - rfk
-  - trump
 featuredImage: /assets/no-country-for-old-men.webp
-spotlight:
 youtube:
   showVidOnly: false
   audiotitle: "0"
@@ -25,10 +18,17 @@ youtube:
   youtubemute: false
   contentinvideo: false
   youtubestart: "0"
+scroll: false
+title: No Country For Old Presidents
+description: This is not the direction for our country, it's a recipe for a coen bros film
+tags:
+  - biden
+  - rfk
+  - trump
 mediawarnings:
   viewerwarning: MA
 shareable: true
 showZoom: false
 showPageNav: true
-scroll: false
+spotlight: "True"
 ---
