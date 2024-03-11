@@ -643,7 +643,7 @@ body.homepage .pleaseshare{display:none}
 
 .sidebarMenuInner{
   background-color:var(--theme-ui-colors-headerColor);
-  filter:brightness(.7);
+  /* filter:brightness(.7); */
 }
 
 .sidebarMenuInner li{
@@ -1073,7 +1073,7 @@ body.contactpage .ReactModal__Content{padding-top:10vh !important;}
   }
   .cattags ::placeholder{
     /* color:var(--theme-ui-colors-siteColorText); */
-    color:#666;
+    /* color:#666; */
     opacity:1 !important;
   }
 
@@ -1465,6 +1465,10 @@ margin: 0 auto;
   align-items: center;
   gap:2vw;
 } */
+
+
+#youtubeform ::placeholder{color:inherit !important; opacity:.5;}
+
 
 .youtubelinker {
   background: var(--theme-ui-colors-headerColor);

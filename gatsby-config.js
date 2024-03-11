@@ -356,6 +356,15 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-theme-ui`,
     // `gatsby-plugin-static-cms`,
+    // `gatsby-plugin-decap-cms`,
+
+    // {
+    //   resolve: `gatsby-plugin-netlify-identity`,
+    //   options: {
+    //     // url: `${settings.meta.siteUrl}`,
+    //     url: `https://pirateplus.netlify.app/`
+    //   }
+    // },
 
     {
       resolve: `gatsby-plugin-decap-cms`,
@@ -369,7 +378,8 @@ module.exports = {
         logo_url: 'https://pirateweb.org/assets/logo.svg'
       },
     },
-    'gatsby-plugin-netlify-identity-widget',
+
+    
 
     
     // {

@@ -417,7 +417,7 @@ const handleAutoplayChange = (event) => {
         // transform: hideEditor ? 'translateY(-100%)' : 'none',
         transition: 'transform 0.5s ease-in-out',
         background: 'var(--theme-ui-colors-headerColor)',
-        color:'--theme-ui-colors-headerColorText'
+        // color:'--theme-ui-colors-headerColorText'
         
         // height: hideEditor ? '0' : 'auto'
 
@@ -434,7 +434,7 @@ const handleAutoplayChange = (event) => {
   alignItems: 'center',
   width: '', 
   transition: 'opacity .5s ease-in-out',
-  opacity: isVideoActive ? 1 : 0.5 
+  opacity: isVideoActive ? 1 : 0.7 
 }}>
 
 <div id="checkboxes" style={{ display: 'flex', flexDirection:'row', gap: '5px', alignItems: 'center', padding:'0 5px 5px 10px', justifyContent:'center', background:'rgba(0,0,0,.1)', outline:'1px solid #777', borderRadius:'var(--theme-ui-colors-borderRadius)', fontSize:'clamp(.5rem,1.2vw,1rem)'  }}>
