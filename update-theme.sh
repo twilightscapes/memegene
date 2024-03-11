@@ -34,7 +34,7 @@
 # # Clean up
 # rm -rf tmp_theme
 
-echo "PIRATE Plus updated successfully!"
+echo "NOPIRATE Plus updated successfully!"
 
 
 
