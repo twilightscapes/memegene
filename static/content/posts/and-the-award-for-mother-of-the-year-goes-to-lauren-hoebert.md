@@ -7,7 +7,6 @@ description: Everybody is saying she’s got it locked up
 tags:
   - lauren
 featuredImage: /assets/meme-mom-of-the-year.webp
-spotlight: null
 youtube:
   showVidOnly: false
   audiotitle: "0"
@@ -28,4 +27,5 @@ mediawarnings:
 shareable: true
 showZoom: false
 showPageNav: true
+spotlight: true
 ---
