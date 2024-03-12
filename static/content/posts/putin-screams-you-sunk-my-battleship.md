@@ -8,7 +8,7 @@ tags:
   - tv
   - putin
 featuredImage: /assets/putin-battleship.webp
-spotlight:
+spotlight: 
 youtube:
   showVidOnly: true
   audiotitle: "0"
