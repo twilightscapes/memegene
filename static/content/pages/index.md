@@ -77,6 +77,7 @@ sharethis: false
 category:
   - ""
 profTitle: Hi, I'm Gene!
+externalLink: https://piratesocial.org
 ---
 <div class="" style="text-align:left;">Memes are a way of life for
   many and this site is meant to be an outlet for that. This site was created to
