@@ -2,12 +2,12 @@
 template: blog-post
 date: 2024-03-13 16:08
 slug: /rudy-sex-tape
-title: Watch the Rudy Sex Tape here
-description: Watch the Rudy Sex Tape here
+title: Watch the Rudy Sex Tape
+description: Watch the Rudy Sex Tape
 tags:
   - rudy
 featuredImage: /assets/img_1130.jpeg
-externalLink: /
+externalLink: 
 youtube:
   showVidOnly: false
   audiotitle: "0"
