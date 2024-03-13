@@ -16,12 +16,12 @@ youtube:
   customcontrols: true
   audiostart: "0"
   youtuber: https://youtu.be/o-YBDTqX_ZU?si=OY9hWZAUu8oQga18
-  youtubeautostart: false
+  youtubeautostart: true
   clicktoplay: false
   youtubeend: "0"
   youtubecontrols: false
   liarliar: false
-  youtubemute: false
+  youtubemute: true
   contentinvideo: false
   youtubestart: "0"
 mediawarnings:
