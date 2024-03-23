@@ -14,7 +14,8 @@
       "showTitles": true,
       "showfooter": false,
       "showSwipe": true,
-      "showVideoPlayer": true
+      "showVideoPlayer": true,
+      "defaultCollection": "Favorites"
     },
     "twitterUsername": "toddlambert",
     "titleDefault": "Meme Genes",
