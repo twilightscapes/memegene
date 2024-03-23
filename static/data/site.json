@@ -3,6 +3,7 @@
     "iconimage": "/assets/logo.svg",
     "companyname": "Meme Genes",
     "siteUrl": "https://memegenes.com",
+    "defaultCollection": "Favorites",
     "featureOptions": {
       "showDefault": true,
       "showArchive": false,
@@ -14,8 +15,7 @@
       "showTitles": true,
       "showfooter": false,
       "showSwipe": true,
-      "showVideoPlayer": true,
-      "defaultCollection": "Favorites"
+      "showVideoPlayer": true
     },
     "twitterUsername": "toddlambert",
     "titleDefault": "Meme Genes",
