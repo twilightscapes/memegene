@@ -6,7 +6,7 @@ title: Tr☭mp struggles to get his X-ray glasses to work on Ivanka
 description: Trump struggles to get his X-ray glasses to work on Ivanka
 tags:
   - trump
-featuredImage: /assets/img_1549.webp
+featuredImage: /assets/trump-eclipsed.webp
 youtube:
   showVidOnly: false
   audiotitle: "0"
