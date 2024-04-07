@@ -4,6 +4,7 @@
     "companyname": "Meme Genes",
     "siteUrl": "https://memegenes.com",
     "defaultCollection": "Favorites",
+    "showCollectionTitles": false,
     "featureOptions": {
       "showDefault": true,
       "showArchive": false,
