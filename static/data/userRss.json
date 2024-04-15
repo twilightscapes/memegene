@@ -11,6 +11,10 @@
     {
       "name": "Meme Genes",
       "rssFeedUrl": "https://memegenes.com/rss.xml"
+    },
+    {
+      "name": "Twilightscapes",
+      "rssFeedUrl": "https://twilightscapes.com/rss.xml"
     }
   ],
   "favorites": []
