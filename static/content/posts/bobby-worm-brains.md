@@ -14,7 +14,7 @@ youtube:
   audiotitle: "0"
   audioend: "0"
   youtubeloop: true
-  customcontrols: true
+  customcontrols: false
   audiostart: "0"
   youtuber: https://youtu.be/Ms6v01Qoof0?si=vNmoglIKzvmUpfM7
   youtubeautostart: true
@@ -24,7 +24,7 @@ youtube:
   liarliar: false
   youtubemute: true
   contentinvideo: false
-  youtubestart: "847"
+  youtubestart: "878"
 mediawarnings:
   viewerwarning: MA
 shareable: true
