@@ -67,7 +67,7 @@ mediawarnings:
   maratingtx3: X
   maratingtx4: X
 postLimit: "4"
-description: PIRATE - social media for the people by the people
+description: Do these memes make my butt look fat?
 svgzindex: x
 coverletter:
   coverText: About PIRATE
