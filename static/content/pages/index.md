@@ -26,7 +26,7 @@ youtube:
   youtubestart: "0"
 slug: /
 tagline: Do these memes make my butt look fat?
-featuredImage: /assets/santos-sales-promo.webp
+featuredImage: /assets/shawshank-redemption-in-60seconds.jpg
 secondaryImage: /assets/default-user.webp
 scrollable: false
 portfolio:
