@@ -46,7 +46,12 @@ const HomePosts = ({ isSliderVisible }) => {
             }
             featuredImage {
               childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  layout: CONSTRAINED
+                  width: 1600
+                  formats: [AUTO, WEBP]
+                )
               }
             }
             category
@@ -383,6 +388,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
             className="featured-image1"
             placeholder="blurred"
             style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
+            loading="lazy" // Add lazy loading
+            fadeIn={true} // Add fade-in effect
           />
         ) : (
           <StaticImage
@@ -390,6 +397,8 @@ const [playingIndex, setPlayingIndex] = useState(null);
             src="../../static/assets/default-og-image.webp"
             alt="Default Image"
             style={{ position: 'relative', zIndex: '1', maxHeight: '', margin: '0 auto', borderRadius:'var(--theme-ui-colors-borderRadius)' }}
+            loading="lazy" // Add lazy loading
+            fadeIn={true} // Add fade-in effect
           />
         )}
 {(node.frontmatter.youtube?.youtuber && node.frontmatter.youtube.youtuber) ? (
