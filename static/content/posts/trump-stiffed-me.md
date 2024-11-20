@@ -1,61 +1,59 @@
 ---
-template: blog-post
-title: Mike Lindell claims "Trump Stiffed Me" on his MyPillows
-slug: /trump-stiffed-me
-date: 2023-08-11 03:00
-description: Mike says hes owed thousands by Trump who refuses to pay 
-spotlight:
+audiotitle: null
 youtube:
-  youtuber: https://youtu.be/xCajS0x0k2Q
-  youtuber2: 
-  youtubeshoworiginal: true
-  youtubersuggestion1:
-  youtubersuggestion2:
-  youtubersuggestion3:
-  youtubestart: "85"
-  youtubeend: "95"
-  youtubemute: true
-  youtubecontrols: false
-  clicktoplay: false
-  customcontrols: false
-  youtubeautostart: true
+  youtubersuggestion3: null
+  youtuber2: null
   youtubeloop: true
+  customcontrols: false
+  youtuber: https://youtu.be/FSA0ITLrnL8?si=ZiMc0zIaL6BSyU45
+  youtubeautostart: true
+  youtubeshoworiginal: true
+  clicktoplay: false
+  youtubeend: ""
+  youtubecontrols: false
+  youtubemute: true
   contentinvideo: true
-audiostart: "20"
+  youtubersuggestion1: null
+  youtubersuggestion2: null
+  youtubestart: ""
 audioend: "5000"
-audiotitle: 
-bumpertext: "Mikey gets his feelings hurt"
-liarliar: true
-isnftforsale: false
-svgzindex: "0"
-comments: false 
-shareable: true
-underlayImage: /assets/mypillow-bg2.webp
-featuredImage: /assets/trump-stiffed-promo.webp
-svgImage: /assets/chyron-trump-stiff.svg
 scrollable: false
-showZoom: true
-showPageNav: true
-nftdrop: "2023-02-11T10:00:00"
-mediawarnings:
- viewerwarning: Viewer Discretion Strongly Advised
- marate: 
- marating1: YB
- maratingtx1: Use your brain please
- marating2: SS
- maratingtx2: Spontaneous & Sporadic
- marating3: LH
- maratingtx3: It's Humor - laugh
- marating4: AL
- maratingtx4: Adult Language
-
-
+nftdrop: 2023-02-11T10:00:00
+slug: /trump-stiffed-me
+audiostart: "20"
+template: blog-post
+date: 2023-08-11 03:00
+title: Mike Lindell claims "Trump Stiffed Me" on his MyPillows
+description: Mike says hes owed thousands by Trump who refuses to pay
+featuredImage: /assets/trump-stiffed-promo.webp
+underlayImage: /assets/mypillow-bg2.webp
+bumpertext: Mikey gets his feelings hurt
 tags:
   - lindell
   - mypillow
   - crackhead
   - bankrupt
   - trump
+svgImage: /assets/chyron-trump-stiff.svg
+mediawarnings:
+  marating1: YB
+  marating2: SS
+  marating3: LH
+  marating4: AL
+  viewerwarning: Viewer Discretion Strongly Advised
+  marate: null
+  maratingtx1: Use your brain please
+  maratingtx2: Spontaneous & Sporadic
+  maratingtx3: It's Humor - laugh
+  maratingtx4: Adult Language
+shareable: true
+showZoom: true
+showPageNav: true
+spotlight: null
+comments: false
+liarliar: true
+svgzindex: "0"
+isnftforsale: false
 ---
 
 <div style="position:absolute; top:70vh; text-shadow:2px 2px 2px #333; color:#1D9BF0 !important; padding-left:2vw; animation:fadeout 4s forwards; animation-delay:4s;">
